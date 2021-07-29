@@ -1,11 +1,11 @@
 {
-  "name": "mccarthy",
-  "description": "WordPress theme for McCarthy.",
+  "name": "Produce Pro",
+  "description": "HTML website for Produce Pro.",
   "version": "1.0.0",
-  "author": "Tim Gieseking (tgieseking@atomicdust.com)",
+  "author": "Warren Kesselring (wkesselring@vividsites.com)",
   "repository": {
     "type": "git",
-    "url": "https://www.atomicdust.com"
+    "url": "https://vividsites.com"
   },
   "license": "MIT",
   "devDependencies": {
