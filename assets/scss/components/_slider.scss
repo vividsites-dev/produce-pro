@@ -1,0 +1,62 @@
+.slick-arrow {
+	background: $red;
+	width: 55px;
+	height: 55px;
+	transition: $transition;
+	appearance: none;
+	background: none;
+	color: transparent;
+	border: none;
+	padding: 0;
+	z-index: 2;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+
+	@media (max-width: 1000px) {
+		width: calc(25px + 3vw);
+	}
+
+	&:after {
+		content: '';
+		display: block;
+		width: 15px;
+		height: 26px;
+		background-image: url('../images/angle.svg');
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center;
+		border-right: none;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+	}
+}
+.slick-next {
+	right: 0;
+	transform: translate(12px, -50%);
+
+	&:after {
+		transform: translate(-40%, -50%);
+	}
+	
+	@media (min-width: $breakpoint-l) {
+		right: auto;
+		left: 100%;
+		transform: translate(90%, -50%);
+	}
+}
+.slick-prev {
+	left: 0;
+	transform: translate(-12px, -50%);
+	
+	&:after {
+		transform: translate(-60%, -50%) scaleX(-1);
+	}
+	
+	@media (min-width: $breakpoint-l) {
+		left: auto;
+		right: 100%;
+		transform: translate(-90%, -50%);
+	}
+}

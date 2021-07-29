@@ -1,0 +1,53 @@
+{
+  "name": "mccarthy",
+  "description": "WordPress theme for McCarthy.",
+  "version": "1.0.0",
+  "author": "Tim Gieseking (tgieseking@atomicdust.com)",
+  "repository": {
+    "type": "git",
+    "url": "https://www.atomicdust.com"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.12.13",
+    "@babel/preset-env": "^7.12.13",
+    "@babel/register": "^7.12.13",
+    "beepbeep": "^1.3.0",
+    "browser-sync": "^2.26.14",
+    "eslint": "^5.5.0",
+    "eslint-config-wordpress": "^2.0.0",
+    "gulp": "^4.0.0",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-cache": "^1.1.3",
+    "gulp-concat": "^2.5.2",
+    "gulp-filter": "^5.1.0",
+    "gulp-group-css-media-queries": "^1.2.2",
+    "gulp-imagemin": "^6.1.0",
+    "gulp-line-ending-corrector": "^1.0.1",
+    "gulp-notify": "^3.0.0",
+    "gulp-plumber": "^1.2.0",
+    "gulp-remember": "^1.0.1",
+    "gulp-rename": "^1.2.0",
+    "gulp-rtlcss": "^1.4.1",
+    "gulp-sass": "^4.1.0",
+    "gulp-sort": "^2.0.0",
+    "gulp-sourcemaps": "^2.6.2",
+    "gulp-uglify": "^3.0.0",
+    "gulp-uglifycss": "^1.0.6",
+    "gulp-wp-pot": "^2.5.0"
+  },
+  "scripts": {
+    "start": "gulp",
+    "styles": "gulp styles",
+    "stylesRTL": "gulp stylesRTL",
+    "vendorsJS": "gulp vendorsJS",
+    "customJS": "gulp customJS",
+    "images": "gulp images",
+    "clearCache": "gulp clearCache",
+    "translate": "gulp translate"
+  },
+  "dependencies": {
+    "bodymovin": "^4.13.0"
+  }
+}

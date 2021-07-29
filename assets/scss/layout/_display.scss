@@ -1,0 +1,94 @@
+.display {
+    &-block {
+        display: block;
+		&\@s {
+            @media (min-width: $breakpoint-s) {
+                display: block !important;
+            }
+        }
+        &\@m {
+            @media (min-width: $breakpoint-m) {
+                display: block !important;
+            }
+        }
+        &\@l {
+            @media (min-width: $breakpoint-l) {
+                display: block !important;
+            }
+        }
+        &\@xl {
+            @media (min-width: $breakpoint-xl) {
+                display: block !important;
+            }
+        }
+    }
+    &-inline-block {
+        display: inline-block;
+        &\@s {
+            @media (min-width: $breakpoint-s) {
+                display: inline-block !important;
+            }
+        }
+        &\@m {
+            @media (min-width: $breakpoint-m) {
+                display: inline-block !important;
+            }
+        }
+        &\@l {
+            @media (min-width: $breakpoint-l) {
+                display: inline-block !important;
+            }
+        }
+        &\@xl {
+            @media (min-width: $breakpoint-xl) {
+                display: inline-block !important;
+            }
+        }
+    }
+    &-inline {
+        display: inline;
+        &\@s {
+            @media (min-width: $breakpoint-s) {
+                display: inline !important;
+            }
+        }
+        &\@m {
+            @media (min-width: $breakpoint-m) {
+                display: inline !important;
+            }
+        }
+        &\@l {
+            @media (min-width: $breakpoint-l) {
+                display: inline !important;
+            }
+        }
+        &\@xl {
+            @media (min-width: $breakpoint-xl) {
+                display: inline !important;
+            }
+        }
+    }
+    &-none {
+        display: none;
+        &\@s {
+            @media (min-width: $breakpoint-s) {
+                display: none !important;
+            }
+        }
+        &\@m {
+            @media (min-width: $breakpoint-m) {
+                display: none !important;
+            }
+        }
+        &\@l {
+            @media (min-width: $breakpoint-l) {
+                display: none !important;
+            }
+        }
+        &\@xl {
+            @media (min-width: $breakpoint-xl) {
+                display: none !important;
+            }
+        }
+    }
+}

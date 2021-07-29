@@ -1,0 +1,133 @@
+.flex {
+    display: flex;
+
+    &-wrap {
+        flex-wrap: wrap;
+	}
+
+    &-column {
+        flex-direction: column;
+    }
+
+    // Horizontal
+    &-left {
+        justify-content: flex-start;
+    }
+    &-center {
+        justify-content: center;
+    }
+    &-right {
+        justify-content: flex-end;
+    }
+    &-between {
+        justify-content: space-between;
+    }
+    &-around {
+        justify-content: space-around;
+    }
+
+    // Vertical
+    &-stretch {
+        align-items: stretch;
+    }
+    &-top {
+        align-items: flex-start;
+    }
+    &-middle {
+        align-items: center;
+    }
+    &-bottom {
+        align-items: flex-end;
+	}
+	
+	&-1 {
+		flex: 1 1 auto;
+	}
+}
+
+.order {
+    &-1 {
+        order: 1;
+        &\@s {
+            @media (min-width: $breakpoint-s) {
+                order: 1;
+            }
+        }
+        &\@m {
+            @media (min-width: $breakpoint-m) {
+                order: 1;
+            }
+        }
+        &\@l {
+            @media (min-width: $breakpoint-l) {
+                order: 1;
+            }
+        }
+        &\@xl {
+            @media (min-width: $breakpoint-xl) {
+                order: 1;
+            }
+        }
+    }
+    &-2 {
+        order: 2;
+        &\@s {
+            @media (min-width: $breakpoint-s) {
+                order: 2;
+            }
+        }
+        &\@m {
+            @media (min-width: $breakpoint-m) {
+                order: 2;
+            }
+        }
+        &\@l {
+            @media (min-width: $breakpoint-l) {
+                order: 2;
+            }
+        }
+        &\@xl {
+            @media (min-width: $breakpoint-xl) {
+                order: 2;
+            }
+        }
+    }
+}
+
+@each $label, $breakpoint in $breakpoints {
+	.flex\@#{$label} {
+		@media ( min-width: $breakpoint ) {
+			display: flex;
+		}
+	}
+
+	.flex-row\@#{$label} {
+		@media ( min-width: $breakpoint ) {
+			flex-direction: row;
+		}
+	}
+	
+	.flex-column\@#{$label} {
+		@media ( min-width: $breakpoint ) {
+			flex-direction: column;
+		}
+	}
+	
+	.flex-top\@#{$label} {
+		@media ( min-width: $breakpoint ) {
+			align-items: flex-start;
+		}
+	}
+
+	.flex-middle\@#{$label} {
+		@media ( min-width: $breakpoint ) {
+			align-items: center;
+		}
+	}
+	
+	.flex-bottom\@#{$label} {
+		@media ( min-width: $breakpoint ) {
+			align-items: flex-end;
+		}
+	}
+}

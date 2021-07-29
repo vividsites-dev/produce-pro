@@ -1,0 +1,51 @@
+::selection {
+    background: rgba($color-primary, .1);
+    color: inherit;
+	text-shadow: none;
+}
+
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -moz-font-feature-settings: 'liga' on;
+    font-feature-settings: 'liga' on;
+    text-rendering: optimizeLegibility;
+	box-sizing: border-box;
+}
+
+html {
+    font-family: $font-family-body;
+    font-size: 1em;
+    overflow-x: hidden;
+	-webkit-tap-highlight-color: transparent;
+
+	// &.nav-open,
+	// &.modal-open,
+    // &.login-open {
+    //     overflow: hidden;
+    // }
+}
+
+body {
+	color: $black;
+	margin: 0;
+    font-family: lato, sans-serif;
+	
+	&:not(.single-post):not(.single-events) {
+		overflow-x: hidden;
+	}
+}
+
+main {
+    // overflow: hidden;
+}
+
+:focus {
+    outline: none;
+}
+:focus-visible {
+    @include focus();
+}
+.js-focus-visible .focus-visible {
+    @include focus();
+}

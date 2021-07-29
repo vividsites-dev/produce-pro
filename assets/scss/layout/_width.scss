@@ -1,0 +1,47 @@
+@for $i from 1 through 12 {
+	$max: $i * 100;
+	.w-#{$max}px {
+		max-width: $max + 0px !important;
+	}
+}
+
+// @for $i from 1 through 10 {
+// 	$max: $i / 10;
+// 	.width__max--#{$max} {
+// 		max-width: percentage($max) !important;
+// 	}
+// }
+
+// .width__max--medium {
+// 	max-width: 960px !important;
+// }
+
+// .width__max--large {
+// 	max-width: 1250px !important;
+// }
+
+// @for $t from 1 through 12 {
+// 	@for $i from 1 through $t {
+// 		@if $t == 1 or $i < $t {
+// 			.width-#{$i}-#{$t} {
+// 				width: percentage($i / $t);
+// 			}
+
+// 			@each $label, $breakpoint in $breakpoints {
+// 				.width-#{$i}-#{$t}\@#{$label} {
+// 					@media ( min-width: $breakpoint ) {
+// 						width: percentage($i / $t);
+// 					}
+// 				}
+// 			}
+// 		}
+// 	}
+// }
+
+// @each $label, $breakpoint in $breakpoints {
+// 	.width-auto\@#{$label} {
+// 		@media ( min-width: $breakpoint ) {
+// 			width: auto;
+// 		}
+// 	}
+// }

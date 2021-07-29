@@ -1,0 +1,178 @@
+// -------------------------------------------------------------------
+// This file contains all application-wide Sass mixins.
+// -------------------------------------------------------------------
+
+@mixin placeholder {
+    ::-webkit-input-placeholder {
+        @content;
+    }
+    :-moz-placeholder {
+       @content;
+    }
+    ::-moz-placeholder {
+       @content;
+    }
+    :-ms-input-placeholder {
+       @content;
+    }
+}
+
+@mixin blockText {
+	font-family: $font-family-heading;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+
+@mixin object-fit($fit: fill, $position: null) {
+    -o-object-fit: $fit;
+       object-fit: $fit;
+    @if $position {
+        -o-object-position: $position;
+           object-position: $position;
+        font-family: 'object-fit: #{$fit}; object-position: #{$position}';
+    } @else {
+        font-family: 'object-fit: #{$fit}';
+    }
+}
+
+@mixin focus {
+	outline: 1px dashed $color-primary;
+    outline-offset: 2px;
+}
+
+@mixin keyframes($animationName) {
+    @-webkit-keyframes #{$animationName} {
+        @content;
+    }
+    @-moz-keyframes #{$animationName} {
+        @content;
+    }
+    @-o-keyframes #{$animationName} {
+        @content;
+    }
+    @keyframes #{$animationName} {
+        @content;
+    }
+}
+
+@mixin animate($name, $duration, $delay, $iteration, $direction, $fill:forwards) {
+	-webkit-animation-duration: $duration;
+		-moz-animation-duration: $duration;
+		-o-animation-duration: $duration;
+			animation-duration: $duration;
+	-webkit-animation-iteration-count: $iteration;
+		-moz-animation-iteration-count: $iteration;
+		-o-animation-iteration-count: $iteration;
+			animation-iteration-count: $iteration;
+	-webkit-animation-name: $name;
+		-moz-animation-name: $name;
+		-o-animation-name: $name;
+			animation-name: $name;
+	-webkit-animation-delay: $delay;
+		-moz-animation-delay: $delay;
+		-o-animation-delay: $delay;
+			animation-delay: $delay;
+	-webkit-animation-direction: $direction;
+		-moz-animation-direction: $direction;
+		-o-animation-direction: $direction;
+			animation-direction: $direction;
+	-webkit-animation-fill-mode: $fill;
+		-moz-animation-fill-mode: $fill;
+		-o-animation-fill-mode: $fill;
+			animation-fill-mode: $fill;
+}
+
+@include keyframes(float) {
+	0% {
+		transform: translateX(0);
+	}
+	50% {
+		transform: translateX(-5%);
+	}
+	100% {
+		transform: translateX(0);
+	}
+}
+
+@include keyframes(bounce) {
+	0% {
+		transform: translateY(0);
+	}
+	50% {
+		transform: translateY(20%);
+	}
+	100% {
+		transform: translateY(0);
+	}
+}
+
+@include keyframes(wobble) {
+	0% {
+		transform: none; }
+	20% {
+		transform: rotate(-5deg); }
+	40% {
+		transform: rotate(5deg); }
+	60% {
+		transform: rotate(-5deg); }
+	80% {
+		transform: rotate(5deg); }
+	100% {
+		transform: none; }
+}
+
+@include keyframes(twinkle) {
+	0% {
+		filter: none;
+	}
+	2% {
+		filter: brightness(1.4);
+	}
+	4% {
+		filter: brightness(2);
+	}
+	6% {
+		filter: brightness(1.6);
+	}
+	7% {
+		filter: brightness(2);
+	}
+	8% {
+		filter: brightness(1.4);
+	}
+	10% {
+		filter: none;
+	}
+	100% {
+		filter: none;
+	}
+}
+
+@include keyframes(fadeIn) {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@mixin float($delay:0, $duration:12s) {
+	@include animate(float, $duration, $delay, infinite, normal, 0);
+}
+
+@mixin twinkle($delay:0, $duration:10s) {
+	@include animate(twinkle, $duration, $delay, infinite, normal, 0);
+}
+
+@mixin bounce($delay:0, $duration:1.5s) {
+	@include animate(bounce, $duration, $delay, infinite, normal, 0);
+}
+
+@mixin fadeIn($delay:0, $duration:1s) {
+	@include animate(fadeIn, $duration, $delay, 1, normal, 0);
+}
+
+@mixin wobble($delay:0, $duration:1s) {
+	@include animate(wobble, $duration, $delay, 1, normal, 0);
+}

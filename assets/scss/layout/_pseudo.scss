@@ -1,0 +1,55 @@
+.before {
+	&:before {
+		content: '';
+		display: block;
+		width: 100%;
+	}
+
+	&--square {
+		&:before {
+			padding-bottom: 100%;
+		}
+	}
+
+	&--80 {
+		&:before {
+			padding-bottom: 80%;
+		}
+	}
+}
+
+.after {
+	&:after {
+		content: '';
+		display: block;
+		width: 100%;
+	}
+
+	&--square {
+		&:after {
+			padding-bottom: 100%;
+		}
+	}
+}
+
+@each $label, $breakpoint in $breakpoints {
+	.before\@#{$label} {
+		@media ( min-width: $breakpoint ) {
+			&:before {
+				content: '';
+				display: block;
+				width: 100%;
+			}
+		}
+	}
+
+	.after\@#{$label} {
+		@media ( min-width: $breakpoint ) {
+			&:after {
+				content: '';
+				display: block;
+				width: 100%;
+			}
+		}
+	}
+}

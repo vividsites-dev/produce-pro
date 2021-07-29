@@ -1,0 +1,175 @@
+body {
+    .border-primary {
+        border-color: $color-primary !important;
+    }
+    
+    .border-secondary {
+        border-color: $color-secondary !important;
+    }
+    
+    .text-primary {
+        color: $color-primary !important;
+    }
+
+    .text-primary-dk {
+        color: $color-primary-dk;
+    }
+
+    .text-primary-dk2 {
+        color: $color-primary-dk2;
+    }
+    
+    .text-secondary {
+        color: $color-secondary !important;
+    }
+    
+    .text-danger {
+        color: $color-error !important;
+    }
+    
+    .bg-primary {
+        background-color: $color-primary !important;
+    }
+    
+    .bg-secondary {
+        background-color: $color-secondary !important;
+    }
+    
+    .accordion {
+        &__toggle {
+            position: relative;
+    
+            &:before {
+                content: "";
+                display: block;
+                position: absolute;
+                left: -24px;
+                top: 8px;
+                width: 12px;
+                height: 12px;
+                border-right: solid 3px white;
+                border-bottom: solid 3px white;
+                transform: rotate(225deg);
+                transition: all 0.5s;
+            }
+    
+            &.collapsed {
+                &:before {
+                    transform: rotate(45deg);
+                    top: 4px;
+                }
+            }
+        }
+    }
+
+    .form-control {
+        padding: 0.625rem 1rem;
+        border-color: $gray3;
+    }
+    
+    .carousel-indicators [data-bs-target] {
+        width: 1rem;
+        height: 1rem;
+        margin: 0 0.5rem;
+        border-radius: 100%;
+    }
+
+    .modal {
+        &-content {
+            border-radius: 0;
+            margin: 0 24px;
+            box-shadow: 0 0 15px 10px rgba(0,0,0,0.2);
+        }
+        &--product {
+            .modal-dialog {
+                max-width: 960px;
+            }
+
+            .modal__image {
+                min-width: 40%;
+            }
+            .modal-content {
+                padding: 40px;
+            }
+            .modal-body {
+                padding: 0 0 0 40px;
+
+                & > * {
+                    margin-bottom: 1rem;
+
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+            .product__description {
+                p {
+                    font-size: 16px;
+                    color: $gray4;
+                }
+            }
+            .product__availability {
+                color: $color-secondary;
+                @extend .font-weight--600;
+                border-top: solid 1px $gray2;
+                border-bottom: solid 1px $gray2;
+                padding: 0.5rem 0;
+            }
+            .product__button {
+                margin-top: 1.5rem;
+            }
+        }
+
+        &#email_signup {
+            .modal-dialog {
+                max-width: 640px;
+            }
+
+            .bg-image-wrapper {
+                margin: 0.5rem;
+            }
+
+            .modal-body {
+                position: relative;
+                padding: 48px;
+            }
+        }
+
+        .btn-close {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: $color-secondary;
+            border: solid 2px white;
+            border-radius: 100%;
+            transform: translate(50%, -50%);
+            opacity: 1;
+            box-shadow: 0 0 15px 10px rgba(0,0,0,0.2);
+            z-index: 2;
+
+            &:hover {
+                opacity: 1;
+            }
+
+            &:before,
+            &:after {
+                content: "";
+                display: block;
+                width: 16px;
+                height: 1px;
+                background: white;
+                position: absolute;
+                top: 50%;
+                left: 4px;
+            }
+
+            &:before {
+                transform: rotate(45deg);
+            }
+
+            &:after {
+                transform: rotate(-45deg);
+            }
+        }
+    }
+}

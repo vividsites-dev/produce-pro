@@ -1,0 +1,86 @@
+.grid {
+	$padding: 14px;
+	max-width: ( 100% + #{$padding} * 2 );
+	margin-left: -$padding;
+
+	&-item {
+		padding: $padding;
+
+		.post {
+			&__card {
+				background: $white;
+				box-shadow: 0 14px 14px 0 $blue-lt;
+			}
+			&__content {
+				&:before {
+					width: 16px;
+					height: 10px;
+					background-image: url('../images/quotemarks.svg');
+					background-size: contain;
+					background-repeat: no-repeat;
+					background-position: center;
+					margin-bottom: 24px;
+				}
+			}
+			&__label {
+				font-weight: bold;
+			}
+		}
+
+		.commendation__heart {
+			display: flex;
+			align-items: center;
+			opacity: 1;
+			padding: 0.25rem;
+			transition: 0.2s;
+
+			&:before {
+				content: '';
+				display: block;
+				width: 32px;
+				height: 32px;
+				background-image: url('../images/heart-regular.svg');
+				background-size: contain;
+				background-repeat: no-repeat;
+				position: absolute;
+				top: 28px;
+				right: 28px;
+				transition: all 0.1s;
+			}
+
+			&:after {
+				content: attr(data-likes) ' people like this';
+				position: absolute;
+				right: 38px;
+				bottom: 38px;
+				margin-top: 1rem;
+				font-size: 0.875rem;
+			}
+
+			&[data-likes='1'] {
+				&:after {
+					content: attr(data-likes) ' person likes this';
+				}
+			}
+
+			&[data-likes='0'] {
+				&:after {
+					display: none;
+				}
+			}
+
+			&--liked {
+				&:before {
+					background-image: url('../images/heart-solid.svg');
+				}
+			}
+		}
+	}
+}
+
+.alm-item {
+	&:only-child {
+		left: 50% !important;
+		transform: translateX( -50% );
+	}
+}

@@ -1,0 +1,126 @@
+.calendar {
+    &__header {
+        margin-bottom: 2rem;
+    }
+
+    &__label {
+        @include blockText;
+        font-size: 24px;
+
+        &:before {
+            content: attr(data-months);
+            margin-right: 0.2em;
+        }
+    }
+    &__buttons {
+        &[data-offset="0"] {
+            .calendar__button--prev {
+                display: none;
+            }
+        }
+    }
+    &__grid {
+        margin: -1.5px;
+    }
+    &__day {
+        width: percentage(1/7);
+        padding: 1.5px;
+
+        &:before {
+            display: block;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        &:nth-of-type(even) {
+            .calendar__date {
+                &:before  {
+                    background: $gray2;
+                }
+            }
+        }
+
+        &:nth-of-type(-n + 7) {
+            &[data-day_of_week="1"] {
+                &:before {
+                    content: "Sun";
+                }
+            }
+            &[data-day_of_week="2"] {
+                &:before {
+                    content: "Mon";
+                }
+            }
+            &[data-day_of_week="3"] {
+                &:before {
+                    content: "Tue";
+                }
+            }
+            &[data-day_of_week="4"] {
+                &:before {
+                    content: "Wed";
+                }
+            }
+            &[data-day_of_week="5"] {
+                &:before {
+                    content: "Thu";
+                }
+            }
+            &[data-day_of_week="6"] {
+                &:before {
+                    content: "Fri";
+                }
+            }
+            &[data-day_of_week="7"] {
+                &:before {
+                    content: "Sat";
+                }
+            }
+        }
+    }
+
+    &__date {
+        position: relative;
+
+        &:before {
+            content: "";
+            display: block;
+            width: 100%;
+            padding-bottom: 100%;
+            background-color: $gray1;
+        }
+        &:after {
+            content: attr(data-day);
+            color: $color-secondary;
+            font-weight: bold;
+            position: absolute;
+            top: 16px;
+            right: 20px;
+        }
+
+        & > div {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            align-items: center;
+            padding: 20px;
+        }
+
+        &--active {
+            &:before {
+                background-color: $color-primary !important;
+            }
+
+            &:after {
+                color: white;
+            }
+
+            & > div {
+                color: #fff;
+            }
+        }
+    }
+}

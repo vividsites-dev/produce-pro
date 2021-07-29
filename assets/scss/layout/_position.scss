@@ -1,0 +1,127 @@
+$vertical: (
+	top,
+	bottom
+);
+
+$horizontal: (
+	left,
+	right
+);
+
+@each $v in $vertical {
+	@each $h in $horizontal {
+		.position-#{$v}-#{$h} {
+			#{$v}: 0;
+			#{$h}: 0;
+			position: absolute !important;
+			z-index: 2;	
+		}
+
+		@each $label, $breakpoint in $breakpoints {
+			.position-#{$v}-#{$h}\@#{$label} {
+				@media ( min-width: $breakpoint ) {
+					#{$v}: 0;
+					#{$h}: 0;
+					position: absolute !important;
+					z-index: 2;
+				}
+			}
+		}
+	}
+}
+
+@each $h in $horizontal {
+	.position-center-#{$h} {
+		#{$h}: 0;
+		top: 50%;
+		transform: translateY(-50%);
+		position: absolute !important;
+		z-index: 2;	
+	}
+
+	@each $label, $breakpoint in $breakpoints {
+		.position-center-#{$h}\@#{$label} {
+			@media ( min-width: $breakpoint ) {
+				#{$h}: 0;
+				top: 50%;
+				transform: translateY(-50%);
+				position: absolute !important;
+				z-index: 2;	
+			}
+		}
+	}
+}
+
+@each $v in $vertical {
+	.position-#{$v}-center {
+		#{$v}: 0;
+		left: 50%;
+		transform: translateX(-50%);
+		position: absolute !important;
+		z-index: 2;
+	}
+
+	@each $label, $breakpoint in $breakpoints {
+		.position-#{$v}-center\@#{$label} {
+			@media ( min-width: $breakpoint ) {
+				#{$v}: 0;
+				left: 50%;
+				transform: translateX(-50%);
+				position: absolute !important;
+				z-index: 2;
+			}
+		}
+	}
+}
+
+.position-center-center {
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	position: absolute !important;
+	z-index: 2;
+}
+
+@each $label, $breakpoint in $breakpoints {
+	.position-center-center\@#{$label} {
+		@media ( min-width: $breakpoint ) {
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			position: absolute !important;
+			z-index: 2;
+		}
+	}
+}
+
+.position {
+    &-absolute {
+        position: absolute;
+	}
+	&-fixed {
+        position: fixed;
+	}
+	&-sticky {
+		position: sticky;
+	}
+    &-static {
+        position: static;
+    }
+    &-relative {
+        position: relative;
+	}
+	
+	&-layer {
+		&-1 {
+			z-index: 1;
+		}
+
+		&-2 {
+			z-index: 2;
+		}
+
+		&-3 {
+			z-index: 3;
+		}
+	}
+}

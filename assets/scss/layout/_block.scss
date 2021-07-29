@@ -1,0 +1,50 @@
+.block {
+	position: relative;
+    overflow: hidden;
+    // padding-top: $block-padding;
+    // padding-bottom: $block-padding;
+	
+	&__text-wrapper {
+        max-width: 100%;
+        display: inline-block;
+        text-align: left;
+
+        // If block is centered, align text center;
+        // otherwise, align left
+        .block--center & {
+            text-align: center;
+        }
+	}
+	
+	// Text justification
+    &--left {
+        text-align: left;
+    }
+    &--center {
+        text-align: center;
+        [class*="width"] {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .rte {
+            ol, ul {
+                display: inline-block;
+                margin: 0 auto;
+                text-align: left;
+            }
+        }
+
+        .button {
+            @media (max-width: $breakpoint-s) {
+                &:not(.gform_previous_button):not(.gform_next_button):not(.gform_button) {
+                    margin-right: auto;
+                    margin-left: auto;
+                }
+            }
+        }
+    }
+    &--right {
+        text-align: right;
+    }
+}

@@ -1,0 +1,33 @@
+section {
+    margin: $wrapper-padding-desktop 0;
+}
+
+.section {
+    &__inner {
+        padding: 0 $wrapper-padding-desktop;
+    
+        @media (max-width: 1500px) {
+            padding: 0 $wrapper-padding-responsive;
+        }
+    
+        @media (max-width: 375px) {
+            padding: 0 $wrapper-padding-mobile;
+        }
+
+        &--full {
+            padding: 0 !important;
+        }
+    }
+
+    &__heading {
+        @extend .font-size--xxl;
+        text-align: center;
+        margin-bottom: 0.9em;
+
+        &--alt {
+            @include blockText;
+            text-align: left;
+            font-size: 24px;
+        }
+    }
+}

@@ -1,0 +1,12 @@
+.wrapper {
+	width: 100%;
+    max-width: $wrapper-max-width;
+    margin-left: auto;
+	margin-right: auto;
+	padding-left: $wrapper-padding-mobile;
+	padding-right: $wrapper-padding-mobile;
+	@media (min-width: $breakpoint-m) {
+		padding-left: $wrapper-padding-desktop;
+		padding-right: $wrapper-padding-desktop;
+	}
+}

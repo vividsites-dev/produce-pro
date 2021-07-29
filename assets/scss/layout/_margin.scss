@@ -1,0 +1,78 @@
+$sizes: (
+	'remove': 0 !important,
+	// 'auto':   auto !important,
+	'xxxs':   $spacing-xxxs !important,
+	'xxs':    $spacing-xxs !important,
+	'xs':     $spacing-xs !important,
+	's':      $spacing-s !important,
+	'm':      $spacing-m !important,
+	'l':      $spacing-l !important,
+	'xl':     $spacing-xl !important,
+	'xxl':    $spacing-xxl !important,
+	'xxxl':   $spacing-xxxl !important,
+	'xxxxl':  $spacing-xxxxl !important,
+	'xxxxxl': $spacing-xxxxxl !important,
+);
+
+@each $size, $spacing in $sizes {
+	.margin-#{$size} {
+		margin: $spacing;
+	}
+
+	.margin-top-negative-#{$size} {
+		margin-top: -#{$spacing};
+
+		@each $label, $breakpoint in $breakpoints {
+			&\@#{$label} {
+				@media ( min-width: $breakpoint ) {
+					margin-top: -#{$spacing};
+				}
+			}
+		}
+	}
+
+	.margin-y-#{$size} {
+		margin-top: $spacing;
+		margin-bottom: $spacing;
+	}
+
+	.margin-x-#{$size} {
+		margin-left: $spacing;
+		margin-right: $spacing;
+	}
+
+	@each $side in $sides {
+		.margin-#{$side}-#{$size} {
+			margin-#{$side}: $spacing;
+		}
+	}
+
+	@each $label, $breakpoint in $breakpoints {
+		@media ( min-width: $breakpoint ) {
+			.margin-#{$size}\@#{$label} {
+				margin: $spacing;
+			}
+		
+			.margin-y-#{$size}\@#{$label} {
+				margin-top: $spacing;
+				margin-bottom: $spacing;
+			}
+		
+			.margin-x-#{$size}\@#{$label} {
+				margin-left: $spacing;
+				margin-right: $spacing;
+			}
+
+			@each $side in $sides {
+				.margin-#{$side}-#{$size}\@#{$label} {
+					margin-#{$side}: $spacing;
+				}
+			}
+		}
+	}
+}
+
+.margin-auto {
+	margin-left: auto !important;
+	margin-right: auto !important;
+}
