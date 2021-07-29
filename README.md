@@ -1,6 +1,6 @@
-# McCarthy Theme
+# Produce Pro Website
 
-The McCarthy theme is a custom theme.
+The Produce Pro site is a custom HTML build.
 
 ## Theme Options
 
