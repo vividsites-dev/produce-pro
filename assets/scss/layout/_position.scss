@@ -95,22 +95,6 @@ $horizontal: (
 }
 
 .position {
-    &-absolute {
-        position: absolute;
-	}
-	&-fixed {
-        position: fixed;
-	}
-	&-sticky {
-		position: sticky;
-	}
-    &-static {
-        position: static;
-    }
-    &-relative {
-        position: relative;
-	}
-	
 	&-layer {
 		&-1 {
 			z-index: 1;

@@ -1,0 +1,1060 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+		<link rel="profile" href="http://gmpg.org/xfn/11">
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.6/dayjs.min.js" crossorigin="anonymous"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.typekit.net/qsq2kfy.css">
+        <link rel="stylesheet" href="./dist/styles/main.css" />
+    </head>
+	<body>
+        <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // jQuery(".order__view-trigger").on("click", function(e) {
+            //     e.preventDefault();
+            //     $(this).tab("show");
+            //     if()
+            // });
+            
+            const viewTriggers = document.querySelectorAll(".order__view-trigger");
+            const orderListView = document.getElementById("order_view_list")
+            for(let i = 0; i < viewTriggers.length; i++) {
+                viewTriggers[i].addEventListener( "click", function(e) {
+                    const view = this.getAttribute("data-view");
+                    switch (view) {
+                        case "list":
+                            orderListView.classList.add("order__view--imagefree");
+                            break;
+                        case "list+":
+                            orderListView.classList.remove("order__view--imagefree");
+                            break;
+                        default:
+                            break;
+                    }
+                });
+            }
+        });
+        </script>
+        <main id="content" role="main" class="main">
+            <div id="order_single">
+                <section class="">
+                    <div class="section__inner">
+                        <div class="w-1200px m-auto">
+                            <h2 class="font-size--xl font-weight--800 text-color--gray5 mb-3">Order Entry - My Profile</h2>
+                        </div>
+                    </div>
+                </section>
+                <section class="mt-md2">
+                    <div class="section__inner">
+                        <div class="w-1200px m-auto">
+                            <div class="row gy-3 gx-2 gx-md-3 gx-lg-4 row-cols-1 row-cols-sm-3">
+                                <div class="col">
+                                    <a href="#" class="d-block bg-image-wrapper before before--50">
+                                        <img src="./img/carrots.png" class="d-block bg-image" alt="...">
+                                        <div class="bg-white border-end border-5 border-primary text-secondary text-uppercase font-weight--700 me-4 py-2 px-3 px-sm-2 px-md-3 pe-3 position-absolute position-center-left position-layer-2">Daily Specials</div>
+                                    </a>
+                                </div>
+                                <div class="col">
+                                    <a href="#" class="d-block bg-image-wrapper before before--50">
+                                        <img src="./img/strawberries.png" class="d-block bg-image" alt="...">
+                                        <div class="bg-white border-end border-5 border-primary text-secondary text-uppercase font-weight--700 me-4 py-2 px-3 px-sm-2 px-md-3 pe-3 position-absolute position-center-left position-layer-2">What's Hot</div>
+                                    </a>
+                                </div>
+                                <div class="col">
+                                    <a href="#" class="d-block bg-image-wrapper before before--50">
+                                        <img src="./img/greens.png" class="d-block bg-image" alt="...">
+                                        <div class="bg-white border-end border-5 border-primary text-secondary text-uppercase font-weight--700 me-4 py-2 px-3 px-sm-2 px-md-3 pe-3 position-absolute position-center-left position-layer-2">Web Specials</div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="mt-md3">
+                    <div class="section__inner">
+                        <div class="w-1200px m-auto">
+                            <div class="banner">
+                                <div class="bg-image-wrapper">
+                                    <img class="bg-image bg-image--cover align-self-start" src ="./img/produce_banner_bw.jpg" />
+                                    <div class="bg-overlay bg-overlay--secondary bg-overlay--9 position-absolute w-100 h-100"></div>
+                                    <div class="d-sm-flex flex-wrap flex-sm-nowrap py-3 px-4 position-relative">
+                                        <div class="align-self-start me-3 d-flex align-items-center" style="height: 45px;">
+                                            <img src="./img/icons/calendar.png" />
+                                        </div>
+                                        <div class="d-lg-flex flex-wrap align-items-center text-white me-3 mb-3 mb-sm-0">
+                                            <div class="d-flex flex-wrap align-items-center after@lg after--separator">
+                                                <div class="text-uppercase font-weight--800 me-1">Receiving Date:</div>
+                                                <div>Saturday, 03/13/21</div>
+                                            </div>
+                                            <div class="d-flex flex-wrap align-items-center after@lg after--separator">
+                                                <div class="text-uppercase font-weight--800 me-1">Warehouse:</div>
+                                                <div>PPRO Warehouse #1</div>
+                                            </div>
+                                            <div class="d-flex flex-wrap align-items-center after@lg after--separator">
+                                                <div class="text-uppercase font-weight--800 me-1">Customer:</div>
+                                                <div>John Doe</div>
+                                            </div>
+                                            <div class="d-flex flex-wrap align-items-center">
+                                                <div class="text-uppercase font-weight--800 me-1">Code:</div>
+                                                <div>123456789</div>
+                                            </div>
+                                        </div>
+                                        <a href="#" class="button button--white button--outline align-self-start ms-auto">Edit</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="mt-md3">
+                    <div class="section__inner">
+                        <div class="w-1200px m-auto">
+                            <h2 class="section__heading section__heading--alt">Specials</h2>
+                            <div class="row">
+                                <div class="col-12 col-sm-6 col-md-4 col-xl-3 mb-4">
+                                    <div class="product__card">
+                                        <div class="before before--80 bg-image-wrapper border-bottom border-light">
+                                            <img class="bg-image bg-image--contain" src="./img/grapefruit.png" alt="Card image cap">
+                                        </div>
+                                        <div class="product__body p-4">
+                                            <h5 class="product__title">Pink Grapefruit</h5>
+                                            <h6 class="product__sku">Product #02091</h6>
+                                            <div class="product__pricing product__pricing--special d-flex flex-wrap">
+                                                <div class="price--normal">$4.99 / 2 Ct.</div>
+                                                <div class="price--special">Next Day Price</div>
+                                            </div>
+                                            <div class="d-flex flex-wrap mb-4">
+                                                <div class="product__tag product__tag--fresh">Fresh</div>
+                                                <div class="product__tag product__tag--local">Local</div>
+                                                <div class="product__tag product__tag--year-round">Year Round</div>
+                                                <div class="product__tag product__tag--organic">Organic</div>
+                                            </div>
+                                            <a href="#" class="product__button button button--outline">Add to Cart</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-4 col-xl-3 mb-4">
+                                    <div class="product__card">
+                                        <div class="before before--80 bg-image-wrapper border-bottom border-light">
+                                            <img class="bg-image bg-image--contain" src="./img/squash.png" alt="Card image cap">
+                                        </div>
+                                        <div class="product__body p-4">
+                                            <h5 class="product__title">Medium Squash</h5>
+                                            <h6 class="product__sku">Product #04589</h6>
+                                            <div class="product__pricing product__pricing--special d-flex flex-wrap">
+                                                <div class="price--normal">$2.79 / 2 Ct.</div>
+                                                <div class="price--special">Next Day Price</div>
+                                            </div>
+                                            <div class="d-flex flex-wrap mb-4">
+                                                <div class="product__tag product__tag--fresh">Fresh</div>
+                                                <div class="product__tag product__tag--local">Local</div>
+                                                <div class="product__tag product__tag--year-round">Year Round</div>
+                                                <div class="product__tag product__tag--organic">Organic</div>
+                                            </div>
+                                            <a href="#" class="product__button button button--outline">Add to Cart</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-4 col-xl-3 mb-4">
+                                    <div class="product__card">
+                                        <div class="before before--80 bg-image-wrapper border-bottom border-light">
+                                            <img class="bg-image bg-image--contain" src="./img/kiwi.png" alt="Card image cap">
+                                        </div>
+                                        <div class="product__body p-4">
+                                            <h5 class="product__title">Kiwi</h5>
+                                            <h6 class="product__sku">Product #04589</h6>
+                                            <div class="product__pricing product__pricing--special d-flex flex-wrap">
+                                                <div class="price--normal">$2.79 / 2 Ct.</div>
+                                                <div class="price--special">Next Day Price</div>
+                                            </div>
+                                            <div class="d-flex flex-wrap mb-4">
+                                                <div class="product__tag product__tag--fresh">Fresh</div>
+                                                <div class="product__tag product__tag--local">Local</div>
+                                                <div class="product__tag product__tag--year-round">Year Round</div>
+                                                <div class="product__tag product__tag--organic">Organic</div>
+                                            </div>
+                                            <a href="#" class="product__button button button--outline">Add to Cart</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-4 col-xl-3 mb-4">
+                                    <div class="product__card">
+                                        <div class="before before--80 bg-image-wrapper border-bottom border-light">
+                                            <img class="bg-image bg-image--contain" src="./img/plums.png" alt="Card image cap">
+                                        </div>
+                                        <div class="product__body p-4">
+                                            <h5 class="product__title">Plums</h5>
+                                            <h6 class="product__sku">Product #04589</h6>
+                                            <div class="product__pricing product__pricing--special d-flex flex-wrap">
+                                                <div class="price--normal">$2.79 / 2 Ct.</div>
+                                                <div class="price--special">Next Day Price</div>
+                                            </div>
+                                            <div class="d-flex flex-wrap mb-4">
+                                                <div class="product__tag product__tag--fresh">Fresh</div>
+                                                <div class="product__tag product__tag--local">Local</div>
+                                                <div class="product__tag product__tag--year-round">Year Round</div>
+                                                <div class="product__tag product__tag--organic">Organic</div>
+                                            </div>
+                                            <a href="#" class="product__button button button--outline">Add to Cart</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-4 col-xl-3 mb-4">
+                                    <div class="product__card">
+                                        <div class="before before--80 bg-image-wrapper border-bottom border-light">
+                                            <img class="bg-image bg-image--contain" src="./img/leek.png" alt="Card image cap">
+                                        </div>
+                                        <div class="product__body p-4">
+                                            <h5 class="product__title">Leeks</h5>
+                                            <h6 class="product__sku">Product #04589</h6>
+                                            <div class="product__pricing product__pricing--special d-flex flex-wrap">
+                                                <div class="price--normal">$2.79 / 2 Ct.</div>
+                                                <div class="price--special">Next Day Price</div>
+                                            </div>
+                                            <div class="d-flex flex-wrap mb-4">
+                                                <div class="product__tag product__tag--fresh">Fresh</div>
+                                                <div class="product__tag product__tag--local">Local</div>
+                                                <div class="product__tag product__tag--year-round">Year Round</div>
+                                                <div class="product__tag product__tag--organic">Organic</div>
+                                            </div>
+                                            <a href="#" class="product__button button button--outline">Add to Cart</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-4 col-xl-3 mb-4">
+                                    <div class="product__card">
+                                        <div class="before before--80 bg-image-wrapper border-bottom border-light">
+                                            <img class="bg-image bg-image--contain" src="./img/tomato.png" alt="Card image cap">
+                                        </div>
+                                        <div class="product__body p-4">
+                                            <h5 class="product__title">Tomatoes 5X6 2 Layer</h5>
+                                            <h6 class="product__sku">Product #04589</h6>
+                                            <div class="product__pricing product__pricing--special d-flex flex-wrap">
+                                                <div class="price--normal">$2.79 / 2 Ct.</div>
+                                                <div class="price--special">Next Day Price</div>
+                                            </div>
+                                            <div class="d-flex flex-wrap mb-4">
+                                                <div class="product__tag product__tag--fresh">Fresh</div>
+                                                <div class="product__tag product__tag--local">Local</div>
+                                                <div class="product__tag product__tag--year-round">Year Round</div>
+                                                <div class="product__tag product__tag--organic">Organic</div>
+                                            </div>
+                                            <a href="#" class="product__button button button--outline">Add to Cart</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-4 col-xl-3 mb-4">
+                                    <div class="product__card">
+                                        <div class="before before--80 bg-image-wrapper border-bottom border-light">
+                                            <img class="bg-image bg-image--contain" src="./img/apricot.png" alt="Card image cap">
+                                        </div>
+                                        <div class="product__body p-4">
+                                            <h5 class="product__title">Large Apricot</h5>
+                                            <h6 class="product__sku">Product #04589</h6>
+                                            <div class="product__pricing product__pricing--special d-flex flex-wrap">
+                                                <div class="price--normal">$2.79 / 2 Ct.</div>
+                                                <div class="price--special">Next Day Price</div>
+                                            </div>
+                                            <div class="d-flex flex-wrap mb-4">
+                                                <div class="product__tag product__tag--fresh">Fresh</div>
+                                                <div class="product__tag product__tag--local">Local</div>
+                                                <div class="product__tag product__tag--year-round">Year Round</div>
+                                                <div class="product__tag product__tag--organic">Organic</div>
+                                            </div>
+                                            <a href="#" class="product__button button button--outline">Add to Cart</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-4 col-xl-3 mb-4">
+                                    <div class="product__card">
+                                        <div class="before before--80 bg-image-wrapper border-bottom border-light">
+                                            <img class="bg-image bg-image--contain" src="./img/swiss-cheese.png" alt="Card image cap">
+                                        </div>
+                                        <div class="product__body p-4">
+                                            <h5 class="product__title">Swiss Cheese</h5>
+                                            <h6 class="product__sku">Product #04589</h6>
+                                            <div class="product__pricing product__pricing--special d-flex flex-wrap">
+                                                <div class="price--normal">$2.79 / 2 Ct.</div>
+                                                <div class="price--special">Next Day Price</div>
+                                            </div>
+                                            <div class="d-flex flex-wrap mb-4">
+                                                <div class="product__tag product__tag--fresh">Fresh</div>
+                                                <div class="product__tag product__tag--local">Local</div>
+                                                <div class="product__tag product__tag--year-round">Year Round</div>
+                                                <div class="product__tag product__tag--organic">Organic</div>
+                                            </div>
+                                            <a href="#" class="product__button button button--outline">Add to Cart</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="mt-md3 profile">
+                    <div class="section__inner">
+                        <div class="w-1200px m-auto">
+                            <div class="d-md-flex justify-content-between">
+                                <h2 class="section__heading section__heading--alt">Profile Items</h2>
+                                <div class="order__profiles d-flex align-items-end align-items-sm-center mb-md1">
+                                    <div class="d-sm-flex align-items-center me-3">
+                                        <label for="profile_select" class="font-weight--700 me-2">Change Profile:</label>
+                                        <div class="select__wrapper">
+                                            <select name="profile_select">
+                                                <option disabled selected>-- Select --</option>
+                                                <option>Iron Man</option>
+                                                <option>Black Widow</option>
+                                                <option>Thor</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="button button--outline me-4">Edit Profile</a>
+                                    <div class="nav d-none d-md-block" role="tablist">
+                                        <a href="#order_view_grid" class="order__view-trigger" data-view="grid" data-bs-toggle="tab" role="tab" aria-controls="order_view_grid" aria-selected="false">
+                                            <img src="./img/icons/grid.png" />
+                                        </a>
+                                        <a href="#order_view_list" class="order__view-trigger ms-2" data-view="list" data-bs-toggle="tab" role="tab" aria-controls="order_view_list" aria-selected="false">
+                                            <img src="./img/icons/list.png" />
+                                        </a>
+                                        <a href="#order_view_list" class="order__view-trigger ms-2 active" data-view="list+" data-bs-toggle="tab" role="tab" aria-controls="order_view_list" aria-selected="true">
+                                            <img src="./img/icons/list2.png" />
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row row-cols-1 row-cols-md-2">
+                                <div class="order__filters col">
+                                    <div class="border p-4 me-xl-3">
+                                        <form class="filters__search mb-4">
+                                            <div class="search__wrapper border position-relative">
+                                                <input type="search" class="border-0 bg-transparent" placeholder="Search" />
+                                                <button type="submit" class="search-submit position-absolute top-50 translate-middle-y">
+                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 38.6 38.6" xml:space="preserve">
+                                                        <path class="primary" d="M25.8,23.6c2.1-2.6,3.2-5.8,3.2-9.1C29,6.5,22.5,0,14.5,0S0,6.5,0,14.5S6.5,29,14.5,29c3.3,0,6.5-1.2,9.1-3.2 l12.9,12.9l2.1-2.1L25.8,23.6z M14.5,3C20.8,3,26,8.2,26,14.5S20.8,26,14.5,26S3,20.8,3,14.5S8.2,3,14.5,3z"/>
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </form>
+                                        <form id="filter_form" class="">
+                                            <div class="d-flex justify-content-between font-size--s mb-3">
+                                                <div class="blocktext">Filter By</div>
+                                                <button type="reset" href="#" class="filters__clear button--text blocktext d-flex align-items-center">Clear All<div class="icon"></div></button>
+                                            </div>
+                                            <div class="filters__list">
+                                                <div class="filter filter--region py-2 border-top">
+                                                    <div class="filter__toggle" data-bs-toggle="collapse" data-bs-target="#filter_region" aria-controls="filter_region">
+                                                        Area/Region
+                                                    </div>
+                                                    <div id="filter_region" class="collapse">
+                                                        <div class="pt-3 pb-1">
+                                                            <div class="form-check">
+                                                                <input id="filter_region_all" class="form-check-input" type="checkbox" value="" checked>
+                                                                <label class="form-check-label" for="filter_region_all">All</label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input id="filter_region_central" class="form-check-input" type="checkbox" value="">
+                                                                <label class="form-check-label" for="filter_region_central">Central</label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input id="filter_region_east" class="form-check-input" type="checkbox" value="">
+                                                                <label class="form-check-label" for="filter_region_east">East</label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input id="filter_region_mountain" class="form-check-input" type="checkbox" value="">
+                                                                <label class="form-check-label" for="filter_region_mountain">Mountain</label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input id="filter_region_pacific" class="form-check-input" type="checkbox" value="">
+                                                                <label class="form-check-label" for="filter_region_pacific">Pacific</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="filter filter--local py-2 border-top">
+                                                    <div class="filter__toggle" data-bs-toggle="collapse" data-bs-target="#filter_local" aria-controls="filter_region">
+                                                        Local
+                                                    </div>
+                                                    <div id="filter_local" class="collapse">
+                                                        <div class="pt-3 pb-1">
+                                                            <div class="form-check">
+                                                                <input id="filter_local_true" class="form-check-input" type="checkbox" value="">
+                                                                <label class="form-check-label" for="filter_local_true">Yes</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="filter filter--commodity py-2 border-top">
+                                                    <div class="filter__toggle" data-bs-toggle="collapse" data-bs-target="#filter_commodity" aria-controls="filter_region">
+                                                        Commodity
+                                                    </div>
+                                                    <div id="filter_commodity" class="collapse">
+                                                        <div class="pt-3 pb-1">
+                                                            <div class="select__wrapper">
+                                                                <select>
+                                                                    <option value="all">View All</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="filter filter--sustainability py-2 border-top">
+                                                    <div class="filter__toggle" data-bs-toggle="collapse" data-bs-target="#filter_sustainability" aria-controls="filter_region">
+                                                        Sustainability
+                                                    </div>
+                                                    <div id="filter_sustainability" class="collapse">
+                                                        <div class="pt-3 pb-1">
+                                                            <div class="form-check">
+                                                                <input id="filter_sustainability_compostable" class="form-check-input" type="checkbox" value="">
+                                                                <label class="form-check-label" for="filter_sustainability_compostable">Compostable</label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input id="filter_sustainability_smart_catch" class="form-check-input" type="checkbox" value="">
+                                                                <label class="form-check-label" for="filter_sustainability_smart_catch">JBF - Smart Catch</label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input id="filter_sustainability_sustainable" class="form-check-input" type="checkbox" value="">
+                                                                <label class="form-check-label" for="filter_sustainability_sustainable">Sustainable</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="filter filter--discontinued py-2 border-top">
+                                                    <div class="filter__toggle" data-bs-toggle="collapse" data-bs-target="#filter_discontinued" aria-controls="filter_region">
+                                                        Discontinued
+                                                    </div>
+                                                    <div id="filter_discontinued" class="collapse">
+                                                        <div class="pt-3 pb-1">
+                                                            <div class="form-check">
+                                                                <input id="filter_discontinued_true" class="form-check-input" type="checkbox" value="">
+                                                                <label class="form-check-label" for="filter_discontinued_true">Yes</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="filter filter--nutritional-specs py-2 border-top">
+                                                    <div class="filter__toggle" data-bs-toggle="collapse" data-bs-target="#filter_nutritional_specs" aria-controls="filter_region">
+                                                        Nutritional Specs
+                                                    </div>
+                                                    <div id="filter_nutritional_specs" class="collapse">
+                                                        <div class="pt-3 pb-1">
+                                                            <div class="form-check">
+                                                                <input id="filter_nutrition_kosher" class="form-check-input" type="checkbox" value="">
+                                                                <label class="form-check-label" for="filter_nutrition_kosher">Kosher</label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input id="filter_nutrition_organic" class="form-check-input" type="checkbox" value="">
+                                                                <label class="form-check-label" for="filter_nutrition_organic">Organic</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="filter filter--storage-type py-2 border-top">
+                                                    <div class="filter__toggle" data-bs-toggle="collapse" data-bs-target="#filter_storage_type" aria-controls="filter_region">
+                                                        Storage Type
+                                                    </div>
+                                                    <div id="filter_storage_type" class="collapse">
+                                                        <div class="pt-3 pb-1">
+                                                            <div class="form-check">
+                                                                <input id="filter_storage_dry" class="form-check-input" type="checkbox" value="">
+                                                                <label class="form-check-label" for="filter_storage_dry">Dry Goods / Shelf Stable</label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input id="filter_storage_refrigerated" class="form-check-input" type="checkbox" value="">
+                                                                <label class="form-check-label" for="filter_storage_refrigerated">Fresh-Refrigerated</label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input id="filter_storage_frozen" class="form-check-input" type="checkbox" value="">
+                                                                <label class="form-check-label" for="filter_storage_frozen">Frozen Product</label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input id="filter_storage_retail_ready" class="form-check-input" type="checkbox" value="">
+                                                                <label class="form-check-label" for="filter_storage_retail_ready">Ready for Retail</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="filter filter--color py-2 border-top">
+                                                    <div class="filter__toggle" data-bs-toggle="collapse" data-bs-target="#filter_color" aria-controls="filter_region">
+                                                        Color
+                                                    </div>
+                                                    <div id="filter_color" class="collapse">
+                                                        <div class="pt-3 pb-1">
+                                                            <div class="form-check">
+                                                                <input id="filter_color_blue" class="form-check-input" type="checkbox" value="">
+                                                                <label class="form-check-label" for="filter_storage_dry">Blue</label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input id="filter_color_red" class="form-check-input" type="checkbox" value="">
+                                                                <label class="form-check-label" for="filter_color_red">Red</label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input id="filter_color_yellow" class="form-check-input" type="checkbox" value="">
+                                                                <label class="form-check-label" for="filter_color_yellow">Yellow</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="filter filter--texture py-2 border-top">
+                                                    <div class="filter__toggle" data-bs-toggle="collapse" data-bs-target="#filter_texture" aria-controls="filter_region">
+                                                        Texture
+                                                    </div>
+                                                    <div id="filter_texture" class="collapse">
+                                                        <div class="pt-3 pb-1">
+                                                            <div class="form-check">
+                                                                <input id="filter_texture_dry" class="form-check-input" type="checkbox" value="">
+                                                                <label class="form-check-label" for="filter_texture_dry">Dry</label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input id="filter_texture_fresh" class="form-check-input" type="checkbox" value="">
+                                                                <label class="form-check-label" for="filter_texture_fresh">Fresh</label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input id="filter_texture_frozen" class="form-check-input" type="checkbox" value="">
+                                                                <label class="form-check-label" for="filter_texture_frozen">Frozen</label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input id="filter_texture_liquid" class="form-check-input" type="checkbox" value="">
+                                                                <label class="form-check-label" for="filter_texture_liquid">Liquid</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="border-top pt-md1 d-flex d-md-block justify-content-end">
+                                                    <button href="#" class="button">Apply Filters</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="d-flex justify-content-end d-md-none my-4">
+                                        <div class="nav" role="tablist">
+                                            <a href="#order_view_grid" class="order__view-trigger" data-view="grid" data-bs-toggle="tab" role="tab" aria-controls="order_view_grid" aria-selected="false">
+                                                <img src="./img/icons/grid.png" />
+                                            </a>
+                                            <a href="#order_view_list" class="order__view-trigger ms-2" data-view="list" data-bs-toggle="tab" role="tab" aria-controls="order_view_list" aria-selected="false">
+                                                <img src="./img/icons/list.png" />
+                                            </a>
+                                            <a href="#order_view_list" class="order__view-trigger ms-2 active" data-view="list+" data-bs-toggle="tab" role="tab" aria-controls="order_view_list" aria-selected="true">
+                                                <img src="./img/icons/list2.png" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="order__content col-auto flex-grow-1 tab-content">
+                                    <div id="order_view_list" class="order__view order__list tab-pane fade show active table__wrapper overflow-auto" role="tabpanel">
+                                        <table class="table">
+                                            <thead class="bg-color--light">
+                                                <tr>
+                                                    <th scope="col">Item #</th>
+                                                    <th scope="col">Description</th>
+                                                    <th scope="col">Avail.<br>Qty</th>
+                                                    <th scope="col">Price</th>
+                                                    <th scope="col">Order</th>
+                                                    <th scope="col">Retail<br>Price</th>
+                                                    <th scope="col">Margin</th>
+                                                    <th scope="col">Pack</th>
+                                                    <th scope="col">Gross<br>Sales</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>#06107</td>
+                                                    <td>
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="product__image bg-image-wrapper before before--square me-3">
+                                                                <img src="./img/apple.png" class="bg-image bg-image--contain" />
+                                                            </div>
+                                                            <div class="w-200px">
+                                                                <h6 class="text-color--gray5 font-weight--700">Braeburn Apples XF 100 Ct.</h6>
+                                                                <div class="d-flex flex-wrap">
+                                                                    <div class="product__tag product__tag--fresh">Fresh</div>
+                                                                    <div class="product__tag product__tag--local">Local</div>
+                                                                    <div class="product__tag product__tag--year-round">Year Round</div>
+                                                                    <div class="product__tag product__tag--organic">Organic</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>76</td>
+                                                    <td>$14.27</td>
+                                                    <td>
+                                                        <div class="product__quantity">
+                                                            <button class="increment decrease"></button>
+                                                            <input type="number" value="0" />
+                                                            <button class="increment increase"></button>
+                                                        </div>
+                                                    </td>
+                                                    <td>$1.49</td>
+                                                    <td>51.90%</td>
+                                                    <td>30</td>
+                                                    <td>$89.40</td>
+                                                    <td class="text-color--red">♥</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>#06107</td>
+                                                    <td>
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="product__image bg-image-wrapper before before--square me-3">
+                                                                <img src="./img/garlic.png" class="bg-image bg-image--contain" />
+                                                            </div>
+                                                            <div class="w-200px">
+                                                                <h6 class="text-color--gray5 font-weight--700">Jumbo Garlic 30#</h6>
+                                                                <div class="d-flex flex-wrap">
+                                                                    <div class="product__tag product__tag--fresh">Fresh</div>
+                                                                    <div class="product__tag product__tag--local">Local</div>
+                                                                    <div class="product__tag product__tag--year-round">Year Round</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>76</td>
+                                                    <td>$14.27</td>
+                                                    <td>
+                                                        <div class="product__quantity">
+                                                            <button class="increment decrease"></button>
+                                                            <input type="number" value="0" />
+                                                            <button class="increment increase"></button>
+                                                        </div>
+                                                    </td>
+                                                    <td>$1.49</td>
+                                                    <td>51.90%</td>
+                                                    <td>30</td>
+                                                    <td>$89.40</td>
+                                                    <td class="text-color--red">♥</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>#06107</td>
+                                                    <td>
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="product__image bg-image-wrapper before before--square me-3">
+                                                                <img src="./img/red_pepper.png" class="bg-image bg-image--contain" />
+                                                            </div>
+                                                            <div class="w-200px">
+                                                                <h6 class="text-color--gray5 font-weight--700">Large Red Bell Peppers 25#</h6>
+                                                                <div class="d-flex flex-wrap">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>76</td>
+                                                    <td>$14.27</td>
+                                                    <td>
+                                                        <div class="product__quantity">
+                                                            <button class="increment decrease"></button>
+                                                            <input type="number" value="0" />
+                                                            <button class="increment increase"></button>
+                                                        </div>
+                                                    </td>
+                                                    <td>$1.49</td>
+                                                    <td>51.90%</td>
+                                                    <td>30</td>
+                                                    <td>$89.40</td>
+                                                    <td class="text-color--red">♥</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>#06107</td>
+                                                    <td>
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="product__image bg-image-wrapper before before--square me-3">
+                                                                <img src="./img/bananas2.png" class="bg-image bg-image--contain" />
+                                                            </div>
+                                                            <div class="w-200px">
+                                                                <h6 class="text-color--gray5 font-weight--700">Petite Ripe Bananas 40#</h6>
+                                                                <div class="d-flex flex-wrap">
+                                                                    <div class="product__tag product__tag--fresh">Fresh</div>
+                                                                    <div class="product__tag product__tag--year-round">Year Round</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>76</td>
+                                                    <td>$14.27</td>
+                                                    <td>
+                                                        <div class="product__quantity">
+                                                            <button class="increment decrease"></button>
+                                                            <input type="number" value="0" />
+                                                            <button class="increment increase"></button>
+                                                        </div>
+                                                    </td>
+                                                    <td>$1.49</td>
+                                                    <td>51.90%</td>
+                                                    <td>30</td>
+                                                    <td>$89.40</td>
+                                                    <td class="text-color--red">♥</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>#06107</td>
+                                                    <td>
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="product__image bg-image-wrapper before before--square me-3">
+                                                                <img src="./img/watermelon.png" class="bg-image bg-image--contain" />
+                                                            </div>
+                                                            <div class="w-200px">
+                                                                <h6 class="text-color--gray5 font-weight--700">Seedless Watermelon</h6>
+                                                                <div class="d-flex flex-wrap">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>76</td>
+                                                    <td>$14.27</td>
+                                                    <td>
+                                                        <div class="product__quantity">
+                                                            <button class="increment decrease"></button>
+                                                            <input type="number" value="0" />
+                                                            <button class="increment increase"></button>
+                                                        </div>
+                                                    </td>
+                                                    <td>$1.49</td>
+                                                    <td>51.90%</td>
+                                                    <td>30</td>
+                                                    <td>$89.40</td>
+                                                    <td class="text-color--red">♥</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>#06107</td>
+                                                    <td>
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="product__image bg-image-wrapper before before--square me-3">
+                                                                <img src="./img/lemons.png" class="bg-image bg-image--contain" />
+                                                            </div>
+                                                            <div class="w-200px">
+                                                                <h6 class="text-color--gray5 font-weight--700">Choice Lemons 95 Ct.</h6>
+                                                                <div class="d-flex flex-wrap">
+                                                                    <div class="product__tag product__tag--limited">Limited</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>76</td>
+                                                    <td>$14.27</td>
+                                                    <td>
+                                                        <div class="product__quantity">
+                                                            <button class="increment decrease"></button>
+                                                            <input type="number" value="0" />
+                                                            <button class="increment increase"></button>
+                                                        </div>
+                                                    </td>
+                                                    <td>$1.49</td>
+                                                    <td>51.90%</td>
+                                                    <td>30</td>
+                                                    <td>$89.40</td>
+                                                    <td class="text-color--red">♥</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>#06107</td>
+                                                    <td>
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="product__image bg-image-wrapper before before--square me-3">
+                                                                <img src="./img/oranges.png" class="bg-image bg-image--contain" />
+                                                            </div>
+                                                            <div class="w-200px">
+                                                                <h6 class="text-color--gray5 font-weight--700">Choice Oranges 56 Ct.</h6>
+                                                                <div class="d-flex flex-wrap">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>76</td>
+                                                    <td>$14.27</td>
+                                                    <td>
+                                                        <div class="product__quantity">
+                                                            <button class="increment decrease"></button>
+                                                            <input type="number" value="0" />
+                                                            <button class="increment increase"></button>
+                                                        </div>
+                                                    </td>
+                                                    <td>$1.49</td>
+                                                    <td>51.90%</td>
+                                                    <td>30</td>
+                                                    <td>$89.40</td>
+                                                    <td class="text-color--red">♥</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>#06107</td>
+                                                    <td>
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="product__image bg-image-wrapper before before--square me-3">
+                                                                <img src="./img/celery.png" class="bg-image bg-image--contain" />
+                                                            </div>
+                                                            <div class="w-200px">
+                                                                <h6 class="text-color--gray5 font-weight--700">Celery 36 Ct.</h6>
+                                                                <div class="d-flex flex-wrap">
+                                                                    <div class="product__tag product__tag--local">Local</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>76</td>
+                                                    <td>$14.27</td>
+                                                    <td>
+                                                        <div class="product__quantity">
+                                                            <button class="increment decrease"></button>
+                                                            <input type="number" value="0" />
+                                                            <button class="increment increase"></button>
+                                                        </div>
+                                                    </td>
+                                                    <td>$1.49</td>
+                                                    <td>51.90%</td>
+                                                    <td>30</td>
+                                                    <td>$89.40</td>
+                                                    <td class="text-color--red">♥</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>#06107</td>
+                                                    <td>
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="product__image bg-image-wrapper before before--square me-3">
+                                                                <img src="./img/arugula.png" class="bg-image bg-image--contain" />
+                                                            </div>
+                                                            <div class="w-200px">
+                                                                <h6 class="text-color--gray5 font-weight--700">Organic Arugula 24 Ct.</h6>
+                                                                <div class="d-flex flex-wrap">
+                                                                    <div class="product__tag product__tag--limited">Limited</div>
+                                                                    <div class="product__tag product__tag--special">Special Order</div>
+                                                                    <div class="product__tag product__tag--organic">Organic</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>76</td>
+                                                    <td>$14.27</td>
+                                                    <td>
+                                                        <div class="product__quantity">
+                                                            <button class="increment decrease"></button>
+                                                            <input type="number" value="0" />
+                                                            <button class="increment increase"></button>
+                                                        </div>
+                                                    </td>
+                                                    <td>$1.49</td>
+                                                    <td>51.90%</td>
+                                                    <td>30</td>
+                                                    <td>$89.40</td>
+                                                    <td class="text-color--red">♥</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div id="order_view_grid" class="order__view order__grid overflow-hidden py-4 tab-pane fade" role="tabpanel">
+                                        <div>
+                                            <div class="row row-cols-2 row-cols-sm-3 row-cols-lg-4 gy-5 gx-4 gx-lg-5">
+                                                <div class="product product--liked col">
+                                                    <div class="product__inner d-flex flex-column h-100">
+                                                        <div class="product__image bg-image-wrapper before">
+                                                            <img src="./img/apple.png" class="bg-image bg-image--contain" />
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <div class="text-color--gray5 font-weight--700 mt-4">Braeburn Apples XF 100 Ct.</div>
+                                                            <div>Product: #06107</div>
+                                                            <div class="mt-1">$3.00</div>
+                                                            <div class="d-flex flex-wrap mt-3">
+                                                                <div class="product__tag product__tag--fresh">Fresh</div>
+                                                                <div class="product__tag product__tag--local">Local</div>
+                                                                <div class="product__tag product__tag--year-round">Year Round</div>
+                                                                <div class="product__tag product__tag--organic">Organic</div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="product__quantity mt-auto mb-0">
+                                                            <button class="increment decrease"></button>
+                                                            <input type="number" value="0" />
+                                                            <button class="increment increase"></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="product product--liked col">
+                                                    <div class="product__inner d-flex flex-column h-100">
+                                                        <div class="product__image bg-image-wrapper before">
+                                                            <img src="./img/garlic.png" class="bg-image bg-image--contain" />
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <div class="text-color--gray5 font-weight--700 mt-4">Jumbo Garlic 30#</div>
+                                                            <div>Product: #06107</div>
+                                                            <div class="mt-1">$3.00</div>
+                                                            <div class="d-flex flex-wrap mt-3">
+                                                                <div class="product__tag product__tag--fresh">Fresh</div>
+                                                                <div class="product__tag product__tag--local">Local</div>
+                                                                <div class="product__tag product__tag--year-round">Year Round</div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="product__quantity mt-auto mb-0">
+                                                            <button class="increment decrease"></button>
+                                                            <input type="number" value="0" />
+                                                            <button class="increment increase"></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="product product--liked col">
+                                                    <div class="product__inner d-flex flex-column h-100">
+                                                        <div class="product__image bg-image-wrapper before">
+                                                            <img src="./img/mushrooms.png" class="bg-image bg-image--contain" />
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <div class="text-color--gray5 font-weight--700 mt-4">Chantrelle Mushroom Lb.</div>
+                                                            <div>Product: #06107</div>
+                                                            <div class="mt-1">$3.00</div>
+                                                            <div class="d-flex flex-wrap mt-3">
+                                                                <div class="product__tag product__tag--special">Special Order</div>
+                                                                <div class="product__tag product__tag--seasonal">Seasonal</div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="product__quantity mt-auto mb-0">
+                                                            <button class="increment decrease"></button>
+                                                            <input type="number" value="0" />
+                                                            <button class="increment increase"></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="product product--liked col">
+                                                    <div class="product__inner d-flex flex-column h-100">
+                                                        <div class="product__image bg-image-wrapper before">
+                                                            <img src="./img/red_pepper.png" class="bg-image bg-image--contain" />
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <div class="text-color--gray5 font-weight--700 mt-4">Large Red Bell Peppers 25#</div>
+                                                            <div>Product: #06107</div>
+                                                            <div class="mt-1">$3.00</div>
+                                                        </div>
+                                                        <div class="product__quantity mt-auto mb-0">
+                                                            <button class="increment decrease"></button>
+                                                            <input type="number" value="0" />
+                                                            <button class="increment increase"></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="product product--liked col">
+                                                    <div class="product__inner d-flex flex-column h-100">
+                                                        <div class="product__image bg-image-wrapper before">
+                                                            <img src="./img/bananas2.png" class="bg-image bg-image--contain" />
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <div class="text-color--gray5 font-weight--700 mt-4">Petite Ripe Bananas 40#</div>
+                                                            <div>Product: #06107</div>
+                                                            <div class="mt-1">$3.00</div>
+                                                            <div class="d-flex flex-wrap mt-3">
+                                                                <div class="product__tag product__tag--fresh">Fresh</div>
+                                                                <div class="product__tag product__tag--year-round">Year Round</div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="product__quantity mt-auto mb-0">
+                                                            <button class="increment decrease"></button>
+                                                            <input type="number" value="0" />
+                                                            <button class="increment increase"></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="product product--liked col">
+                                                    <div class="product__inner d-flex flex-column h-100">
+                                                        <div class="product__image bg-image-wrapper before">
+                                                            <img src="./img/watermelon.png" class="bg-image bg-image--contain" />
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <div class="text-color--gray5 font-weight--700 mt-4">Seedless Watermelon</div>
+                                                            <div>Product: #06107</div>
+                                                            <div class="mt-1">$3.00</div>
+                                                        </div>
+                                                        <div class="product__quantity mt-auto mb-0">
+                                                            <button class="increment decrease"></button>
+                                                            <input type="number" value="0" />
+                                                            <button class="increment increase"></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="product product--liked col">
+                                                    <div class="product__inner d-flex flex-column h-100">
+                                                        <div class="product__image bg-image-wrapper before">
+                                                            <img src="./img/lemons.png" class="bg-image bg-image--contain" />
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <div class="text-color--gray5 font-weight--700 mt-4">Choice Lemons 95 Ct.</div>
+                                                            <div>Product: #06107</div>
+                                                            <div class="d-flex flex-wrap mt-3">
+                                                                <div class="product__tag product__tag--limited">Limited</div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="product__quantity mt-auto mb-0">
+                                                            <button class="increment decrease"></button>
+                                                            <input type="number" value="0" />
+                                                            <button class="increment increase"></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="product product--liked col">
+                                                    <div class="product__inner d-flex flex-column h-100">
+                                                        <div class="product__image bg-image-wrapper before">
+                                                            <img src="./img/oranges.png" class="bg-image bg-image--contain" />
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <div class="text-color--gray5 font-weight--700 mt-4">Choice Oranges 56 Ct.</div>
+                                                            <div>Product: #06107</div>
+                                                        </div>
+                                                        <div class="product__quantity mt-auto mb-0">
+                                                            <button class="increment decrease"></button>
+                                                            <input type="number" value="0" />
+                                                            <button class="increment increase"></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="product product--liked col">
+                                                    <div class="product__inner d-flex flex-column h-100">
+                                                        <div class="product__image bg-image-wrapper before">
+                                                            <img src="./img/celery.png" class="bg-image bg-image--contain" />
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <div class="text-color--gray5 font-weight--700 mt-4">Celery 36 Ct.</div>
+                                                            <div>Product: #06107</div>
+                                                            <div class="d-flex flex-wrap mt-3">
+                                                                <div class="product__tag product__tag--local">Local</div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="product__quantity mt-auto mb-0">
+                                                            <button class="increment decrease"></button>
+                                                            <input type="number" value="0" />
+                                                            <button class="increment increase"></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="product product--liked col">
+                                                    <div class="product__inner d-flex flex-column h-100">
+                                                        <div class="product__image bg-image-wrapper before">
+                                                            <img src="./img/arugula.png" class="bg-image bg-image--contain" />
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <div class="text-color--gray5 font-weight--700 mt-4">Organic Arugula 24 Ct.</div>
+                                                            <div>Product: #06107</div>
+                                                            <div class="d-flex flex-wrap mt-3">
+                                                                <div class="product__tag product__tag--limited">Limited</div>
+                                                                <div class="product__tag product__tag--special">Special Order</div>
+                                                                <div class="product__tag product__tag--organic">Organic</div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="product__quantity mt-auto mb-0">
+                                                            <button class="increment decrease"></button>
+                                                            <input type="number" value="0" />
+                                                            <button class="increment increase"></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-end mt-md1">
+                                        <a href="#" class="button button--outline mb-3">Back To Top</a>
+                                        <a href="#" class="button button--outline mb-3 ms-3">Empty Shopping Cart</a>
+                                        <a href="#" class="button button--outline mb-3 ms-3">Add to Shopping Cart</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </body>
+</html>

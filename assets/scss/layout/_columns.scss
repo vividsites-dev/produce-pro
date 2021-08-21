@@ -6,8 +6,20 @@
 	}
 }
 
+@each $label, $breakpoint in $breakpoints {
+	@media ( max-width: $breakpoint - 1 ) {
+		.uncolumnize\@#{$label} {
+			columns: unset;
+		}
+	}
+}
+
 .column-gap {
 	&--xl {
 		column-gap: 96px;
+
+		@media (max-width: 1500px) {
+			column-gap: 6.4vw;
+		}
 	}
 }

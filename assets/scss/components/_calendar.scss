@@ -94,21 +94,34 @@
             color: $color-secondary;
             font-weight: bold;
             position: absolute;
-            top: 16px;
-            right: 20px;
+            top: 12px;
+            right: 18px;
+
+            @media (max-width: 1500px) {
+                top: 0.8vw;
+                right: 1.2vw;
+            }
         }
 
+        
         & > div {
             position: absolute;
             top: 0;
             bottom: 0;
             left: 0;
             right: 0;
-            display: flex;
-            align-items: center;
-            padding: 20px;
+            
+            & > a {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: center;
+                padding: 20px;
+            }
         }
-
+        
         &--active {
             &:before {
                 background-color: $color-primary !important;
@@ -117,10 +130,27 @@
             &:after {
                 color: white;
             }
-
+            
             & > div {
                 color: #fff;
             }
         }
+        @media (max-width: 1000px) {
+            a {
+                font-size: 1.6vw;
+            }
+
+            & > div > a {
+                padding: 2vw;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 767px) {
+            a {
+                opacity: 0;
+            }
+        }
+
     }
 }

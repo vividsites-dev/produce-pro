@@ -1,0 +1,9 @@
+#order_single {
+    .profile {
+        margin-bottom: 150px;
+
+        @media (max-width: 1500px) {
+            margin-bottom: 10vw;
+        }
+    }
+}

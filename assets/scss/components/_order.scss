@@ -1,0 +1,191 @@
+.order {
+    &__view-trigger {
+        &.active {
+            opacity: 0.5;
+        }
+    }
+
+    &__view {
+        &--imagefree {
+            .product__image {
+                display: none;
+            }
+        }
+    }
+
+    @media (min-width: $breakpoint-m) {
+        &__filters {
+            max-width: 264px;
+        }
+        &__content {
+            max-width: calc(100% - 264px);
+        }
+    }
+
+    &__list {
+        tr {
+            vertical-align: middle;
+            border-bottom: solid 1px $gray2;
+        }
+
+        thead {
+            tr {
+                border-top: solid 1px $gray2;
+            }
+        }
+
+        tbody {
+            th, td {
+                padding-top: 1rem;
+                padding-bottom: 1rem;
+            }
+        }
+
+        .product__image {
+            width: 80px;
+        }
+    }
+
+    &__grid {
+        overflow: hidden;
+        border-bottom: solid 1px $gray2;
+
+        .product {
+            border-right: solid 1px $gray2;
+            position: relative;
+            color: $gray4;
+
+            &--liked {
+                .product__inner {
+                    position: relative;
+
+                    &:before {
+                        content: "♥";
+                        color: $red;
+                        font-size: 24px;
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        z-index: 3;
+                    }
+                }
+            }
+
+            &:before,
+            &:after {
+                content: "";
+                display: block;
+                width: 101%;
+                height: 1px;
+                background: $gray2;
+                position: absolute;
+                left: 0;
+            }
+
+            &:before {
+                top: -24px; // this corresponds to the gutters being set to 48px
+            }
+
+            &:after {
+                bottom: -25px; // this corresponds to the gutters being set to 48px. Positioning like this ensures the bottom and top faux borders are combined.
+            }
+        }
+        .product__image {
+            &:before {
+                padding-bottom: 100px;
+            }
+        }
+    }
+}
+
+.filters {
+    &__clear {
+        &:hover {
+            text-decoration: none;
+        }
+        
+        .icon {
+            width: 20px;
+            height: 20px;
+            background: $color-primary;
+            border-radius: 100%;
+            position: relative;
+            margin-left: 6px;
+            margin-top: -3px;
+    
+            &:before,
+            &:after {
+                content: "";
+                display: block;
+                width: 12px;
+                height: 1px;
+                background: #fff;
+                position: absolute;
+                left: 4px;
+                top: 10px;
+            }
+    
+            &:before {
+                transform: rotate(45deg);
+            }
+    
+            &:after {
+                transform: rotate(-45deg);
+            }
+        }
+    }
+    
+    &__search {
+        .search__wrapper {
+            border-radius: 4px;
+    
+            input {
+                max-width: 100%;
+            }
+        }
+    }
+    &__list {
+        @media (max-width: $breakpoint-m - 1) AND (min-width: 481px) {
+            columns: 2;
+    
+            & > * {
+                break-inside: avoid;
+            }
+        }
+    }
+}
+
+.filter {
+    &__toggle {
+        font-weight: 700;
+        color: $gray5;
+        position: relative;
+
+        &:before,
+        &:after {
+            content: "";
+            display: block;
+            width: 11px;
+            height: 1px;
+            background: $black;
+            position: absolute;
+            top: 12px;
+            right: 0;
+            transition: all 0.2s;
+        }
+
+        &:after {
+            transform: rotate(90deg);
+        }
+
+        &[aria-expanded="true"] {
+            &:after {
+                opacity: 0;
+            }
+        }
+    }
+
+    label {
+        color: $gray4;
+    }
+}

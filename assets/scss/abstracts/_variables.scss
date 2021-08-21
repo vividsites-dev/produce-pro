@@ -10,15 +10,21 @@ $black: #222;
 $green: #83bf3e;
 $green-dk: #44770a;
 $green-dk2: #004900;
+$blue-bright: #3399ff;
 $blue: #004a64;
 $gray1: #ededed;
 $gray2: #dfdfdf;
 $gray3: #999;
 $gray4: #666;
+$gray5: #343434;
 $red: #cc3300;
+$orange: #ff6600;
+$orange2: #ff9933;
+$yellow: #f1c100;
+$purple: #996699;
 
 $color-success: $green;
-$color-warning: orange;
+$color-warning: $yellow;
 $color-error: $red;
 $color-primary: $green;
 $color-primary-dk: $green-dk;
@@ -27,6 +33,12 @@ $color-secondary: $blue;
 $color-bg-light: $gray1;
 
 $header-height: 112px;
+
+$text-colors: (
+	'red': $red,
+	'gray4': $gray4,
+	'gray5': $gray5,
+);
 
 /*---------------------------------*\
 	Wrapper
@@ -57,22 +69,17 @@ $font-size-xxl:  4.0000rem; // 64px
 
 // Spacing --------------------------
 
-$spacing-xxxxs: 0.25rem; // 4px
-$spacing-xxxs:  0.50rem; // 8px
-$spacing-xxs:   0.75rem; // 12px
-$spacing-xs:    1.00rem; // 16px
-$spacing-s:     1.50rem; // 24px
-$spacing-m:     2.00rem; // 32px
-$spacing-l:     2.50rem; // 40px
-$spacing-xl:    3.00rem; // 48px
-$spacing-xxl:   4.00rem; // 64px
-$spacing-xxxl:  5.00rem; // 80px
-$spacing-xxxxl: 6.00rem; // 96px
-$spacing-xxxxxl:7.00rem; // 112px
+$spacing-md1:     2.00rem; // 32px
+$spacing-md2:     2.25rem; // 36px
+$spacing-md3:     2.50rem; // 40px
 
+$sizes: (
+	'md1': $spacing-md1,
+	'md2': $spacing-md2,
+	'md3': $spacing-md3,
+);
 
-$breakpoint-xs:   481px;
-$breakpoint-s:    601px;
+$breakpoint-s:    576px;
 $breakpoint-m:    768px;
 $breakpoint-l:    992px;
 $breakpoint-xl:  1200px;
@@ -81,21 +88,21 @@ $breakpoint-xxl: 1400px;
 $breakpoint-mobile: 1101px;
 
 $breakpoints: (
-	'xs': $breakpoint-xs,
-	's': $breakpoint-s,
-	'm': $breakpoint-m,
-	'l': $breakpoint-l,
+	'sm': $breakpoint-s,
+	'md': $breakpoint-m,
+	'lg': $breakpoint-l,
 	'xl': $breakpoint-xl,
 );
 
 $sides: (
-	'left',
-	'right',
-	'top',
-	'bottom'
+	'left': 's',
+	'right': 'e',
+	'top': 't',
+	'bottom': 'b',
 );
 
 /*---------------------------------*\
 	Misc.
 \*---------------------------------*/
 $transition: all 400ms ease-in-out;
+$border-radius: 4px;

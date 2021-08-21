@@ -1,0 +1,28 @@
+.search__wrapper {
+    input[type="search"] {
+        padding: 0.5rem 1.75rem 0.5rem 0.75rem; 
+    }
+}
+
+.search-submit {
+    appearance: none;
+    border: none;
+    background: none;
+    position: absolute;
+    right: 0;
+    top: 5px;
+
+    svg {
+        width: 1.125rem;
+        height: 1.125rem;
+
+        path {
+            &.primary {
+                fill: $color-primary;
+            }
+            &.secondary {
+                fill: $color-secondary;
+            }
+        }
+    }
+}

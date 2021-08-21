@@ -1,78 +1,47 @@
-$sizes: (
-	'remove': 0 !important,
-	// 'auto':   auto !important,
-	'xxxs':   $spacing-xxxs !important,
-	'xxs':    $spacing-xxs !important,
-	'xs':     $spacing-xs !important,
-	's':      $spacing-s !important,
-	'm':      $spacing-m !important,
-	'l':      $spacing-l !important,
-	'xl':     $spacing-xl !important,
-	'xxl':    $spacing-xxl !important,
-	'xxxl':   $spacing-xxxl !important,
-	'xxxxl':  $spacing-xxxxl !important,
-	'xxxxxl': $spacing-xxxxxl !important,
-);
-
 @each $size, $spacing in $sizes {
-	.margin-#{$size} {
-		margin: $spacing;
+	.m-#{$size} {
+		margin: $spacing !important;
 	}
 
-	.margin-top-negative-#{$size} {
-		margin-top: -#{$spacing};
-
-		@each $label, $breakpoint in $breakpoints {
-			&\@#{$label} {
-				@media ( min-width: $breakpoint ) {
-					margin-top: -#{$spacing};
-				}
-			}
-		}
+	.my-#{$size} {
+		margin-top: $spacing !important;
+		margin-bottom: $spacing !important;
 	}
 
-	.margin-y-#{$size} {
-		margin-top: $spacing;
-		margin-bottom: $spacing;
+	.mx-#{$size} {
+		margin-left: $spacing !important;
+		margin-right: $spacing !important;
 	}
 
-	.margin-x-#{$size} {
-		margin-left: $spacing;
-		margin-right: $spacing;
-	}
-
-	@each $side in $sides {
-		.margin-#{$side}-#{$size} {
-			margin-#{$side}: $spacing;
-		}
-	}
-
-	@each $label, $breakpoint in $breakpoints {
-		@media ( min-width: $breakpoint ) {
-			.margin-#{$size}\@#{$label} {
-				margin: $spacing;
-			}
-		
-			.margin-y-#{$size}\@#{$label} {
-				margin-top: $spacing;
-				margin-bottom: $spacing;
-			}
-		
-			.margin-x-#{$size}\@#{$label} {
-				margin-left: $spacing;
-				margin-right: $spacing;
-			}
-
-			@each $side in $sides {
-				.margin-#{$side}-#{$size}\@#{$label} {
-					margin-#{$side}: $spacing;
-				}
-			}
+	@each $side, $abbr in $sides {
+		.m#{$abbr}-#{$size} {
+			margin-#{$side}: $spacing !important;
 		}
 	}
 }
 
-.margin-auto {
-	margin-left: auto !important;
-	margin-right: auto !important;
+@each $label, $breakpoint in $breakpoints {
+	@each $size, $spacing in $sizes {
+		@media ( min-width: $breakpoint ) {
+			.m-#{$label}-#{$size} {
+				margin: $spacing !important;
+			}
+		
+			.my-#{$label}-#{$size} {
+				margin-top: $spacing !important;
+				margin-bottom: $spacing !important;
+			}
+		
+			.mx-#{$label}-#{$size} {
+				margin-left: $spacing !important;
+				margin-right: $spacing !important;
+			}
+
+			@each $side, $abbr in $sides {
+				.m#{$abbr}-#{$label}-#{$size} {
+					margin-#{$side}: $spacing !important;
+				}
+			}
+		}
+	}
 }

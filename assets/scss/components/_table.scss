@@ -1,0 +1,42 @@
+.table {
+    &:not(.table-striped) {
+        tr {
+            border-bottom: solid 1px $gray2;
+        }
+    }
+    tr {
+        vertical-align: middle;
+
+        &.no-stripe {
+            --bs-table-accent-bg: transparent !important;
+        }
+        &.order__tally {
+            td {
+                padding: .125rem .5rem;
+            }
+        }
+        th, td {
+            &:first-child {
+                padding-left: 1rem;
+            }
+        }
+    }
+    th, td {
+        border: none;
+    }
+    th {
+        @include blockText;
+        font-size: 18px;
+        font-weight: normal;
+        padding-top: 1rem;
+        padding-bottom: 0.875rem;
+        line-height: 1;
+    }
+}
+td {
+    color: $gray4;
+
+    strong {
+        color: $black;
+    }
+}

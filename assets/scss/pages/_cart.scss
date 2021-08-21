@@ -1,0 +1,20 @@
+#cart_page {
+    .product__image {
+        width: 80px;
+    }
+
+    th, td {
+        @media (min-width: $breakpoint-l) {
+            &:first-child {
+                width: 400px;
+            }
+      
+            &:nth-child(2) {
+                padding-right: 40px;
+            }
+        }
+        &:last-child {
+            width: 24px;
+        }
+    }
+}

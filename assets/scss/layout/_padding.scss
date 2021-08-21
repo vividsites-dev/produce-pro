@@ -1,37 +1,21 @@
-$sizes: (
-	'remove': 0 !important,
-	'xxxs':   $spacing-xxxs,
-	'xxs':    $spacing-xxs,
-	'xs':     $spacing-xs,
-	's':      $spacing-s,
-	'm':      $spacing-m,
-	'l':      $spacing-l,
-	'xl':     $spacing-xl,
-	'xxl':    $spacing-xxl,
-	'xxxl':   $spacing-xxxl,
-	'xxxxl':  $spacing-xxxxl,
-	'xxxxxl': $spacing-xxxxxl,
-	'none':   0
-);
-
 @each $size, $spacing in $sizes {
-	.padding-#{$size} {
-		padding: $spacing;
+	.p-#{$size} {
+		padding: $spacing !important;
 	}
 
-	.padding-y-#{$size} {
-		padding-top: $spacing;
-		padding-bottom: $spacing;
+	.py-#{$size} {
+		padding-top: $spacing !important;
+		padding-bottom: $spacing !important;
 	}
 
-	.padding-x-#{$size} {
-		padding-left: $spacing;
-		padding-right: $spacing;
+	.px-#{$size} {
+		padding-left: $spacing !important;
+		padding-right: $spacing !important;
 	}
 
-	@each $side in $sides {
-		.padding-#{$side}-#{$size} {
-			padding-#{$side}: $spacing;
+	@each $side, $abbr in $sides {
+		.p#{$abbr}-#{$size} {
+			padding-#{$side}: $spacing !important;
 		}
 	}
 }
@@ -39,30 +23,36 @@ $sizes: (
 @each $label, $breakpoint in $breakpoints {
 	@each $size, $spacing in $sizes {
 		@media ( min-width: $breakpoint ) {
-			.padding-#{$size}\@#{$label} {
-				padding: $spacing;
+			.p-#{$label}-#{$size} {
+				padding: $spacing !important;
 			}
 		
-			.padding-y-#{$size}\@#{$label} {
-				padding-top: $spacing;
-				padding-bottom: $spacing;
+			.py-#{$label}-#{$size} {
+				padding-top: $spacing !important;
+				padding-bottom: $spacing !important;
 			}
 		
-			.padding-x-#{$size}\@#{$label} {
-				padding-left: $spacing;
-				padding-right: $spacing;
+			.px-#{$label}-#{$size} {
+				padding-left: $spacing !important;
+				padding-right: $spacing !important;
 			}
 
-		}
-	}
-
-	@each $side in $sides {
-		@each $size, $spacing in $sizes {
-			@media ( min-width: $breakpoint ) {
-				.padding-#{$side}-#{$size}\@#{$label} {
-					padding-#{$side}: $spacing;
+			@each $side, $abbr in $sides {
+				.p#{$abbr}-#{$label}-#{$size} {
+					padding-#{$side}: $spacing !important;
 				}
 			}
 		}
 	}
 }
+
+// 	@each $side in $sides {
+// 		@each $size, $spacing in $sizes {
+// 			@media ( min-width: $breakpoint ) {
+// 				.padding-#{$side}-#{$size}\@#{$label} {
+// 					padding-#{$side}: $spacing;
+// 				}
+// 			}
+// 		}
+// 	}
+// }

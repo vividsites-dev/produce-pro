@@ -51,13 +51,11 @@
 
 		& > .separator {
 			height: 4rem;
-		}
-	}
 
-	&__branding {
-		& > * {
-			&:not(:last-child) {
-				margin-right: 32px;
+			@media (max-width: $breakpoint-l - 1) {
+				height: 1px;
+				width: 4rem;
+				margin: 1.5rem 0;
 			}
 		}
 	}

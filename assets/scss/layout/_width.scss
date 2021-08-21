@@ -5,6 +5,14 @@
 	}
 }
 
+@each $label, $breakpoint in $breakpoints {
+	@media ( max-width: $breakpoint - 1 ) {
+		.w-nomax\@#{$label} {
+			max-width: none !important;
+		}
+	}
+}
+
 // @for $i from 1 through 10 {
 // 	$max: $i / 10;
 // 	.width__max--#{$max} {
