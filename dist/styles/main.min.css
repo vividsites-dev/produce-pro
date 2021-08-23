@@ -101,6 +101,7 @@ body hr{background-color:#dee2e6;opacity:1;margin:2.25rem 0}
 html{font-family:"lato","Helvetica Neue",sans-serif;font-size:1em;overflow-x:hidden;-webkit-tap-highlight-color:transparent}
 body{color:#222;margin:0;font-family:lato,sans-serif}
 body:not(.single-post):not(.single-events){overflow-x:hidden}
+.page{padding:60px 0}
 :focus{outline:0}
 :focus-visible{outline:1px dashed #83bf3e;outline-offset:2px}
 .js-focus-visible .focus-visible{outline:1px dashed #83bf3e;outline-offset:2px}
@@ -419,7 +420,7 @@ td strong{color:#222}
 #homepage section{margin:48px 0}
 #cart_page .product__image{width:80px}
 #cart_page th:last-child,#cart_page td:last-child{width:24px}
-#order_single .profile{margin-bottom:150px}
+#order_single .profile{margin-bottom:90px}
 @media(min-width:576px){body .alert{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center}
 .m-sm-md1{margin:2rem !important}
 .my-sm-md1{margin-top:2rem !important;margin-bottom:2rem !important}
@@ -643,7 +644,7 @@ td strong{color:#222}
 .column-gap--xl{-webkit-column-gap:6.4vw;-moz-column-gap:6.4vw;column-gap:6.4vw}
 .section__inner{padding:0 3.2vw}
 .calendar__date:after{top:.8vw;right:1.2vw}
-#order_single .profile{margin-bottom:10vw}
+#order_single .profile{margin-bottom:6vw}
 }@media(max-width:1199px){body .border-left-remove\@xl{border-left:0 !important}
 body .border-right-remove\@xl{border-right:0 !important}
 body .border-top-remove\@xl{border-top:0 !important}
