@@ -13,16 +13,11 @@
         <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://use.typekit.net/qsq2kfy.css">
         <link rel="stylesheet" href="./dist/styles/main.css" />
+        <script src="./dist/scripts/main.min.js"></script>
     </head>
 	<body>
         <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // jQuery(".order__view-trigger").on("click", function(e) {
-            //     e.preventDefault();
-            //     $(this).tab("show");
-            //     if()
-            // });
-            
+        document.addEventListener("DOMContentLoaded", function() {            
             const viewTriggers = document.querySelectorAll(".order__view-trigger");
             const orderListView = document.getElementById("order_view_list")
             for(let i = 0; i < viewTriggers.length; i++) {
@@ -40,18 +35,21 @@
                     }
                 });
             }
+
+            const orderGuidelines = new bootstrap.Modal(document.getElementById("order_guidelines"));
+            orderGuidelines.show();
         });
         </script>
         <a class="skip-navigation skip-link screen-reader-text" href="#content">Skip to content</a>
-        <header id="masthead" class="header fixed-top w-100 bg-white" role="banner">
-            <div id="header_mask" class="section__inner">
+		<header id="masthead" class="header fixed-top w-100 bg-white" role="banner">
+            <div id="header_mask" class="section__inner bg-white">
                 <div class="w-1200px m-auto">
                     <div class="row position-relative">
                         <div class="col d-flex align-items-center">
-                            <a href="#" class="header__logo me-3 me-md-4 me-lg-md1">
+                            <a href="/" class="header__logo me-3 me-md-4 me-lg-md1">
                                 <img src="./img/logo.jpg" />
                             </a>
-                            <nav class="nav header__nav align-self-stretch d-flex">
+                            <nav class="nav header__nav align-self-stretch d-none d-md-flex">
                                 <div class="nav__item nav__item--parent d-flex before">
                                     <div class="nav__link after d-flex">
                                         <a href="#" class="position-relative d-flex align-items-center">Products<span class="arrow before position-relative"></span></a>
@@ -101,7 +99,7 @@
                                 </div>
                             </nav>
                         </div>
-                        <div class="col col-auto flex-grow-1 d-flex justify-content-end align-items-center">
+                        <div class="col col-auto flex-grow-1 d-none d-md-flex justify-content-end align-items-center">
                             <ul class="d-flex align-items-center mb-0 px-2 px-lg-3 order-md-2">
                                 <li class="header__link header__link--schedule">
                                     <!-- <a href="#" data-bs-toggle="modal" data-bs-target="#order_date_modal"> -->
@@ -118,7 +116,7 @@
                                     </a>
                                 </li>
                                 <li class="header__link header__link--cart">
-                                    <a href="#"data-items="4">
+                                    <a href="/cart"data-items="4">
                                         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 39.3 37.8" style="enable-background:new 0 0 39.3 37.8;" xml:space="preserve">
                                             <path class="st0" d="M13.3,23.8h20.1L39.3,6H8.4l-2-6H0v2.8h4.4l6.5,19.6L6.3,32.8h28.5V30H10.5L13.3,23.8z M9.3,8.8h26.2L31.4,21 h-18L9.3,8.8z"/>
                                             <circle class="st0" cx="15.4" cy="35.4" r="2.4"/>
@@ -148,7 +146,7 @@
                                     </div>
                                 </li>
                                 <li class="header__link header__link--user">
-                                    <a href="#">
+                                    <a href="#account_dropdown">
                                         <svg version="1.1" id="user" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 39 41" style="enable-background:new 0 0 39 41;" xml:space="preserve">
                                             <path class="st0" d="M25.8,21.1C29,19,31,15.4,31,11.5C31,5.2,25.8,0,19.5,0C13.2,0,8,5.2,8,11.5c0,3.9,2,7.5,5.2,9.6 C5.4,23.9,0,31.7,0,40.5V41h39v-0.5C39,31.7,33.6,23.9,25.8,21.1z M19.5,23c8.2,0,15.2,6.4,16.3,15H3.2C4.3,29.4,11.3,23,19.5,23z M19.5,3c4.7,0,8.5,3.8,8.5,8.5S24.2,20,19.5,20c-4.7,0-8.5-3.8-8.5-8.5S14.8,3,19.5,3z"/>
                                         </svg>
@@ -176,59 +174,6 @@
                                 </li>
                             </ul>
                             <a id="order_button" class="button--outline text-uppercase text-decoration-none border-1 header__link header__link--order rounded-pill order-md-3" data-bs-toggle="offcanvas" href="#ordering_dropdown" role="button" aria-controls="ordering_dropdown">order</a>
-                            <!-- <div id="ordering_dropdown" class="pp-dropdown ordering position-absolute before">
-                                <div class="ordering__content pp-dropdown__content position-relative">
-                                    <div class="alert alert-danger" role="alert"><strong>Note: Please place orders before 7:00 PM on 03/30/21 to receive your order by 04/01/21.</strong>
-                                    </div>
-                                    <div class="blocktext font-size--l mt-4">Order Entry</div>
-                                    <form class="ordering__form form">
-                                        <div class="form__instructions text-color--gray4">Please pick the date on which you would like to receive your order.</div>
-                                        <hr class="my-4">
-                                        <div class="row row-cols-2 row-cols-lg-5 gy-2 gx-3 gx-md-4 gx-lg-2 gx-xl-4 mb-3">
-                                            <div class="ordering__field ordering__field--date col">
-                                                <label class="d-block" for="ordering_date">Receiving Date:</label>
-                                                <input type="date" name="ordering_date" class="w-100" />
-                                            </div>
-                                            <div class="ordering__field ordering__field--profile col flex-grow-1">
-                                                <label class="d-block" for="ordering_profile">Profile:</label>
-                                                <div class="d-flex">
-                                                    <div class="select__wrapper flex-grow-1">
-                                                        <select name="ordering_profile">
-                                                            <option>Default</option>
-                                                            <option>Option 2</option>
-                                                        </select>
-                                                    </div>
-                                                    <a href="#" class="button button--outline ms-2">Manage Profiles</a>
-                                                </div>
-                                            </div>
-                                            <div class="ordering__field ordering__field--warehouse col">
-                                                <label class="d-block" for="ordering_warehouse">Warehouse:</label>
-                                                <div class="select__wrapper">
-                                                    <select name="ordering_warehouse" class="w-100">
-                                                        <option>PPRO Warehouse #1</option>
-                                                        <option>PPRO Warehouse #2</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="ordering__field ordering__field--shipping col">
-                                                <label class="d-block" for="ordering_shipping">Shipped Via:</label>
-                                                <div class="select__wrapper">
-                                                    <select name="ordering_shipping" class="w-100">
-                                                        <option>Delivery</option>
-                                                        <option>Drones</option>
-                                                        <option>Magic</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex justify-content-end">
-                                            <a href="#" class="button button--outline mt-3">View Recent Orders</a>
-                                            <a href="#" class="button ms-3 mt-3">Next</a>
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="pp-dropdown__overlay"></div>
-                            </div> -->
                             <form class="header__search flex-grow-1 order-md-1">
                                 <div class="search__wrapper rounded-pill border border-secondary position-relative">
                                     <input type="search" class="border-0 bg-transparent ps-4 pe-5 py-2" placeholder="Search" />
@@ -240,10 +185,15 @@
                                 </div>
                             </form>
                         </div>
+                        <a href="#" id="mobile_menu_toggle" class="header__toggle position-relative col d-md-none" data-bs-toggle="offcanvas" data-bs-target="#mobile_menu" aria-controls="mobile_menu">
+                            <span></span>
+							<span></span>
+							<span></span>
+                        </a>
                     </div>
                 </div>
             </div>
-            <div id="ordering_dropdown" class="ordering offcanvas offcanvas-top">
+            <div id="ordering_dropdown" class="ordering offcanvas offcanvas-top" tabindex="-1">
                 <div class="ordering__content offcanvas-body section__inner">
                     <div class="w-1200px m-auto">
                         <div class="py-md1 py-lg-md3">
@@ -292,14 +242,64 @@
                                 </div>
                                 <div class="d-flex justify-content-end">
                                     <a href="#" class="button button--outline mt-3">View Recent Orders</a>
-                                    <a href="#" class="button ms-3 mt-3">Next</a>
+                                    <a href="/order" class="button ms-3 mt-3">Next</a>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
-        </header>
+            <div id="mobile_menu" class="nav offcanvas offcanvas-top" tabindex="-1">
+                <div class="offcanvas-body">
+                    <form class="header__search header__search--mobile mt-1 mb-4">
+                        <div class="search__wrapper rounded-pill border border-secondary position-relative">
+                            <input type="search" class="border-0 bg-transparent ps-4 pe-5 py-2" placeholder="Search" />
+                            <button type="submit" class="search-submit position-absolute top-50 translate-middle-y">
+                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 38.6 38.6" xml:space="preserve">
+                                    <path class="secondary" d="M25.8,23.6c2.1-2.6,3.2-5.8,3.2-9.1C29,6.5,22.5,0,14.5,0S0,6.5,0,14.5S6.5,29,14.5,29c3.3,0,6.5-1.2,9.1-3.2 l12.9,12.9l2.1-2.1L25.8,23.6z M14.5,3C20.8,3,26,8.2,26,14.5S20.8,26,14.5,26S3,20.8,3,14.5S8.2,3,14.5,3z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </form>
+                    <h3 class="text-primary fw-bold mb-3">Products</h3>
+                    <ul class="columnize column-gap--xl d-block ps-0">
+                        <li class="mb-2">
+                            <a href="#" class="d-block pb-1">Vegetables</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#" class="d-block pb-1">Fruit</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#" class="d-block pb-1">Dairy</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#" class="d-block pb-1">Organic</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#" class="d-block pb-1">Meat</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#" class="d-block pb-1">Specialty</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#" class="d-block pb-1">Local</a>
+                        </li>
+                    </ul>
+                    <hr>
+                    <ul class="d-block ps-0">
+                        <li class="mb-2">
+                            <a href="/order">Order</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="/cart">Cart</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#">Account</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+		</header>
         <main id="content" role="main" class="main">
             <div id="order_single" class="page">
                 <section class="">
@@ -389,7 +389,7 @@
                                                 <div class="price--special">Next Day Price</div>
                                             </div>
                                             <div class="d-flex flex-wrap mb-4">
-                                                <div class="product__tag product__tag--fresh">Fresh</div>
+                                                <div class="product__tag product__tag--fresh" data-bs-toggle="tooltip" data-bs-placement="top" title="Vestibulum lacinia que sceleris augues, faucibus eu urna egestas.">Fresh</div>
                                                 <div class="product__tag product__tag--local">Local</div>
                                                 <div class="product__tag product__tag--year-round">Year Round</div>
                                                 <div class="product__tag product__tag--organic">Organic</div>
@@ -825,7 +825,7 @@
                                                 <tr>
                                                     <td>#06107</td>
                                                     <td>
-                                                        <div class="d-flex align-items-center">
+                                                        <div class="d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#example_profile_item">
                                                             <div class="product__image bg-image-wrapper before before--square me-3">
                                                                 <img src="./img/apple.png" class="bg-image bg-image--contain" />
                                                             </div>
@@ -836,6 +836,117 @@
                                                                     <div class="product__tag product__tag--local">Local</div>
                                                                     <div class="product__tag product__tag--year-round">Year Round</div>
                                                                     <div class="product__tag product__tag--organic">Organic</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal modal--profile-product fade" id="example_profile_item" tabindex="-1" aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered modal-lg">
+                                                                <div class="modal-content p-4">
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                    <div class="modal-body">
+                                                                        <div class="row">
+                                                                            <div class="col-12 col-md-4 col-lg-6 d-flex align-items-center justify-content-center">
+                                                                                <div class="bg-image-wrapper align-self-start before before--square w-100 w-400px">
+                                                                                    <img src="./img/apple.png" class="bg-image bg-image--contain" />
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col text-color--gray4">
+                                                                                <h2 class="font-size--xl font-weight--800 text-color--gray5 mb-4 mt-3 mt-md-0">Braeburn Apples XF 100 Ct.</h2>
+                                                                                <div class="product__price mb-4">Product: #06107</div>
+                                                                                <div class="product__availability text-secondary font-size--s font-weight--700 py-2 border-top border-bottom">Available: Year Round</div>
+                                                                                <div class="product__quantity my-4">
+                                                                                    <button class="increment decrease"></button>
+                                                                                    <input type="number" value="1" />
+                                                                                    <button class="increment increase"></button>
+                                                                                </div>
+                                                                                <div class="product__description">
+                                                                                    <p>Pellentesque efficitur, nisi eu imperdiet euismod, urna neque ornare justo, ac elementum libero nisl ut felis. Suspendisse sit amet et eros est. Sed tempus nibh non ornare ultrices. Praesent tempus, lectus ac placerat tempor, augue dui a dignissim quam, sit amet pretium est tortor in sem.</p>
+                                                                                </div>
+                                                                                <a href="#" class="button button--outline mt-4">Remove from profile</a>
+                                                                            </div>
+                                                                        </div>
+                                                                        <hr>
+                                                                        <div class="cross-sales mt-4">
+                                                                            <h4 class="blocktext">Related Products</h4>
+                                                                            <div class="cross-sales__list row row-cols-2 row-cols-sm-3 row-cols-md-4 mt-4">
+                                                                                <div class="cross-sale border-end">
+                                                                                    <div class="h-100 d-flex flex-column px-1">
+                                                                                        <div class="bg-image-wrapper before before--80">
+                                                                                            <img src="./img/golden_delicious.png" class="bg-image bg-image--contain" />
+                                                                                        </div>
+                                                                                        <h6 class="font-weight--700 mt-2">Golden Delicious Apples XF 56/64 Ct.</h6>
+                                                                                        <div class="text-color--gray4">Product #02628</div>
+                                                                                        <div class="text-color--gray4">$66.70</div>
+                                                                                        <div class="d-flex flex-wrap mt-3 mb-4">
+                                                                                            <div class="product__tag product__tag--fresh">Fresh</div>
+                                                                                            <div class="product__tag product__tag--local">Local</div>
+                                                                                        </div>
+                                                                                        <div class="product__quantity my-auto mb-0">
+                                                                                            <button class="increment decrease"></button>
+                                                                                            <input type="number" value="0" />
+                                                                                            <button class="increment increase"></button>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="cross-sale border-end border-right-remove@sm">
+                                                                                    <div class="h-100 d-flex flex-column px-1">
+                                                                                        <div class="bg-image-wrapper before before--80">
+                                                                                            <img src="./img/granny_smith2.png" class="bg-image bg-image--contain" />
+                                                                                        </div>
+                                                                                        <h6 class="font-weight--700 mt-2">Granny Smith Apples 56/64 Ct.</h6>
+                                                                                        <div class="text-color--gray4">Product #02611</div>
+                                                                                        <div class="text-color--gray4">$64.41</div>
+                                                                                        <div class="d-flex flex-wrap mt-3 mb-4">
+                                                                                            <div class="product__tag product__tag--local">Local</div>
+                                                                                        </div>
+                                                                                        <div class="product__quantity my-auto mb-0">
+                                                                                            <button class="increment decrease"></button>
+                                                                                            <input type="number" value="0" />
+                                                                                            <button class="increment increase"></button>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="cross-sale border-end border-right-remove@md d-none d-sm-block">
+                                                                                    <div class="h-100 d-flex flex-column px-1">
+                                                                                        <div class="bg-image-wrapper before before--80">
+                                                                                            <img src="./img/gala.png" class="bg-image bg-image--contain" />
+                                                                                        </div>
+                                                                                        <h6 class="font-weight--700 mt-2">Gala Apples 100/113 Ct.</h6>
+                                                                                        <div class="text-color--gray4">Product #02624</div>
+                                                                                        <div class="text-color--gray4">$7.00</div>
+                                                                                        <div class="d-flex flex-wrap mt-3 mb-4">
+                                                                                            <div class="product__tag product__tag--local">Local</div>
+                                                                                            <div class="product__tag product__tag--year-round">Year Round</div>
+                                                                                        </div>
+                                                                                        <div class="product__quantity my-auto mb-0">
+                                                                                            <button class="increment decrease"></button>
+                                                                                            <input type="number" value="0" />
+                                                                                            <button class="increment increase"></button>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="cross-sale d-none d-md-block">
+                                                                                    <div class="h-100 d-flex flex-column px-1">
+                                                                                        <div class="bg-image-wrapper before before--80">
+                                                                                            <img src="./img/asian_pear.png" class="bg-image bg-image--contain" />
+                                                                                        </div>
+                                                                                        <h6 class="font-weight--700 mt-2">Asian Pears 8/12 Ct.</h6>
+                                                                                        <div class="text-color--gray4">Product #02813</div>
+                                                                                        <div class="text-color--gray4">$6.45</div>
+                                                                                        <div class="d-flex flex-wrap mt-3 mb-4">
+                                                                                            <div class="product__tag product__tag--fresh">Fresh</div>
+                                                                                            <div class="product__tag product__tag--organic">Organic</div>
+                                                                                        </div>
+                                                                                        <div class="product__quantity my-auto mb-0">
+                                                                                            <button class="increment decrease"></button>
+                                                                                            <input type="number" value="0" />
+                                                                                            <button class="increment increase"></button>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -853,7 +964,7 @@
                                                     <td>51.90%</td>
                                                     <td>30</td>
                                                     <td>$89.40</td>
-                                                    <td class="text-color--red">♥</td>
+                                                    <td class="text-color--red font-size--m">♥</td>
                                                 </tr>
                                                 <tr>
                                                     <td>#06107</td>
@@ -885,8 +996,7 @@
                                                     <td>51.90%</td>
                                                     <td>30</td>
                                                     <td>$89.40</td>
-                                                    <td class="text-color--red">♥</td>
-                                                </tr>
+                                                    <td class="text-color--red font-size--m">♥</td>                                                </tr>
                                                 <tr>
                                                     <td>#06107</td>
                                                     <td>
@@ -914,8 +1024,7 @@
                                                     <td>51.90%</td>
                                                     <td>30</td>
                                                     <td>$89.40</td>
-                                                    <td class="text-color--red">♥</td>
-                                                </tr>
+                                                    <td class="text-color--red font-size--m">♥</td>                                                </tr>
                                                 <tr>
                                                     <td>#06107</td>
                                                     <td>
@@ -945,8 +1054,7 @@
                                                     <td>51.90%</td>
                                                     <td>30</td>
                                                     <td>$89.40</td>
-                                                    <td class="text-color--red">♥</td>
-                                                </tr>
+                                                    <td class="text-color--red font-size--m">♥</td>                                                </tr>
                                                 <tr>
                                                     <td>#06107</td>
                                                     <td>
@@ -974,8 +1082,7 @@
                                                     <td>51.90%</td>
                                                     <td>30</td>
                                                     <td>$89.40</td>
-                                                    <td class="text-color--red">♥</td>
-                                                </tr>
+                                                    <td class="text-color--red font-size--m">♥</td>                                                </tr>
                                                 <tr>
                                                     <td>#06107</td>
                                                     <td>
@@ -1004,8 +1111,7 @@
                                                     <td>51.90%</td>
                                                     <td>30</td>
                                                     <td>$89.40</td>
-                                                    <td class="text-color--red">♥</td>
-                                                </tr>
+                                                    <td class="text-color--red font-size--m">♥</td>                                                </tr>
                                                 <tr>
                                                     <td>#06107</td>
                                                     <td>
@@ -1033,8 +1139,7 @@
                                                     <td>51.90%</td>
                                                     <td>30</td>
                                                     <td>$89.40</td>
-                                                    <td class="text-color--red">♥</td>
-                                                </tr>
+                                                    <td class="text-color--red font-size--m">♥</td>                                                </tr>
                                                 <tr>
                                                     <td>#06107</td>
                                                     <td>
@@ -1063,8 +1168,7 @@
                                                     <td>51.90%</td>
                                                     <td>30</td>
                                                     <td>$89.40</td>
-                                                    <td class="text-color--red">♥</td>
-                                                </tr>
+                                                    <td class="text-color--red font-size--m">♥</td>                                                </tr>
                                                 <tr>
                                                     <td>#06107</td>
                                                     <td>
@@ -1095,8 +1199,7 @@
                                                     <td>51.90%</td>
                                                     <td>30</td>
                                                     <td>$89.40</td>
-                                                    <td class="text-color--red">♥</td>
-                                                </tr>
+                                                    <td class="text-color--red font-size--m">♥</td>                                                </tr>
                                             </tbody>
                                         </table>
                                     </div>
@@ -1440,7 +1543,7 @@
                     <div>$652.20</div>
                 </div>
                 <div class="d-flex flex-wrap pt-3">
-                    <a href="#" class="button me-3 mt-3">Continue to Cart</a>
+                    <a href="/cart" class="button me-3 mt-3">Continue to Cart</a>
                     <a href="#" class="button button--outline mt-3">Change Date</a>
                 </div>
             </div>
@@ -1469,5 +1572,44 @@
                 </div>
             </div>
         </div>
+        <div class="modal fade show" id="order_guidelines" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content p-4 p-lg-5">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <h3 class="font-size--xl font-weight--800 text-color--gray5 mb-4">Online Order Guidelines</h3>
+                        <div>
+                            <div class="pb-4 d-flex align-items-start">
+                                <img src="./img/icons/clock_red.png" class="me-2" />
+                                <p class="fs-6 text-color--red"><strong>Please place orders before 7:00 PM on 03/30/21 to receive yourorder by 04/01/21.</strong></p>
+                            </div>
+                            <div class="pb-4 d-flex align-items-start">
+                                <img src="./img/icons/dollar_gray.png" class="me-2" />
+                                <p class="fs-6">Prices sometimes change several times per week and are updated daily. Consult with your sales associate regarding pricing on this order.</p>
+                            </div>
+                            <div class="pb-4 d-flex align-items-start">
+                                <img src="./img/icons/question_gray.png" class="me-2" />
+                                <p class="fs-6">If you have any special needs or have any questions about our products, please consult your sales associate or our sales desk.</p>
+                            </div>
+                            <div class="pb-4 d-flex align-items-start">
+                                <img src="./img/icons/sun_gray.png" class="me-2" />
+                                <p class="fs-6">The items that you order may not be available due to seasonality, weather, or market conditions. We will substitute other items where appropriate, or notify you of any shortages on the day your receive your order.</p>
+                            </div>
+                            <div class="pb-4 d-flex align-items-start">
+                                <img src="./img/icons/phone_gray.png" class="me-2" />
+                                <p class="fs-6">Once you have submitted your order you cannot change or cancel your order, please call the order desk at (630) 123-4567.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section id="ordering_guidelines" class="mb-0">
+            <div class="section__inner section__inner--full">
+                <div class="bg-color--primary-dk py-md1 px-5">
+                    <div class="w-1200px m-auto">
+                    </div>
+                </div>
+            </div>
+        </section>
     </body>
 </html>

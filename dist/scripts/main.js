@@ -1,138 +1,5 @@
 "use strict";
 
-function setDisplayNone(id) {
-  document.getElementById(id).style.display = "none";
-}
-
-function setDisplayInline(id) {
-  document.getElementById(id).style.display = "inline";
-}
-
-function t_addCookie(name) {
-  var id = name + "_add";
-  setDisplayNone(id);
-  id = name + "_remove";
-  setDisplayInline(id);
-}
-
-function t_removeCookie(name) {
-  var id = name + "_remove";
-  setDisplayNone(id);
-  id = name + "_add";
-  setDisplayInline(id);
-}
-
-function addCookie(value) {
-  // toggle display of the add/remove links, turn add off and remove on
-  var id = "z" + value + "_add";
-  setDisplayNone(id);
-  id = "z" + value + "_remove";
-  setDisplayInline(id);
-  var val = simpleGetCookie("myfolder");
-  var len;
-
-  if (val == null) {
-    simpleSetCookie("myfolder", value, 30, "/");
-    return;
-  }
-
-  var offset = val.indexOf(value);
-
-  if (offset == -1) {
-    len = val.length;
-
-    if (len > 0) {
-      simpleSetCookie("myfolder", val + ":" + value, 30, "/");
-    } else {
-      simpleSetCookie("myfolder", value, 30, "/");
-    }
-  }
-}
-
-function removeCookie(value) {
-  // toggle display of the add/remove links, turn add on and remove off
-  var id = "z" + value + "_remove";
-  setDisplayNone(id);
-  id = "z" + value + "_add";
-  setDisplayInline(id);
-  var val = simpleGetCookie("myfolder");
-  var newval;
-
-  if (val == null) {
-    simpleSetCookie("myfolder", newval, 30, "/");
-    return;
-  } // alert("cookie is now " + val);
-
-
-  var offset = val.indexOf(value); // alert("found " + value + " at " + offset);
-
-  if (offset != -1) {
-    var end = val.indexOf(":", offset);
-
-    if (end == -1) {
-      end = val.length;
-    } // alert("ends at " + end);
-
-
-    if (offset > 0) {
-      // not at beginning of string, need to cut out of middle
-      // end at offset - 1 to get rid of :
-      newval = val.substring(0, offset - 1);
-      newval += val.substring(end);
-    } else {
-      newval = val.substring(end + 1);
-    } // alert("cookie is now " + newval);
-
-
-    simpleSetCookie("myfolder", newval, 30, "/"); // location.reload();
-  }
-}
-
-function simpleSetCookie(name, value, exdays, path, domain, secure) {
-  if (exdays == null) {
-    expires = null;
-  } else {
-    var expires = new Date();
-    expires.setDate(expires.getDate() + exdays);
-  }
-
-  document.cookie = name + "=" + escape(value) + (expires ? "; expires=" + expires.toGMTString() : "") + (path ? "; path=" + path : "") + (domain ? "; domain=" + domain : "") + (secure ? "; secure" : "");
-}
-
-function simpleGetCookie(name) {
-  var dc = document.cookie;
-  var prefix = name + "=";
-  var begin = dc.indexOf("; " + prefix);
-
-  if (begin == -1) {
-    begin = dc.indexOf(prefix);
-    if (begin != 0) return null;
-  } else {
-    begin += 2;
-  }
-
-  var end = document.cookie.indexOf(";", begin);
-
-  if (end == -1) {
-    end = dc.length;
-  }
-
-  return unescape(dc.substring(begin + prefix.length, end));
-}
-
-function simpleDeleteCookie(name, path, domain) {
-  if (simpleGetCookie(name)) {
-    document.cookie = name + "=" + (path ? "; path=" + path : "") + (domain ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
-  }
-}
-
-function FixCookieDate(date) {
-  var base = new Date(0);
-  var skew = base.getTime();
-  date.setTime(date.getTime() - skew);
-}
-"use strict";
-
 function getTransitionEndEventName() {
   var transitions = {
     "transition": "transitionend",
@@ -149,7 +16,70 @@ function getTransitionEndEventName() {
   }
 }
 
-var transitionEndEventName = getTransitionEndEventName();
+var iteratorTimeout, iteratorInterval, iteratorHeld, qtyInput, qtyCount, qtyIncreasing;
+$(function () {
+  $(document).ready(function () {
+    $('[data-bs-toggle="popover"]').popover();
+    $('[data-bs-toggle="tooltip"]').tooltip();
+    $("#mobile_menu").on("show.bs.offcanvas", function () {
+      $("#mobile_menu_toggle").addClass("active");
+    });
+    $("#mobile_menu").on("hide.bs.offcanvas", function () {
+      $("#mobile_menu_toggle").removeClass("active");
+    });
+  });
+  $(".product__quantity .increment").on("click", function () {
+    qtyIncreasing = $(this).hasClass('decrease') ? false : true;
+    qtyInput = qtyIncreasing ? $(this).prev() : $(this).next();
+    qtyCount = parseInt(qtyInput.val() || 0);
+
+    if (!qtyIncreasing && qtyCount < 1) {
+      return null;
+    }
+
+    ;
+    $(qtyInput).val(qtyCount + (qtyIncreasing ? 1 : -1));
+  }); // BELOW IS SOME CODE I WROTE TO ALLOW FOR PRESSING AND HOLDING INCREMENT BUTTONS
+  // PRETTY GOOD BUT SLIGHTLY BUGGY PERFORMANCE
+  // $(".product__quantity .increment").on( "mousedown", function() {
+  // 	iteratorHeld = false;
+  // 	qtyIncreasing = ($(this).hasClass('decrease') ? false : true);
+  // 	qtyInput = (qtyIncreasing ? $(this).prev() : $(this).next());
+  // 	qtyCount = parseInt(qtyInput.val() || 0);
+  // 	if(!qtyIncreasing && qtyCount < 1) {
+  // 		return null;
+  // 	};
+  // 	iteratorTimeout = setTimeout( function() {
+  // 		iteratorHeld = true;
+  // 		if( qtyIncreasing ) {
+  // 			iteratorInterval = setInterval( function() {
+  // 				qtyInput.val(qtyCount++);
+  // 			}, 40);
+  // 		} else {
+  // 			iteratorInterval = setInterval( function() {
+  // 				qtyCount--;
+  // 				if(qtyCount >= 0) qtyInput.val(qtyCount);
+  // 			}, 40);
+  // 		}
+  // 	}, 80);
+  // 	return null;
+  // });
+  // $(".product__quantity .increment").on( "mouseup", function() {
+  // 	clearTimeout(iteratorTimeout);
+  // 	clearInterval(iteratorInterval);
+  // 	if(!qtyIncreasing && qtyCount < 1) {
+  // 		return null;
+  // 	};
+  // 	if(!iteratorHeld) {
+  // 		if( qtyIncreasing ) {
+  // 			$(qtyInput).val(qtyCount + 1);
+  // 		} else {
+  // 			$(qtyInput).val(qtyCount - 1);
+  // 		}
+  // 	}
+  // 	return null;
+  // });
+});
 "use strict";
 
 /**
@@ -183,14 +113,3 @@ var transitionEndEventName = getTransitionEndEventName();
     }, false);
   }
 })();
-"use strict";
-
-(function ($, root, undefined) {
-  $(function () {
-    'use strict'; // DOM ready, take it away
-
-    $(document).ready(function () {
-      $('.slickify').slick();
-    });
-  });
-})(jQuery, void 0);

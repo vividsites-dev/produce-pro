@@ -1,62 +1,105 @@
 .slick-arrow {
-	background: $red;
-	width: 55px;
-	height: 55px;
+	width: 64px;
+	height: 100%;
 	transition: $transition;
-	appearance: none;
 	background: none;
-	color: transparent;
+	appearance: none;
 	border: none;
 	padding: 0;
 	z-index: 2;
 	position: absolute;
-	top: 50%;
-	transform: translateY(-50%);
-
-	@media (max-width: 1000px) {
-		width: calc(25px + 3vw);
-	}
+	top: 0;
+	font-size: 0;
+	color: transparent;
 
 	&:after {
 		content: '';
 		display: block;
-		width: 15px;
-		height: 26px;
-		background-image: url('../images/angle.svg');
-		background-size: contain;
-		background-repeat: no-repeat;
-		background-position: center;
-		border-right: none;
+		width: 20px;
+		height: 20px;
+		border-top: solid 1px $gray4;
+		border-right: solid 1px $gray4;
 		position: absolute;
-		top: 50%;
-		left: 50%;
+		top: 45%;
 	}
+
+	@media (max-width:1439px) {
+		width: 45px;
+		height: 45px;
+		top: 40%;
+		background: $color-primary;
+		border-radius: 4px;
+
+		&:hover {
+			background: darken($color-primary, 5%) !important;
+		}
+
+		&:after {
+			border-color: #fff;
+			top: 50%;
+			width: 16px;
+			height: 16px;
+		}
+	}
+
+	// @media (max-width:1199px) {
+	// 	width: 50px;
+	// 	height: 50px;
+	// }
 }
 .slick-next {
-	right: 0;
-	transform: translate(12px, -50%);
+	left: 100%;
 
 	&:after {
-		transform: translate(-40%, -50%);
+		transform: translateX(-50%) rotate(45deg);
+		left: 40%;
 	}
-	
-	@media (min-width: $breakpoint-l) {
-		right: auto;
-		left: 100%;
-		transform: translate(90%, -50%);
+
+	@media (max-width:1439px) {
+		transform: translateX(12px);
+
+		&:after {
+			transform: translate(-50%, -50%) rotate(45deg);
+		}
+	}
+
+	@media (max-width:1199px) {
+		transform: translateX(8px);
+	}
+
+	@media (max-width:767px) {
+		transform: translateX(-4px);
+	}
+
+	@media (max-width:575px) {
+		transform: translateX(-20px);
 	}
 }
 .slick-prev {
-	left: 0;
-	transform: translate(-12px, -50%);
-	
+	right: 100%;
+
 	&:after {
-		transform: translate(-60%, -50%) scaleX(-1);
+		transform: translateX(50%)  rotate(-135deg);
+		right: 40%;
 	}
-	
-	@media (min-width: $breakpoint-l) {
-		left: auto;
-		right: 100%;
-		transform: translate(-90%, -50%);
+
+	@media (max-width:1439px) {
+		transform: translateX(-12px);
+
+		&:after {
+			transform: translate(50%, -50%) rotate(-135deg);
+		}
+	}
+
+	@media (max-width:1199px) {
+		transform: translateX(-8px);
+	}
+
+	@media (max-width:767px) {
+		transform: translateX(4px);
+	}
+
+	@media (max-width:575px) {
+		transform: translateX(20px);
 	}
 }

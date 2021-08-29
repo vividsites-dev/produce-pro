@@ -1,5 +1,22 @@
 #homepage {
     section {
         margin: $wrapper-padding-desktop 0;
-    }    
+    }
+    
+    #seasonal_specialties_wrapper {
+        // .section__inner {
+        //     @media (max-width: 1439px) {
+        //         padding: 0;
+        //     }
+        // }
+        
+        .slick-slider {
+            margin-left: -12px;
+            margin-right: -12px;
+
+            .slick-slide {
+                padding: 0 12px;
+            }
+        }
+    }
 }

@@ -13,6 +13,9 @@
         <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://use.typekit.net/qsq2kfy.css">
         <link rel="stylesheet" href="./dist/styles/main.css" />
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+        <script src="./dist/scripts/main.min.js"></script>
     </head>
 	<body>
         <script>
@@ -109,17 +112,6 @@
                     }); 
                 }
 
-                // const orderButton = document.getElementById("order_button");
-                // const orderingDropdown = document.getElementById("ordering_dropdown");
-                // orderButton.addEventListener( "click", function() {
-                //     if( orderingDropdown.classList.contains("open") ) {
-                //         orderingDropdown.classList.remove("open");
-                //     } else {
-                //         orderingDropdown.classList.add("open");
-                //     }
-                    
-                // });
-
                 const dropdownOverlays = document.querySelectorAll(".pp-dropdown__overlay");
                 for(let i = 0; i < dropdownOverlays.length; i++) {
                     dropdownOverlays[i].addEventListener( "click", function() {
@@ -129,6 +121,12 @@
                 emailSignup = new bootstrap.Modal(document.getElementById("email_signup"));
                 emailSignup.show();
             });
+
+            (function ($) {
+                $(window).on("load", function() {
+                    $(".slickify").slick();
+                });
+            })(jQuery, void 0);
         </script>
         <style>
             :target {
@@ -140,14 +138,14 @@
         </style>
 		<a class="skip-navigation skip-link screen-reader-text" href="#content">Skip to content</a>
 		<header id="masthead" class="header fixed-top w-100 bg-white" role="banner">
-            <div id="header_mask" class="section__inner">
+            <div id="header_mask" class="section__inner bg-white">
                 <div class="w-1200px m-auto">
                     <div class="row position-relative">
                         <div class="col d-flex align-items-center">
-                            <a href="#" class="header__logo me-3 me-md-4 me-lg-md1">
+                            <a href="/" class="header__logo me-3 me-md-4 me-lg-md1">
                                 <img src="./img/logo.jpg" />
                             </a>
-                            <nav class="nav header__nav align-self-stretch d-flex">
+                            <nav class="nav header__nav align-self-stretch d-none d-md-flex">
                                 <div class="nav__item nav__item--parent d-flex before">
                                     <div class="nav__link after d-flex">
                                         <a href="#" class="position-relative d-flex align-items-center">Products<span class="arrow before position-relative"></span></a>
@@ -197,7 +195,7 @@
                                 </div>
                             </nav>
                         </div>
-                        <div class="col col-auto flex-grow-1 d-flex justify-content-end align-items-center">
+                        <div class="col col-auto flex-grow-1 d-none d-md-flex justify-content-end align-items-center">
                             <ul class="d-flex align-items-center mb-0 px-2 px-lg-3 order-md-2">
                                 <li class="header__link header__link--schedule">
                                     <!-- <a href="#" data-bs-toggle="modal" data-bs-target="#order_date_modal"> -->
@@ -214,7 +212,7 @@
                                     </a>
                                 </li>
                                 <li class="header__link header__link--cart">
-                                    <a href="#"data-items="4">
+                                    <a href="/cart"data-items="4">
                                         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 39.3 37.8" style="enable-background:new 0 0 39.3 37.8;" xml:space="preserve">
                                             <path class="st0" d="M13.3,23.8h20.1L39.3,6H8.4l-2-6H0v2.8h4.4l6.5,19.6L6.3,32.8h28.5V30H10.5L13.3,23.8z M9.3,8.8h26.2L31.4,21 h-18L9.3,8.8z"/>
                                             <circle class="st0" cx="15.4" cy="35.4" r="2.4"/>
@@ -244,7 +242,7 @@
                                     </div>
                                 </li>
                                 <li class="header__link header__link--user">
-                                    <a href="#">
+                                    <a href="#account_dropdown">
                                         <svg version="1.1" id="user" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 39 41" style="enable-background:new 0 0 39 41;" xml:space="preserve">
                                             <path class="st0" d="M25.8,21.1C29,19,31,15.4,31,11.5C31,5.2,25.8,0,19.5,0C13.2,0,8,5.2,8,11.5c0,3.9,2,7.5,5.2,9.6 C5.4,23.9,0,31.7,0,40.5V41h39v-0.5C39,31.7,33.6,23.9,25.8,21.1z M19.5,23c8.2,0,15.2,6.4,16.3,15H3.2C4.3,29.4,11.3,23,19.5,23z M19.5,3c4.7,0,8.5,3.8,8.5,8.5S24.2,20,19.5,20c-4.7,0-8.5-3.8-8.5-8.5S14.8,3,19.5,3z"/>
                                         </svg>
@@ -272,59 +270,6 @@
                                 </li>
                             </ul>
                             <a id="order_button" class="button--outline text-uppercase text-decoration-none border-1 header__link header__link--order rounded-pill order-md-3" data-bs-toggle="offcanvas" href="#ordering_dropdown" role="button" aria-controls="ordering_dropdown">order</a>
-                            <!-- <div id="ordering_dropdown" class="pp-dropdown ordering position-absolute before">
-                                <div class="ordering__content pp-dropdown__content position-relative">
-                                    <div class="alert alert-danger" role="alert"><strong>Note: Please place orders before 7:00 PM on 03/30/21 to receive your order by 04/01/21.</strong>
-                                    </div>
-                                    <div class="blocktext font-size--l mt-4">Order Entry</div>
-                                    <form class="ordering__form form">
-                                        <div class="form__instructions text-color--gray4">Please pick the date on which you would like to receive your order.</div>
-                                        <hr class="my-4">
-                                        <div class="row row-cols-2 row-cols-lg-5 gy-2 gx-3 gx-md-4 gx-lg-2 gx-xl-4 mb-3">
-                                            <div class="ordering__field ordering__field--date col">
-                                                <label class="d-block" for="ordering_date">Receiving Date:</label>
-                                                <input type="date" name="ordering_date" class="w-100" />
-                                            </div>
-                                            <div class="ordering__field ordering__field--profile col flex-grow-1">
-                                                <label class="d-block" for="ordering_profile">Profile:</label>
-                                                <div class="d-flex">
-                                                    <div class="select__wrapper flex-grow-1">
-                                                        <select name="ordering_profile">
-                                                            <option>Default</option>
-                                                            <option>Option 2</option>
-                                                        </select>
-                                                    </div>
-                                                    <a href="#" class="button button--outline ms-2">Manage Profiles</a>
-                                                </div>
-                                            </div>
-                                            <div class="ordering__field ordering__field--warehouse col">
-                                                <label class="d-block" for="ordering_warehouse">Warehouse:</label>
-                                                <div class="select__wrapper">
-                                                    <select name="ordering_warehouse" class="w-100">
-                                                        <option>PPRO Warehouse #1</option>
-                                                        <option>PPRO Warehouse #2</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="ordering__field ordering__field--shipping col">
-                                                <label class="d-block" for="ordering_shipping">Shipped Via:</label>
-                                                <div class="select__wrapper">
-                                                    <select name="ordering_shipping" class="w-100">
-                                                        <option>Delivery</option>
-                                                        <option>Drones</option>
-                                                        <option>Magic</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex justify-content-end">
-                                            <a href="#" class="button button--outline mt-3">View Recent Orders</a>
-                                            <a href="#" class="button ms-3 mt-3">Next</a>
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="pp-dropdown__overlay"></div>
-                            </div> -->
                             <form class="header__search flex-grow-1 order-md-1">
                                 <div class="search__wrapper rounded-pill border border-secondary position-relative">
                                     <input type="search" class="border-0 bg-transparent ps-4 pe-5 py-2" placeholder="Search" />
@@ -336,10 +281,15 @@
                                 </div>
                             </form>
                         </div>
+                        <a href="#" id="mobile_menu_toggle" class="header__toggle position-relative col d-md-none" data-bs-toggle="offcanvas" data-bs-target="#mobile_menu" aria-controls="mobile_menu">
+                            <span></span>
+							<span></span>
+							<span></span>
+                        </a>
                     </div>
                 </div>
             </div>
-            <div id="ordering_dropdown" class="ordering offcanvas offcanvas-top">
+            <div id="ordering_dropdown" class="ordering offcanvas offcanvas-top" tabindex="-1">
                 <div class="ordering__content offcanvas-body section__inner">
                     <div class="w-1200px m-auto">
                         <div class="py-md1 py-lg-md3">
@@ -388,11 +338,61 @@
                                 </div>
                                 <div class="d-flex justify-content-end">
                                     <a href="#" class="button button--outline mt-3">View Recent Orders</a>
-                                    <a href="#" class="button ms-3 mt-3">Next</a>
+                                    <a href="/order" class="button ms-3 mt-3">Next</a>
                                 </div>
                             </form>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div id="mobile_menu" class="nav offcanvas offcanvas-top" tabindex="-1">
+                <div class="offcanvas-body">
+                    <form class="header__search header__search--mobile mt-1 mb-4">
+                        <div class="search__wrapper rounded-pill border border-secondary position-relative">
+                            <input type="search" class="border-0 bg-transparent ps-4 pe-5 py-2" placeholder="Search" />
+                            <button type="submit" class="search-submit position-absolute top-50 translate-middle-y">
+                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 38.6 38.6" xml:space="preserve">
+                                    <path class="secondary" d="M25.8,23.6c2.1-2.6,3.2-5.8,3.2-9.1C29,6.5,22.5,0,14.5,0S0,6.5,0,14.5S6.5,29,14.5,29c3.3,0,6.5-1.2,9.1-3.2 l12.9,12.9l2.1-2.1L25.8,23.6z M14.5,3C20.8,3,26,8.2,26,14.5S20.8,26,14.5,26S3,20.8,3,14.5S8.2,3,14.5,3z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </form>
+                    <h3 class="text-primary fw-bold mb-3">Products</h3>
+                    <ul class="columnize column-gap--xl d-block ps-0">
+                        <li class="mb-2">
+                            <a href="#" class="d-block pb-1">Vegetables</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#" class="d-block pb-1">Fruit</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#" class="d-block pb-1">Dairy</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#" class="d-block pb-1">Organic</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#" class="d-block pb-1">Meat</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#" class="d-block pb-1">Specialty</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#" class="d-block pb-1">Local</a>
+                        </li>
+                    </ul>
+                    <hr>
+                    <ul class="d-block ps-0">
+                        <li class="mb-2">
+                            <a href="/order">Order</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="/cart">Cart</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#">Account</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
 		</header>
@@ -583,8 +583,9 @@
                         <div class="bg-color--light p-3 p-sm-4 p-md-md1 p-lg-md3 p-xl-5">
                             <div class="w-1200px m-auto">
                                 <h2 class="section__heading">Seasonal Specialties</h2>
-                                <div class="row">
-                                    <div class="col-12 col-sm-6 col-md-4 col-xl-3 mb-5">
+                                <div class="slickify" data-slick='{"slidesToShow":1,"slidesToScroll":1,"mobileFirst":true,"responsive":[{"breakpoint":576,"settings":{"slidesToShow":2,"slidesToScroll":2}},{"breakpoint":768,"settings":{"slidesToShow":3,"slidesToScroll":3}},{"breakpoint":1200,"settings":{"slidesToShow":4,"slidesToScroll":4}}]}'>
+                                    <!-- <div class="col-12 col-sm-6 col-md-4 col-xl-3 mb-5"> -->
+                                    <div class="product">
                                         <div class="product__card product__card--alt">
                                             <div class="before bg-image-wrapper" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                                 <img class="bg-image" src="./img/bananas.png" alt="Card image cap">
@@ -600,32 +601,10 @@
                                                 </div>
                                                 <a href="#" class="product__button button button--outline">Add to Cart</a>
                                             </div>
-                                            <!-- Modal -->
-                                            <div class="modal modal--product fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-centered">
-                                                <div class="modal-content p-3 p-md-md1 p-lg-md3">
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    <div class="d-flex flex-column flex-md-row align-items-sm-center align-items-md-stretch">
-                                                        <div class="modal__image bg-image-wrapper before before--square">
-                                                            <img class="bg-image" src="./img/bananas.png" alt="Card image cap">
-                                                        </div>
-                                                        <div class="modal__body ps-md-3 ps-md-md1 ps-lg-md3 mt-3 mt-md-0">
-                                                            <div class="modal__title font-size--xl font-weight--700" id="exampleModalLabel">Bananas</div>
-                                                            <p class="product__sku">Product: #01882</p>
-                                                            <p class="product__availability">Available: 03/12/21 - 09/12/21</p>
-                                                            <div class="product__description">
-                                                                <p>Duis scelerisque molestie tempor. Donec et varius conset nunc sed molestie. Praesent tincidunt finibus tincidunt. Proin inus nibh vel ex tempor tristique.</p>
-                                                                <p>Quisque tristique, magna egesta posuere, dolor augue laoreet ligula, vitae egestas lacus ipsum sit amet elit.</p>
-                                                            </div>
-                                                            <a href="#" class="product__button button">Add to Cart</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                </div>
-                                            </div>
-                                          </div>
+                                        </div>
                                     </div>
-                                    <div class="col-12 col-sm-6 col-md-4 col-xl-3 mb-5">
+                                    <!-- <div class="col-12 col-sm-6 col-md-4 col-xl-3 mb-5"> -->
+                                    <div class="product">
                                         <div class="product__card product__card--alt">
                                             <div class="before bg-image-wrapper">
                                                 <img class="bg-image" src="./img/granny_smith.png" alt="Card image cap">
@@ -641,7 +620,8 @@
                                             </div>
                                           </div>
                                     </div>
-                                    <div class="col-12 col-sm-6 col-md-4 col-xl-3 mb-5">
+                                    <!-- <div class="col-12 col-sm-6 col-md-4 col-xl-3 mb-5"> -->
+                                    <div class="product">
                                         <div class="product__card product__card--alt">
                                             <div class="before bg-image-wrapper">
                                                 <img class="bg-image" src="./img/blueberries.png" alt="Card image cap">
@@ -657,7 +637,8 @@
                                             </div>
                                           </div>
                                     </div>
-                                    <div class="col-12 col-sm-6 col-md-4 col-xl-3 mb-5">
+                                    <!-- <div class="col-12 col-sm-6 col-md-4 col-xl-3 mb-5"> -->
+                                    <div class="product">
                                         <div class="product__card product__card--alt">
                                             <div class="before bg-image-wrapper">
                                                 <img class="bg-image" src="./img/asian_pears.png" alt="Card image cap">
@@ -672,6 +653,46 @@
                                                 <a href="#" class="product__button button button--outline">Add to Cart</a>
                                             </div>
                                           </div>
+                                    </div>
+                                    <!-- <div class="col-12 col-sm-6 col-md-4 col-xl-3 mb-5"> -->
+                                    <div class="product">
+                                        <div class="product__card product__card--alt">
+                                            <div class="before bg-image-wrapper">
+                                                <img class="bg-image" src="./img/blueberries.png" alt="Card image cap">
+                                            </div>
+                                            <div class="product__body pt-4">
+                                                <h5 class="product__title">Blueberries</h5>
+                                                <h6 class="product__sku">Product #02091</h6>
+                                                <div class="product__pricing product__pricing--special d-flex flex-wrap">
+                                                    <div class="price--normal">$4.99 / 2 Ct.</div>
+                                                    <div class="price--special">Next Day Price</div>
+                                                </div>
+                                                <a href="#" class="product__button button button--outline">Add to Cart</a>
+                                            </div>
+                                          </div>
+                                    </div>
+                                </div>
+                                <!-- Modal -->
+                                <div class="modal modal--product fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content p-3 p-md-md1 p-lg-md3">
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            <div class="d-flex flex-column flex-md-row align-items-sm-center align-items-md-stretch">
+                                                <div class="modal__image bg-image-wrapper before before--square">
+                                                    <img class="bg-image" src="./img/bananas.png" alt="Card image cap">
+                                                </div>
+                                                <div class="modal__body ps-md-3 ps-md-md1 ps-lg-md3 mt-3 mt-md-0">
+                                                    <div class="modal__title font-size--xl font-weight--700" id="exampleModalLabel">Bananas</div>
+                                                    <p class="product__sku">Product: #01882</p>
+                                                    <p class="product__availability">Available: 03/12/21 - 09/12/21</p>
+                                                    <div class="product__description">
+                                                        <p>Duis scelerisque molestie tempor. Donec et varius conset nunc sed molestie. Praesent tincidunt finibus tincidunt. Proin inus nibh vel ex tempor tristique.</p>
+                                                        <p>Quisque tristique, magna egesta posuere, dolor augue laoreet ligula, vitae egestas lacus ipsum sit amet elit.</p>
+                                                    </div>
+                                                    <a href="#" class="product__button button">Add to Cart</a>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

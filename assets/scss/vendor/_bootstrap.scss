@@ -90,6 +90,7 @@ body {
         }
 
         &-content {
+            border: none;
             border-radius: 0;
             margin: 1rem;
             max-width: calc(100vw - 2rem);
@@ -100,6 +101,7 @@ body {
                 max-width: calc(100vw - 2rem);
             }
         }
+
         &--product {
             .modal-dialog {
                 max-width: 960px;
@@ -136,6 +138,12 @@ body {
             }
             .product__button {
                 margin-top: 1.5rem;
+            }
+        }
+
+        &.modal--profile-product {
+            .modal-dialog {
+                max-width: 850px;
             }
         }
 
@@ -279,15 +287,98 @@ body {
         $background: $gray4;
         border-color: $background !important;
 
-        &-arrow {
-            &:before,
-            &:after {
-                border-top-color: $background !important;
-            }
-        }
         &-body {
             background: $background !important;
             color: #fff;
+        }
+    }
+    .bs-popover {
+        $background: $gray4;
+
+        &-top {
+            .popover-arrow {
+                &:before,
+                &:after {
+                    border-top-color: $background !important;
+                }
+            }
+        }
+    
+        &-bottom {
+            .popover-arrow {
+                &:before,
+                &:after {
+                    border-bottom-color: $background !important;
+                }
+            }
+        }
+    
+        &-end {
+            .popover-arrow {
+                &:before,
+                &:after {
+                    border-right-color: $background !important;
+                }
+            }
+        }
+    
+        &-start {
+            .popover-arrow {
+                &:before,
+                &:after {
+                    border-left-color: $background !important;
+                }
+            }
+        }
+    }
+
+    .tooltip {
+        $background: $gray4;
+        border-color: $background !important;
+    
+        &-inner {
+            background: $background !important;
+            color: #fff;
+            padding: 0.5rem 0.75rem;
+        }
+    }
+    .bs-tooltip {
+        $background: $gray4;
+
+        &-top {
+            .tooltip-arrow {
+                &:before,
+                &:after {
+                    border-top-color: $background !important;
+                }
+            }
+        }
+
+        &-bottom {
+            .tooltip-arrow {
+                &:before,
+                &:after {
+                    border-bottom-color: $background !important;
+                }
+            }
+        }
+
+        &-end {
+            .tooltip-arrow {
+                &:before,
+                &:after {
+                    border-right-color: $background !important;
+                }
+            }
+        }
+
+        &-start {
+            .tooltip-arrow {
+                &:before,
+                &:after {
+                    border-left-color: $background !important;
+                }
+            }
         }
     }
 

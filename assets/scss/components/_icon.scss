@@ -30,4 +30,35 @@
             transform: translate(-50%, -50%);
         }
     }
+
+    &.copy {
+        width: 18px;
+        height: 20px;
+    }
+}
+
+.heart {
+    width: 16px;
+    height: 16px;
+    background-image: url("../img/icons/heart-filled.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+}
+
+svg {
+    .fill-primary {
+        fill: $color-primary;
+    }
+}
+
+.button,
+button {
+    &:hover {
+        svg {
+            .fill-primary {
+                fill: #fff;
+            }
+        }
+    }
 }
