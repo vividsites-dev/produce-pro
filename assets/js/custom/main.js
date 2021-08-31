@@ -38,6 +38,10 @@ $(function () {
 		$(qtyInput).val(qtyCount + (qtyIncreasing ? 1 : -1));
 	});
 
+	$(".product__like").click(function(e) {
+		$(this).toggleClass("liked");		
+	});
+
 
 	// BELOW IS SOME CODE I WROTE TO ALLOW FOR PRESSING AND HOLDING INCREMENT BUTTONS
 	// PRETTY GOOD BUT SLIGHTLY BUGGY PERFORMANCE

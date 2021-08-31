@@ -165,4 +165,24 @@
             background: $orange2;
         }
     }
+
+    &__like {
+        width: 20px;
+
+        &:before {
+            content: "";
+            display: block;
+            width: 100%;
+            background-image: url("../img/icons/heart-outline.png");
+            background-size: contain;
+            background-repeat: no-repeat;
+            padding-bottom: 100%;
+        }
+
+        &.liked {
+            &:before {
+                background-image: url("../img/icons/heart-filled.png");
+            }
+        }
+    }
 }

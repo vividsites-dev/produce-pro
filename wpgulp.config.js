@@ -23,14 +23,14 @@ module.exports = {
 
 	// Style options.
 	styleSRC: './assets/scss/main.scss', // Path to main .scss file.
-	styleDestination: './dist/styles/', // Path to place the compiled CSS file. Default set to root folder.
+	styleDestination: './styles/', // Path to place the compiled CSS file. Default set to root folder.
 	outputStyle: 'compact', // Available options → 'compact' or 'compressed' or 'nested' or 'expanded'
 	errLogToConsole: true,
 	precision: 10,
 
 	// JS Custom options.
 	jsCustomSRC: './assets/js/custom/*.js', // Path to JS custom scripts folder.
-	jsCustomDestination: './dist/scripts/', // Path to place the compiled JS custom scripts file.
+	jsCustomDestination: './scripts/', // Path to place the compiled JS custom scripts file.
 	jsCustomFile: 'main', // Compiled JS custom file name. Default set to custom i.e. custom.js.
 
 	// Watch files paths.

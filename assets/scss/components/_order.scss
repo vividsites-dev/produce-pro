@@ -59,15 +59,15 @@
                 .product__inner {
                     position: relative;
 
-                    &:before {
-                        content: "♥";
-                        color: $red;
-                        font-size: 24px;
-                        position: absolute;
-                        top: 0;
-                        right: 0;
-                        z-index: 3;
-                    }
+                    // &:before {
+                    //     content: "♥";
+                    //     color: $red;
+                    //     font-size: 24px;
+                    //     position: absolute;
+                    //     top: 0;
+                    //     right: 0;
+                    //     z-index: 3;
+                    // }
                 }
             }
 
@@ -88,6 +88,13 @@
 
             &:after {
                 bottom: -25px; // this corresponds to the gutters being set to 48px. Positioning like this ensures the bottom and top faux borders are combined.
+            }
+
+            &__like {
+                position: absolute;
+                top: 0;
+                right: 0;
+                z-index: 3;
             }
         }
         .product__image {
