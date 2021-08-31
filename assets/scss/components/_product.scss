@@ -70,7 +70,7 @@
         position: relative;
         width: 96px;
 
-        button,
+        a,
         input {
             appearance: none;
         }
@@ -86,7 +86,7 @@
             color: $color-primary;
         }
 
-        button {
+        a {
             width: $button-size;
             height: $button-size;
             border-radius: 100%;
@@ -107,6 +107,7 @@
                 width: 12px;
                 height: 1px;
                 background: white;
+                pointer-events: none;
             }
 
             &:first-of-type {

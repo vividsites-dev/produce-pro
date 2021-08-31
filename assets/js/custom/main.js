@@ -27,7 +27,22 @@ $(function () {
 		});
 	});
 
-	$(".product__quantity .increment").on("click", function() {
+	for( var i = 0; i < incrementors.length; i++) {
+		incrementors[i].addEventListener("click", function(e) {
+			e.preventDefault();
+			qtyIncreasing = (this.classList.contains("decrease") ? false : true);
+			qtyInput = this.parentNode.querySelector("input");
+			qtyCount = parseInt(qtyInput.value || 0);
+			console.log(this,qtyCount,e);
+			if(!qtyIncreasing && qtyCount < 1) {
+				return null;
+			};
+			qtyInput.value = (qtyCount + (qtyIncreasing ? 1 : -1));
+		});
+	}
+
+	$(".increment").click(function(e) {
+		e.preventDefault();
 		qtyIncreasing = ($(this).hasClass('decrease') ? false : true);
 		qtyInput = (qtyIncreasing ? $(this).prev() : $(this).next());
 		qtyCount = parseInt(qtyInput.val() || 0);
@@ -37,7 +52,6 @@ $(function () {
 		$(qtyInput).val(qtyCount + (qtyIncreasing ? 1 : -1));
 	});
 
-	
 
 	// BELOW IS SOME CODE I WROTE TO ALLOW FOR PRESSING AND HOLDING INCREMENT BUTTONS
 	// PRETTY GOOD BUT SLIGHTLY BUGGY PERFORMANCE
