@@ -374,8 +374,14 @@ input[type="checkbox"]:checked+label:after{opacity:1}
 .icon--question:before{content:"";display:block;height:20px;width:20px}
 .icon--question:after{content:"?";font-size:18px;font-weight:900;color:#c30;position:absolute;top:50%;left:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%)}
 .icon.copy{width:18px;height:20px}
+.icon.calendar{width:31px;height:29px}
+.icon.wrench{width:20px;height:19px}
+.icon.coupon{width:21px;height:12px}
 .heart{width:16px;height:16px;background-image:url("../img/icons/heart-filled.svg");background-repeat:no-repeat;background-size:contain;background-position:center center}
 svg .fill-primary{fill:#83bf3e}
+svg .fill-white{fill:#fff}
+svg .fill-rule-evenodd{fill-rule:evenodd}
+svg .clip-rule-evenodd{clip-rule:evenodd}
 .button:hover svg .fill-primary,button:hover svg .fill-primary{fill:#fff}
 .order__view-trigger.active{opacity:.5}
 .order__view--imagefree .product__image{display:none}

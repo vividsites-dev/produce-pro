@@ -35,6 +35,21 @@
         width: 18px;
         height: 20px;
     }
+
+    &.calendar {
+        width: 31px;
+        height: 29px;
+    }
+
+    &.wrench {
+        width: 20px;
+        height: 19px;
+    }
+
+    &.coupon {
+        width: 21px;
+        height: 12px;
+    }
 }
 
 .heart {
@@ -49,6 +64,18 @@
 svg {
     .fill-primary {
         fill: $color-primary;
+    }
+
+    .fill-white {
+        fill: #fff;
+    }
+
+    .fill-rule-evenodd {
+        fill-rule: evenodd;
+    }
+
+    .clip-rule-evenodd {
+        clip-rule: evenodd;
     }
 }
 
