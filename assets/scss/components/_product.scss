@@ -1,5 +1,5 @@
 .product {
-    $button-size: 2rem;
+    $button-size: 32px;
 
     &__card {
         height: 100%;
@@ -70,7 +70,7 @@
         position: relative;
         width: 96px;
 
-        a,
+        button,
         input {
             appearance: none;
         }
@@ -86,7 +86,7 @@
             color: $color-primary;
         }
 
-        a {
+        button {
             width: $button-size;
             height: $button-size;
             border-radius: 100%;

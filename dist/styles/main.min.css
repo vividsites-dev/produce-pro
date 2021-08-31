@@ -422,14 +422,14 @@ svg .clip-rule-evenodd{clip-rule:evenodd}
 .product__card--alt{background:transparent;-webkit-box-shadow:none;box-shadow:none}
 .product__card--alt .bg-image-wrapper:not(.modal__image):before{padding-bottom:113%}
 .product__quantity{position:relative;width:96px}
-.product__quantity a,.product__quantity input{-webkit-appearance:none;-moz-appearance:none;appearance:none}
-.product__quantity input{width:100%;height:2rem;border-radius:100px;background:#ededed;border:0;text-align:center;padding:0;color:#83bf3e}
-.product__quantity a{width:2rem;height:2rem;border-radius:100%;background:#83bf3e;color:#fff;font-size:24px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;position:absolute;top:0;border:0}
-.product__quantity a:before,.product__quantity a:after{content:"";display:block;width:12px;height:1px;background:white;pointer-events:none}
-.product__quantity a:first-of-type{left:0}
-.product__quantity a:first-of-type:after{display:none}
-.product__quantity a:last-of-type{right:0}
-.product__quantity a:last-of-type:after{position:absolute;-webkit-transform:rotate(90deg);transform:rotate(90deg)}
+.product__quantity button,.product__quantity input{-webkit-appearance:none;-moz-appearance:none;appearance:none}
+.product__quantity input{width:100%;height:32px;border-radius:100px;background:#ededed;border:0;text-align:center;padding:0;color:#83bf3e}
+.product__quantity button{width:32px;height:32px;border-radius:100%;background:#83bf3e;color:#fff;font-size:24px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;position:absolute;top:0;border:0}
+.product__quantity button:before,.product__quantity button:after{content:"";display:block;width:12px;height:1px;background:white;pointer-events:none}
+.product__quantity button:first-of-type{left:0}
+.product__quantity button:first-of-type:after{display:none}
+.product__quantity button:last-of-type{right:0}
+.product__quantity button:last-of-type:after{position:absolute;-webkit-transform:rotate(90deg);transform:rotate(90deg)}
 .product__tag{font-family:"alternate-gothic-no-2-d","Helvetica Neue",sans-serif;text-transform:uppercase;letter-spacing:.05em;color:#fff;background:#aaa;font-size:15px;line-height:1;padding:4px 8px 1px;border-radius:40px;margin-bottom:6px}
 .product__tag:not(:last-of-type){margin-right:6px}
 .product__tag--fresh{background:#c30}

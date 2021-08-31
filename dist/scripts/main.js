@@ -28,24 +28,6 @@ $(function () {
       $("#mobile_menu_toggle").removeClass("active");
     });
   });
-
-  for (var i = 0; i < incrementors.length; i++) {
-    incrementors[i].addEventListener("click", function (e) {
-      e.preventDefault();
-      qtyIncreasing = this.classList.contains("decrease") ? false : true;
-      qtyInput = this.parentNode.querySelector("input");
-      qtyCount = parseInt(qtyInput.value || 0);
-      console.log(this, qtyCount, e);
-
-      if (!qtyIncreasing && qtyCount < 1) {
-        return null;
-      }
-
-      ;
-      qtyInput.value = qtyCount + (qtyIncreasing ? 1 : -1);
-    });
-  }
-
   $(".increment").click(function (e) {
     e.preventDefault();
     qtyIncreasing = $(this).hasClass('decrease') ? false : true;
