@@ -102,23 +102,122 @@
                 right: 1.2vw;
             }
         }
-
         
-        & > div {
+        .date__inner,
+        .date__mobile {
             position: absolute;
             top: 0;
             bottom: 0;
             left: 0;
             right: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
             
-            & > a {
-                width: 100%;
-                height: 100%;
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-                justify-content: center;
-                padding: 20px;
+            a {
+                display: block;
+                padding: 0.25rem 0;
+                line-height: 1;
+                position: relative;
+                padding-left: 0.625em;
+                font-weight: bold;
+
+                &:before {
+                    content: "#";
+                    position: absolute;
+                    top: 4px;
+                    left: 0;
+                }
+            }
+        }
+
+        .date__inner {
+            padding: 20px;
+
+            &:before {
+                content: "Sales Order"
+            }
+        }
+
+        .date__mobile {
+            padding: 16px;
+            z-index: 3;
+
+            .dropdown-toggle {
+                color: #fff;
+                max-width: 100%;
+                white-space: normal;
+                text-align: left;
+                line-height: 1.2;
+                position: relative;
+
+                &:after {
+                    width: 8px;
+                    height: 8px;
+                    border-left: none;
+                    border-top: none;
+                    border-right: solid 2px white;
+                    border-bottom: solid 2px white;
+                    transform: rotate(45deg);
+                    position: absolute;
+                    right: 0;
+                    bottom: 7px;
+                    margin: 0;
+                }
+
+                @media (min-width: $breakpoint-m) {
+                    display: flex;
+                    align-items: flex-end;
+                    justify-content: flex-start;
+                    padding-right: 1em;
+                }
+
+                @media (max-width: $breakpoint-m - 0.1) {
+                    text-indent: -200vw;
+                    min-width: 80%;
+                    min-height: 80%;
+                    justify-content: center;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+
+                    &:after {
+                        right: 50%;
+                        bottom: 50%;
+                        transform: translate(50%, 50%) rotate(45deg);
+                        width: 2vw;
+                        height: 2vw;
+                    }
+                }
+
+                @media (max-width: $breakpoint-s - 0.1) {
+                    &:after {
+                        display: none;
+                    }
+                }
+            }
+
+            .dropdown-menu {
+                padding: 1rem;
+                border: none;
+                box-shadow: 0 0 15px -5px rgba(0,0,0,0.4);
+
+                &:before {
+                    content: "Sales Order(s)";
+                    display: block;
+                    padding-bottom: 0.25rem;
+                    margin-bottom: 0.5rem;
+                    @extend .blocktext;
+                    font-size: 18px;
+                    color: $color-secondary;
+                    border-bottom: solid 1px $gray2;
+                }
+
+                a {
+                    color: $color-primary;
+                }
             }
         }
         
@@ -136,21 +235,14 @@
             }
         }
         @media (max-width: 1000px) {
-            a {
-                font-size: 1.6vw;
-            }
-
-            & > div > a {
+            .date__inner,
+            .date__mobile {
                 padding: 2vw;
-                align-items: center;
+            }
+
+            .dropdown-toggle {
+                font-size: calc(8px + 0.8vw);
             }
         }
-
-        @media (max-width: 767px) {
-            a {
-                opacity: 0;
-            }
-        }
-
     }
 }

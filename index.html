@@ -26,35 +26,39 @@
             const orders = [
                 {
                     date:"20210831",
-                    order:"#16648390"
+                    order:"16648390"
                 },
                 {
                     date:"20210905",
-                    order:"#16648390"
+                    order:"16648390"
                 },
                 {
                     date:"20210909",
-                    order:"#00651954"
+                    order:"00651954"
                 },
                 {
                     date:"20210918",
-                    order:"#32975168"
+                    order:"32975168"
                 },
                 {
                     date:"20210923",
-                    order:"#9999999"
+                    order:"9999999"
+                },
+                {
+                    date:"20210923",
+                    order:"111111111111"
                 },
                 {
                     date:"20210928",
-                    order:"#8888888"
+                    order:"8888888"
                 },
                 {
                     date:"20211002",
-                    order:"#7777777"
+                    order:"7777777"
                 },
                 {
                     date:"20211017",
-                    order:"#6666666"
+                    order:"6666666"
                 },
             ];
 
@@ -82,13 +86,32 @@
                 for (let i = 0; i < orders.length; i++) {
                     const date = document.querySelector(".calendar__date[data-date='" + orders[i].date + "']");
                     if(date) {
-                        const inner = document.createElement("div");
+                        const innerExists = date.querySelector(".date__inner");
+                        const inner = ( innerExists ? innerExists : document.createElement("div") );
+                        const mobile = ( innerExists ? date.querySelector(".date__mobile") : document.createElement("div") );
+                        const dropdown = ( innerExists ? date.querySelector(".date__dropdown") : document.createElement("div") );
+                        if( !innerExists ) {
+                            inner.classList.add("date__inner", "d-none", "d-xl-flex");
+                            mobile.classList.add("date__mobile", "dropdown", "show", "d-flex", "d-xl-none");
+                            dropdown.classList.add("date__dropdown", "dropdown-menu");
+                            date.appendChild(inner);
+                            date.appendChild(mobile);
+                            const dropdownToggle = document.createElement("button");
+                            dropdownToggle.classList.add("dropdown-toggle");
+                            dropdownToggle.setAttribute("data-bs-toggle", "dropdown");
+                            dropdownToggle.setAttribute("aria-haspopup", "true");
+                            dropdownToggle.setAttribute("aria-expanded", "false");
+                            dropdownToggle.type = "button";
+                            dropdownToggle.innerText = "Sales Order";
+                            mobile.appendChild(dropdownToggle);
+                            mobile.appendChild(dropdown);
+                        }
                         const orderLink = document.createElement("a");
                         orderLink.setAttribute("data-bs-toggle", "modal");
                         orderLink.setAttribute("data-bs-target", "#order_modal");
-                        orderLink.innerHTML = "Sales Order<br /><strong>" + orders[i].order + "</strong>";
+                        orderLink.innerText = orders[i].order;
                         inner.appendChild(orderLink);
-                        date.appendChild(inner);                        
+                        dropdown.appendChild(orderLink.cloneNode(true));
                         date.classList.add("calendar__date--active");
                     }
                 }
@@ -436,7 +459,7 @@
                                     <h2 class="section__heading">Announcements</h2>
                                     <p>Welcome to our ordering system! Maecenas tristique vitae turpis in imperdiet. Etiam sed ante neque. Nam sed tortor et nec felis cursus lobortis. Nam laoreet erat at turpis tincidunt, non mattis ex suscipit. Sed sed ex faucibus, pulvinar neque et, fringilla orci duis vel enim leo. Donec sit amet nisi bibendum, posuere proin eres sus et libero sed, congue justo aliquam et rhoncus metus. Aliquam laoreet non quam eu elementum. Vestibulum et euismod massa, at tincidunt eros suspendisse tempor nibh egestas tincidunt commodo aliquam erat volutpat.</p>
                                 </div>
-                                <button type="button" class="btn-close btn-close-white border border-dark rounded-circle p-2 m-3" data-bs-dismiss="alert" aria-label="Close"></button>
+                                <button type="button" class="btn-close btn-close-white border rounded-circle p-2 m-3" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                         </div>
                     </div>

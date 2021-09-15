@@ -1,4 +1,28 @@
 body {
+    .btn-close {
+        position: relative;
+        filter: none;
+
+        &:before,
+        &:after {
+            content: "";
+            display: block;
+            width: 16px;
+            height: 1px;
+            background: white;
+            position: absolute;
+            top: 50%;
+        }
+
+        &:before {
+            transform: rotate(45deg);
+        }
+
+        &:after {
+            transform: rotate(-45deg);
+        }
+    }
+
     .border-primary {
         border-color: $color-primary !important;
     }
@@ -81,6 +105,10 @@ body {
         height: 1rem;
         margin: 0 0.5rem;
         border-radius: 100%;
+    }
+
+    &.modal-open {
+        padding-right: 0 !important;
     }
 
     .modal {
@@ -193,22 +221,7 @@ body {
 
             &:before,
             &:after {
-                content: "";
-                display: block;
-                width: 16px;
-                height: 1px;
-                background: white;
-                position: absolute;
-                top: 50%;
                 left: 4px;
-            }
-
-            &:before {
-                transform: rotate(45deg);
-            }
-
-            &:after {
-                transform: rotate(-45deg);
             }
         }
     }
