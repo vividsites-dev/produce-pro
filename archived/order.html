@@ -611,7 +611,7 @@
                                         </svg>
                                     </a>
                                     <div class="nav d-none d-md-block" role="tablist">
-                                        <a href="#order_view_grid" class="order__view-trigger" data-view="grid" aria-selected="false">
+                                        <a href="#order_view_grid" class="order__view-trigger" data-view="grid" data-bs-toggle="tab" role="tab" aria-controls="order_view_grid" aria-selected="false">
                                             <svg version="1.1" class="icon order-view grid" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 46.9 45.5" style="enable-background:new 0 0 46.9 45.5;" xml:space="preserve">
                                                 <rect width="19.5" height="19.5"/>
                                                 <rect x="27.3" width="19.5" height="19.5"/>
@@ -619,14 +619,14 @@
                                                 <rect x="27.3" y="26" width="19.5" height="19.5"/>
                                             </svg>
                                         </a>
-                                        <a href="#order_view_list" class="order__view-trigger ms-2" data-view="list" aria-selected="false">
+                                        <a href="#order_view_list" class="order__view-trigger ms-2" data-view="list" data-bs-toggle="tab" role="tab" aria-controls="order_view_list" aria-selected="false">
                                             <svg version="1.1" class="icon order-view list" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 46.9 45.5" style="enable-background:new 0 0 46.9 45.5;" xml:space="preserve">
                                                 <rect width="46.9" height="9.8"/>
                                                 <rect y="35.7" width="46.9" height="9.8"/>
                                                 <rect y="17.9" width="46.9" height="9.8"/>
                                             </svg>
                                         </a>
-                                        <a href="#order_view_list" class="order__view-trigger ms-2 active" data-view="list+" aria-selected="true">
+                                        <a href="#order_view_list" class="order__view-trigger ms-2 active" data-view="list+" data-bs-toggle="tab" role="tab" aria-controls="order_view_list" aria-selected="true">
                                             <svg version="1.1" class="icon order-view list2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 46.9 45.5" style="enable-background:new 0 0 46.9 45.5;" xml:space="preserve">
                                                 <rect x="15" width="31.9" height="9.8"/>
                                                 <rect x="15" y="35.7" width="31.9" height="9.8"/>
@@ -872,140 +872,144 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="order__content col-auto flex-grow-1" data-view="list+">
-                                    <div class="list__header d-flex">
-                                        <div scope="col">Item #</div>
-                                        <div scope="col">Description</div>
-                                        <div scope="col">Avail.<br>Qty</div>
-                                        <div scope="col">Price</div>
-                                        <div scope="col">Order</div>
-                                        <div scope="col">Retail<br>Price</div>
-                                        <div scope="col">Margin</div>
-                                        <div scope="col">Pack</div>
-                                        <div scope="col">Gross<br>Sales</div>
-                                        <div></div>
-                                    </div>
-                                    <div class="list__content">
-                                        <div class="product">
-                                            <div class="product__inner d-flex">
-                                                <div class="product__id">#06107</div>
-                                                <div class="product__quickview">
-                                                    <div class="d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#example_profile_item">
-                                                        <div class="product__image bg-image-wrapper before before--square me-3">
-                                                            <img src="./img/apple.png" class="bg-image bg-image--contain" />
-                                                        </div>
-                                                        <div class="w-200px">
-                                                            <h6 class="text-color--gray5 font-weight--700">Braeburn Apples XF 100 Ct.</h6>
-                                                            <div class="d-flex flex-wrap">
-                                                                <div class="product__tag product__tag--fresh">Fresh</div>
-                                                                <div class="product__tag product__tag--local">Local</div>
-                                                                <div class="product__tag product__tag--year-round">Year Round</div>
-                                                                <div class="product__tag product__tag--organic">Organic</div>
+                                <div class="order__content col-auto flex-grow-1 tab-content">
+                                    <div id="order_view_list" class="order__view order__list tab-pane fade show active table__wrapper overflow-auto" role="tabpanel">
+                                        <table class="table">
+                                            <thead class="bg-color--light">
+                                                <tr>
+                                                    <th scope="col">Item #</th>
+                                                    <th scope="col">Description</th>
+                                                    <th scope="col">Avail.<br>Qty</th>
+                                                    <th scope="col">Price</th>
+                                                    <th scope="col">Order</th>
+                                                    <th scope="col">Retail<br>Price</th>
+                                                    <th scope="col">Margin</th>
+                                                    <th scope="col">Pack</th>
+                                                    <th scope="col">Gross<br>Sales</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>#06107</td>
+                                                    <td>
+                                                        <div class="d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#example_profile_item">
+                                                            <div class="product__image bg-image-wrapper before before--square me-3">
+                                                                <img src="./img/apple.png" class="bg-image bg-image--contain" />
+                                                            </div>
+                                                            <div class="w-200px">
+                                                                <h6 class="text-color--gray5 font-weight--700">Braeburn Apples XF 100 Ct.</h6>
+                                                                <div class="d-flex flex-wrap">
+                                                                    <div class="product__tag product__tag--fresh">Fresh</div>
+                                                                    <div class="product__tag product__tag--local">Local</div>
+                                                                    <div class="product__tag product__tag--year-round">Year Round</div>
+                                                                    <div class="product__tag product__tag--organic">Organic</div>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="modal modal--profile-product fade" id="example_profile_item" tabindex="-1" aria-hidden="true">
-                                                        <div class="modal-dialog modal-dialog-centered modal-lg">
-                                                            <div class="modal-content p-4">
-                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                <div class="modal-body">
-                                                                    <div class="row">
-                                                                        <div class="col-12 col-md-4 col-lg-6 d-flex align-items-center justify-content-center">
-                                                                            <div class="bg-image-wrapper align-self-start before before--square w-100 w-400px">
-                                                                                <img src="./img/apple.png" class="bg-image bg-image--contain" />
+                                                        <div class="modal modal--profile-product fade" id="example_profile_item" tabindex="-1" aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered modal-lg">
+                                                                <div class="modal-content p-4">
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                    <div class="modal-body">
+                                                                        <div class="row">
+                                                                            <div class="col-12 col-md-4 col-lg-6 d-flex align-items-center justify-content-center">
+                                                                                <div class="bg-image-wrapper align-self-start before before--square w-100 w-400px">
+                                                                                    <img src="./img/apple.png" class="bg-image bg-image--contain" />
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col text-color--gray4">
+                                                                                <h2 class="font-size--xl font-weight--800 text-color--gray5 mb-4 mt-3 mt-md-0">Braeburn Apples XF 100 Ct.</h2>
+                                                                                <div class="product__price mb-4">Product: #06107</div>
+                                                                                <div class="product__availability text-secondary font-size--s font-weight--700 py-2 border-top border-bottom">Available: Year Round</div>
+                                                                                <div class="product__quantity my-4">
+                                                                                     <button class="increment decrease"></button>
+                                                                                    <input type="number" value="1" />
+                                                                                     <button class="increment increase"></button>
+                                                                                </div>
+                                                                                <div class="product__description">
+                                                                                    <p>Pellentesque efficitur, nisi eu imperdiet euismod, urna neque ornare justo, ac elementum libero nisl ut felis. Suspendisse sit amet et eros est. Sed tempus nibh non ornare ultrices. Praesent tempus, lectus ac placerat tempor, augue dui a dignissim quam, sit amet pretium est tortor in sem.</p>
+                                                                                </div>
+                                                                                <a href="#" class="button button--outline mt-4">Remove from profile</a>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="col text-color--gray4">
-                                                                            <h2 class="font-size--xl font-weight--800 text-color--gray5 mb-4 mt-3 mt-md-0">Braeburn Apples XF 100 Ct.</h2>
-                                                                            <div class="product__price mb-4">Product: #06107</div>
-                                                                            <div class="product__availability text-secondary font-size--s font-weight--700 py-2 border-top border-bottom">Available: Year Round</div>
-                                                                            <div class="product__quantity my-4">
-                                                                                    <button class="increment decrease"></button>
-                                                                                <input type="number" value="1" />
-                                                                                    <button class="increment increase"></button>
-                                                                            </div>
-                                                                            <div class="product__description">
-                                                                                <p>Pellentesque efficitur, nisi eu imperdiet euismod, urna neque ornare justo, ac elementum libero nisl ut felis. Suspendisse sit amet et eros est. Sed tempus nibh non ornare ultrices. Praesent tempus, lectus ac placerat tempor, augue dui a dignissim quam, sit amet pretium est tortor in sem.</p>
-                                                                            </div>
-                                                                            <a href="#" class="button button--outline mt-4">Remove from profile</a>
-                                                                        </div>
-                                                                    </div>
-                                                                    <hr>
-                                                                    <div class="cross-sales mt-4">
-                                                                        <h4 class="blocktext">Related Products</h4>
-                                                                        <div class="cross-sales__list row row-cols-2 row-cols-sm-3 row-cols-md-4 mt-4">
-                                                                            <div class="cross-sale border-end">
-                                                                                <div class="h-100 d-flex flex-column px-1">
-                                                                                    <div class="bg-image-wrapper before before--80">
-                                                                                        <img src="./img/golden_delicious.png" class="bg-image bg-image--contain" />
-                                                                                    </div>
-                                                                                    <h6 class="font-weight--700 mt-2">Golden Delicious Apples XF 56/64 Ct.</h6>
-                                                                                    <div class="text-color--gray4">Product #02628</div>
-                                                                                    <div class="text-color--gray4">$66.70</div>
-                                                                                    <div class="d-flex flex-wrap mt-3 mb-4">
-                                                                                        <div class="product__tag product__tag--fresh">Fresh</div>
-                                                                                        <div class="product__tag product__tag--local">Local</div>
-                                                                                    </div>
-                                                                                    <div class="product__quantity my-auto mb-0">
-                                                                                            <button class="increment decrease"></button>
-                                                                                        <input type="number" value="0" />
-                                                                                            <button class="increment increase"></button>
+                                                                        <hr>
+                                                                        <div class="cross-sales mt-4">
+                                                                            <h4 class="blocktext">Related Products</h4>
+                                                                            <div class="cross-sales__list row row-cols-2 row-cols-sm-3 row-cols-md-4 mt-4">
+                                                                                <div class="cross-sale border-end">
+                                                                                    <div class="h-100 d-flex flex-column px-1">
+                                                                                        <div class="bg-image-wrapper before before--80">
+                                                                                            <img src="./img/golden_delicious.png" class="bg-image bg-image--contain" />
+                                                                                        </div>
+                                                                                        <h6 class="font-weight--700 mt-2">Golden Delicious Apples XF 56/64 Ct.</h6>
+                                                                                        <div class="text-color--gray4">Product #02628</div>
+                                                                                        <div class="text-color--gray4">$66.70</div>
+                                                                                        <div class="d-flex flex-wrap mt-3 mb-4">
+                                                                                            <div class="product__tag product__tag--fresh">Fresh</div>
+                                                                                            <div class="product__tag product__tag--local">Local</div>
+                                                                                        </div>
+                                                                                        <div class="product__quantity my-auto mb-0">
+                                                                                             <button class="increment decrease"></button>
+                                                                                            <input type="number" value="0" />
+                                                                                             <button class="increment increase"></button>
+                                                                                        </div>
                                                                                     </div>
                                                                                 </div>
-                                                                            </div>
-                                                                            <div class="cross-sale border-end border-right-remove@sm">
-                                                                                <div class="h-100 d-flex flex-column px-1">
-                                                                                    <div class="bg-image-wrapper before before--80">
-                                                                                        <img src="./img/granny_smith2.png" class="bg-image bg-image--contain" />
-                                                                                    </div>
-                                                                                    <h6 class="font-weight--700 mt-2">Granny Smith Apples 56/64 Ct.</h6>
-                                                                                    <div class="text-color--gray4">Product #02611</div>
-                                                                                    <div class="text-color--gray4">$64.41</div>
-                                                                                    <div class="d-flex flex-wrap mt-3 mb-4">
-                                                                                        <div class="product__tag product__tag--local">Local</div>
-                                                                                    </div>
-                                                                                    <div class="product__quantity my-auto mb-0">
-                                                                                            <button class="increment decrease"></button>
-                                                                                        <input type="number" value="0" />
-                                                                                            <button class="increment increase"></button>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="cross-sale border-end border-right-remove@md d-none d-sm-block">
-                                                                                <div class="h-100 d-flex flex-column px-1">
-                                                                                    <div class="bg-image-wrapper before before--80">
-                                                                                        <img src="./img/gala.png" class="bg-image bg-image--contain" />
-                                                                                    </div>
-                                                                                    <h6 class="font-weight--700 mt-2">Gala Apples 100/113 Ct.</h6>
-                                                                                    <div class="text-color--gray4">Product #02624</div>
-                                                                                    <div class="text-color--gray4">$7.00</div>
-                                                                                    <div class="d-flex flex-wrap mt-3 mb-4">
-                                                                                        <div class="product__tag product__tag--local">Local</div>
-                                                                                        <div class="product__tag product__tag--year-round">Year Round</div>
-                                                                                    </div>
-                                                                                    <div class="product__quantity my-auto mb-0">
-                                                                                            <button class="increment decrease"></button>
-                                                                                        <input type="number" value="0" />
-                                                                                            <button class="increment increase"></button>
+                                                                                <div class="cross-sale border-end border-right-remove@sm">
+                                                                                    <div class="h-100 d-flex flex-column px-1">
+                                                                                        <div class="bg-image-wrapper before before--80">
+                                                                                            <img src="./img/granny_smith2.png" class="bg-image bg-image--contain" />
+                                                                                        </div>
+                                                                                        <h6 class="font-weight--700 mt-2">Granny Smith Apples 56/64 Ct.</h6>
+                                                                                        <div class="text-color--gray4">Product #02611</div>
+                                                                                        <div class="text-color--gray4">$64.41</div>
+                                                                                        <div class="d-flex flex-wrap mt-3 mb-4">
+                                                                                            <div class="product__tag product__tag--local">Local</div>
+                                                                                        </div>
+                                                                                        <div class="product__quantity my-auto mb-0">
+                                                                                             <button class="increment decrease"></button>
+                                                                                            <input type="number" value="0" />
+                                                                                             <button class="increment increase"></button>
+                                                                                        </div>
                                                                                     </div>
                                                                                 </div>
-                                                                            </div>
-                                                                            <div class="cross-sale d-none d-md-block">
-                                                                                <div class="h-100 d-flex flex-column px-1">
-                                                                                    <div class="bg-image-wrapper before before--80">
-                                                                                        <img src="./img/asian_pear.png" class="bg-image bg-image--contain" />
+                                                                                <div class="cross-sale border-end border-right-remove@md d-none d-sm-block">
+                                                                                    <div class="h-100 d-flex flex-column px-1">
+                                                                                        <div class="bg-image-wrapper before before--80">
+                                                                                            <img src="./img/gala.png" class="bg-image bg-image--contain" />
+                                                                                        </div>
+                                                                                        <h6 class="font-weight--700 mt-2">Gala Apples 100/113 Ct.</h6>
+                                                                                        <div class="text-color--gray4">Product #02624</div>
+                                                                                        <div class="text-color--gray4">$7.00</div>
+                                                                                        <div class="d-flex flex-wrap mt-3 mb-4">
+                                                                                            <div class="product__tag product__tag--local">Local</div>
+                                                                                            <div class="product__tag product__tag--year-round">Year Round</div>
+                                                                                        </div>
+                                                                                        <div class="product__quantity my-auto mb-0">
+                                                                                             <button class="increment decrease"></button>
+                                                                                            <input type="number" value="0" />
+                                                                                             <button class="increment increase"></button>
+                                                                                        </div>
                                                                                     </div>
-                                                                                    <h6 class="font-weight--700 mt-2">Asian Pears 8/12 Ct.</h6>
-                                                                                    <div class="text-color--gray4">Product #02813</div>
-                                                                                    <div class="text-color--gray4">$6.45</div>
-                                                                                    <div class="d-flex flex-wrap mt-3 mb-4">
-                                                                                        <div class="product__tag product__tag--fresh">Fresh</div>
-                                                                                        <div class="product__tag product__tag--organic">Organic</div>
-                                                                                    </div>
-                                                                                    <div class="product__quantity my-auto mb-0">
-                                                                                            <button class="increment decrease"></button>
-                                                                                        <input type="number" value="0" />
-                                                                                            <button class="increment increase"></button>
+                                                                                </div>
+                                                                                <div class="cross-sale d-none d-md-block">
+                                                                                    <div class="h-100 d-flex flex-column px-1">
+                                                                                        <div class="bg-image-wrapper before before--80">
+                                                                                            <img src="./img/asian_pear.png" class="bg-image bg-image--contain" />
+                                                                                        </div>
+                                                                                        <h6 class="font-weight--700 mt-2">Asian Pears 8/12 Ct.</h6>
+                                                                                        <div class="text-color--gray4">Product #02813</div>
+                                                                                        <div class="text-color--gray4">$6.45</div>
+                                                                                        <div class="d-flex flex-wrap mt-3 mb-4">
+                                                                                            <div class="product__tag product__tag--fresh">Fresh</div>
+                                                                                            <div class="product__tag product__tag--organic">Organic</div>
+                                                                                        </div>
+                                                                                        <div class="product__quantity my-auto mb-0">
+                                                                                             <button class="increment decrease"></button>
+                                                                                            <input type="number" value="0" />
+                                                                                             <button class="increment increase"></button>
+                                                                                        </div>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -1014,264 +1018,470 @@
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                    </td>
+                                                    <td>76</td>
+                                                    <td>$14.27</td>
+                                                    <td>
+                                                        <div class="product__quantity">
+                                                             <button class="increment decrease"></button>
+                                                            <input type="number" value="0" />
+                                                             <button class="increment increase"></button>
+                                                        </div>
+                                                    </td>
+                                                    <td>$1.49</td>
+                                                    <td>51.90%</td>
+                                                    <td>30</td>
+                                                    <td>$89.40</td>
+                                                    <td class="text-color--red font-size--m"><div class="product__like liked" type="button"></div></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>#06107</td>
+                                                    <td>
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="product__image bg-image-wrapper before before--square me-3">
+                                                                <img src="./img/garlic.png" class="bg-image bg-image--contain" />
+                                                            </div>
+                                                            <div class="w-200px">
+                                                                <h6 class="text-color--gray5 font-weight--700">Jumbo Garlic 30#</h6>
+                                                                <div class="d-flex flex-wrap">
+                                                                    <div class="product__tag product__tag--fresh">Fresh</div>
+                                                                    <div class="product__tag product__tag--local">Local</div>
+                                                                    <div class="product__tag product__tag--year-round">Year Round</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>76</td>
+                                                    <td>$14.27</td>
+                                                    <td>
+                                                        <div class="product__quantity">
+                                                             <button class="increment decrease"></button>
+                                                            <input type="number" value="0" />
+                                                             <button class="increment increase"></button>
+                                                        </div>
+                                                    </td>
+                                                    <td>$1.49</td>
+                                                    <td>51.90%</td>
+                                                    <td>30</td>
+                                                    <td>$89.40</td>
+                                                    <td class="text-color--red font-size--m"><div class="product__like liked" type="button"></div></td>                                                </tr>
+                                                <tr>
+                                                    <td>#06107</td>
+                                                    <td>
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="product__image bg-image-wrapper before before--square me-3">
+                                                                <img src="./img/red_pepper.png" class="bg-image bg-image--contain" />
+                                                            </div>
+                                                            <div class="w-200px">
+                                                                <h6 class="text-color--gray5 font-weight--700">Large Red Bell Peppers 25#</h6>
+                                                                <div class="d-flex flex-wrap">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>76</td>
+                                                    <td>$14.27</td>
+                                                    <td>
+                                                        <div class="product__quantity">
+                                                             <button class="increment decrease"></button>
+                                                            <input type="number" value="0" />
+                                                             <button class="increment increase"></button>
+                                                        </div>
+                                                    </td>
+                                                    <td>$1.49</td>
+                                                    <td>51.90%</td>
+                                                    <td>30</td>
+                                                    <td>$89.40</td>
+                                                    <td class="text-color--red font-size--m"><div class="product__like liked" type="button"></div></td>                                                </tr>
+                                                <tr>
+                                                    <td>#06107</td>
+                                                    <td>
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="product__image bg-image-wrapper before before--square me-3">
+                                                                <img src="./img/bananas2.png" class="bg-image bg-image--contain" />
+                                                            </div>
+                                                            <div class="w-200px">
+                                                                <h6 class="text-color--gray5 font-weight--700">Petite Ripe Bananas 40#</h6>
+                                                                <div class="d-flex flex-wrap">
+                                                                    <div class="product__tag product__tag--fresh">Fresh</div>
+                                                                    <div class="product__tag product__tag--year-round">Year Round</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>76</td>
+                                                    <td>$14.27</td>
+                                                    <td>
+                                                        <div class="product__quantity">
+                                                             <button class="increment decrease"></button>
+                                                            <input type="number" value="0" />
+                                                             <button class="increment increase"></button>
+                                                        </div>
+                                                    </td>
+                                                    <td>$1.49</td>
+                                                    <td>51.90%</td>
+                                                    <td>30</td>
+                                                    <td>$89.40</td>
+                                                    <td class="text-color--red font-size--m"><div class="product__like liked" type="button"></div></td>                                                </tr>
+                                                <tr>
+                                                    <td>#06107</td>
+                                                    <td>
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="product__image bg-image-wrapper before before--square me-3">
+                                                                <img src="./img/watermelon.png" class="bg-image bg-image--contain" />
+                                                            </div>
+                                                            <div class="w-200px">
+                                                                <h6 class="text-color--gray5 font-weight--700">Seedless Watermelon</h6>
+                                                                <div class="d-flex flex-wrap">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>76</td>
+                                                    <td>$14.27</td>
+                                                    <td>
+                                                        <div class="product__quantity">
+                                                             <button class="increment decrease"></button>
+                                                            <input type="number" value="0" />
+                                                             <button class="increment increase"></button>
+                                                        </div>
+                                                    </td>
+                                                    <td>$1.49</td>
+                                                    <td>51.90%</td>
+                                                    <td>30</td>
+                                                    <td>$89.40</td>
+                                                    <td class="text-color--red font-size--m"><div class="product__like liked" type="button"></div></td>                                                </tr>
+                                                <tr>
+                                                    <td>#06107</td>
+                                                    <td>
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="product__image bg-image-wrapper before before--square me-3">
+                                                                <img src="./img/lemons.png" class="bg-image bg-image--contain" />
+                                                            </div>
+                                                            <div class="w-200px">
+                                                                <h6 class="text-color--gray5 font-weight--700">Choice Lemons 95 Ct.</h6>
+                                                                <div class="d-flex flex-wrap">
+                                                                    <div class="product__tag product__tag--limited">Limited</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>76</td>
+                                                    <td>$14.27</td>
+                                                    <td>
+                                                        <div class="product__quantity">
+                                                             <button class="increment decrease"></button>
+                                                            <input type="number" value="0" />
+                                                             <button class="increment increase"></button>
+                                                        </div>
+                                                    </td>
+                                                    <td>$1.49</td>
+                                                    <td>51.90%</td>
+                                                    <td>30</td>
+                                                    <td>$89.40</td>
+                                                    <td class="text-color--red font-size--m"><div class="product__like liked" type="button"></div></td>                                                </tr>
+                                                <tr>
+                                                    <td>#06107</td>
+                                                    <td>
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="product__image bg-image-wrapper before before--square me-3">
+                                                                <img src="./img/oranges.png" class="bg-image bg-image--contain" />
+                                                            </div>
+                                                            <div class="w-200px">
+                                                                <h6 class="text-color--gray5 font-weight--700">Choice Oranges 56 Ct.</h6>
+                                                                <div class="d-flex flex-wrap">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>76</td>
+                                                    <td>$14.27</td>
+                                                    <td>
+                                                        <div class="product__quantity">
+                                                             <button class="increment decrease"></button>
+                                                            <input type="number" value="0" />
+                                                             <button class="increment increase"></button>
+                                                        </div>
+                                                    </td>
+                                                    <td>$1.49</td>
+                                                    <td>51.90%</td>
+                                                    <td>30</td>
+                                                    <td>$89.40</td>
+                                                    <td class="text-color--red font-size--m"><div class="product__like liked" type="button"></div></td>                                                </tr>
+                                                <tr>
+                                                    <td>#06107</td>
+                                                    <td>
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="product__image bg-image-wrapper before before--square me-3">
+                                                                <img src="./img/celery.png" class="bg-image bg-image--contain" />
+                                                            </div>
+                                                            <div class="w-200px">
+                                                                <h6 class="text-color--gray5 font-weight--700">Celery 36 Ct.</h6>
+                                                                <div class="d-flex flex-wrap">
+                                                                    <div class="product__tag product__tag--local">Local</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>76</td>
+                                                    <td>$14.27</td>
+                                                    <td>
+                                                        <div class="product__quantity">
+                                                             <button class="increment decrease"></button>
+                                                            <input type="number" value="0" />
+                                                             <button class="increment increase"></button>
+                                                        </div>
+                                                    </td>
+                                                    <td>$1.49</td>
+                                                    <td>51.90%</td>
+                                                    <td>30</td>
+                                                    <td>$89.40</td>
+                                                    <td class="text-color--red font-size--m"><div class="product__like liked" type="button"></div></td>                                                </tr>
+                                                <tr>
+                                                    <td>#06107</td>
+                                                    <td>
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="product__image bg-image-wrapper before before--square me-3">
+                                                                <img src="./img/arugula.png" class="bg-image bg-image--contain" />
+                                                            </div>
+                                                            <div class="w-200px">
+                                                                <h6 class="text-color--gray5 font-weight--700">Organic Arugula 24 Ct.</h6>
+                                                                <div class="d-flex flex-wrap">
+                                                                    <div class="product__tag product__tag--limited">Limited</div>
+                                                                    <div class="product__tag product__tag--special">Special Order</div>
+                                                                    <div class="product__tag product__tag--organic">Organic</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>76</td>
+                                                    <td>$14.27</td>
+                                                    <td>
+                                                        <div class="product__quantity">
+                                                             <button class="increment decrease"></button>
+                                                            <input type="number" value="0" />
+                                                             <button class="increment increase"></button>
+                                                        </div>
+                                                    </td>
+                                                    <td>$1.49</td>
+                                                    <td>51.90%</td>
+                                                    <td>30</td>
+                                                    <td>$89.40</td>
+                                                    <td class="text-color--red font-size--m"><div class="product__like liked" type="button"></div></td>                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div id="order_view_grid" class="order__view order__grid overflow-hidden py-4 tab-pane fade" role="tabpanel">
+                                        <div>
+                                            <div class="row row-cols-2 row-cols-sm-3 row-cols-lg-4 gy-5 gx-4 gx-lg-5">
+                                                <div class="product product--liked col">
+                                                    <div class="product__inner d-flex flex-column h-100">
+                                                        <div class="product__image bg-image-wrapper before">
+                                                            <img src="./img/apple.png" class="bg-image bg-image--contain" />
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <div class="text-color--gray5 font-weight--700 mt-4">Braeburn Apples XF 100 Ct.</div>
+                                                            <div>Product: #06107</div>
+                                                            <div class="mt-1">$3.00</div>
+                                                            <div class="d-flex flex-wrap mt-3">
+                                                                <div class="product__tag product__tag--fresh">Fresh</div>
+                                                                <div class="product__tag product__tag--local">Local</div>
+                                                                <div class="product__tag product__tag--year-round">Year Round</div>
+                                                                <div class="product__tag product__tag--organic">Organic</div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="product__quantity mt-auto mb-0">
+                                                             <button class="increment decrease"></button>
+                                                            <input type="number" value="0" />
+                                                             <button class="increment increase"></button>
+                                                        </div>
+                                                        <div class="product__like liked" type="button"></div>
                                                     </div>
                                                 </div>
-                                                <div class="product__available-qty">76</div>
-                                                <div class="product__price">$14.27</div>
-                                                <div class="product__quantity">
-                                                        <button class="increment decrease"></button>
-                                                    <input type="number" value="0" />
-                                                        <button class="increment increase"></button>
-                                                </div>
-                                                <div class="product__retail">$1.49</div>
-                                                <div class="product__margin">51.90%</div>
-                                                <div class="product__pack">30</div>
-                                                <div class="product__gross-sales">$89.40</div>
-                                                <div class="product__like liked" type="button"></div>
-                                            </div>
-                                        </div>
-                                        <div class="product">
-                                            <div class="product__inner d-flex">
-                                                <div class="product__id">#06107</div>
-                                                <div class="product__quickview">
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="product__image bg-image-wrapper before before--square me-3">
+                                                <div class="product product--liked col">
+                                                    <div class="product__inner d-flex flex-column h-100">
+                                                        <div class="product__image bg-image-wrapper before">
                                                             <img src="./img/garlic.png" class="bg-image bg-image--contain" />
                                                         </div>
-                                                        <div class="w-200px">
-                                                            <h6 class="text-color--gray5 font-weight--700">Jumbo Garlic 30#</h6>
-                                                            <div class="d-flex flex-wrap">
+                                                        <div class="mb-3">
+                                                            <div class="text-color--gray5 font-weight--700 mt-4">Jumbo Garlic 30#</div>
+                                                            <div>Product: #06107</div>
+                                                            <div class="mt-1">$3.00</div>
+                                                            <div class="d-flex flex-wrap mt-3">
                                                                 <div class="product__tag product__tag--fresh">Fresh</div>
                                                                 <div class="product__tag product__tag--local">Local</div>
                                                                 <div class="product__tag product__tag--year-round">Year Round</div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                                <div class="product__available-qty">76</div>
-                                                <div class="product__price">$14.27</div>
-                                                <div>
-                                                    <div class="product__quantity">
-                                                            <button class="increment decrease"></button>
-                                                        <input type="number" value="0" />
-                                                            <button class="increment increase"></button>
-                                                    </div>
-                                                </div>
-                                                <div class="product__retail">$1.49</div>
-                                                <div class="product__margin">51.90%</div>
-                                                <div class="product__pack">30</div>
-                                                <div class="product__gross-sales">$89.40</div>
-                                                <div class="product__like liked" type="button"></div>
-                                        </div>
-                                        </div>
-                                    <div class="product">
-                                        <div class="product__inner d-flex">
-                                            <div class="product__id">#06107</div>
-                                            <div class="product__quickview">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="product__image bg-image-wrapper before before--square me-3">
-                                                        <img src="./img/red_pepper.png" class="bg-image bg-image--contain" />
-                                                    </div>
-                                                    <div class="w-200px">
-                                                        <h6 class="text-color--gray5 font-weight--700">Large Red Bell Peppers 25#</h6>
-                                                        <div class="d-flex flex-wrap">
+                                                        <div class="product__quantity mt-auto mb-0">
+                                                             <button class="increment decrease"></button>
+                                                            <input type="number" value="0" />
+                                                             <button class="increment increase"></button>
                                                         </div>
+                                                        <div class="product__like liked" type="button"></div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="product__available-qty">76</div>
-                                            <div class="product__price">$14.27</div>
-                                            <div class="product__quantity">
-                                                <button class="increment decrease"></button>
-                                                    <input type="number" value="0" />
-                                                <button class="increment increase"></button>
-                                            </div>
-                                            <div class="product__retail">$1.49</div>
-                                            <div class="product__margin">51.90%</div>
-                                            <div class="product__pack">30</div>
-                                            <div class="product__gross-sales">$89.40</div>
-                                            <div class="product__like liked" type="button"></div>
-                                        </div>
-                                    </div>
-                                    <div class="product">
-                                        <div class="product__inner d-flex">
-                                            <div class="product__id">#06107</div>
-                                            <div class="product__quickview">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="product__image bg-image-wrapper before before--square me-3">
-                                                        <img src="./img/bananas2.png" class="bg-image bg-image--contain" />
-                                                    </div>
-                                                    <div class="w-200px">
-                                                        <h6 class="text-color--gray5 font-weight--700">Petite Ripe Bananas 40#</h6>
-                                                        <div class="d-flex flex-wrap">
-                                                            <div class="product__tag product__tag--fresh">Fresh</div>
-                                                            <div class="product__tag product__tag--year-round">Year Round</div>
+                                                <div class="product product--liked col">
+                                                    <div class="product__inner d-flex flex-column h-100">
+                                                        <div class="product__image bg-image-wrapper before">
+                                                            <img src="./img/mushrooms.png" class="bg-image bg-image--contain" />
                                                         </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product__available-qty">76</div>
-                                            <div class="product__price">$14.27</div>
-                                            <div class="product__quantity">
-                                                <button class="increment decrease"></button>
-                                                    <input type="number" value="0" />
-                                                <button class="increment increase"></button>
-                                            </div>
-                                            <div class="product__retail">$1.49</div>
-                                            <div class="product__margin">51.90%</div>
-                                            <div class="product__pack">30</div>
-                                            <div class="product__gross-sales">$89.40</div>
-                                            <div class="product__like liked" type="button"></div>
-                                        </div>
-                                    </div>
-                                    <div class="product">
-                                        <div class="product__inner d-flex">
-                                            <div class="product__id">#06107</div>
-                                            <div class="product__quickview">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="product__image bg-image-wrapper before before--square me-3">
-                                                        <img src="./img/watermelon.png" class="bg-image bg-image--contain" />
-                                                    </div>
-                                                    <div class="w-200px">
-                                                        <h6 class="text-color--gray5 font-weight--700">Seedless Watermelon</h6>
-                                                        <div class="d-flex flex-wrap">
+                                                        <div class="mb-3">
+                                                            <div class="text-color--gray5 font-weight--700 mt-4">Chantrelle Mushroom Lb.</div>
+                                                            <div>Product: #06107</div>
+                                                            <div class="mt-1">$3.00</div>
+                                                            <div class="d-flex flex-wrap mt-3">
+                                                                <div class="product__tag product__tag--special">Special Order</div>
+                                                                <div class="product__tag product__tag--seasonal">Seasonal</div>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product__available-qty">76</div>
-                                            <div class="product__price">$14.27</div>
-                                            <div class="product__quantity">
-                                                <button class="increment decrease"></button>
-                                                    <input type="number" value="0" />
-                                                <button class="increment increase"></button>
-                                            </div>
-                                            <div class="product__retail">$1.49</div>
-                                            <div class="product__margin">51.90%</div>
-                                            <div class="product__pack">30</div>
-                                            <div class="product__gross-sales">$89.40</div>
-                                            <div class="product__like liked" type="button"></div>
-                                        </div>
-                                    </div>
-                                    <div class="product">
-                                        <div class="product__inner d-flex">
-                                            <div class="product__id">#06107</div>
-                                            <div class="product__quickview">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="product__image bg-image-wrapper before before--square me-3">
-                                                        <img src="./img/lemons.png" class="bg-image bg-image--contain" />
-                                                    </div>
-                                                    <div class="w-200px">
-                                                        <h6 class="text-color--gray5 font-weight--700">Choice Lemons 95 Ct.</h6>
-                                                        <div class="d-flex flex-wrap">
-                                                            <div class="product__tag product__tag--limited">Limited</div>
+                                                        <div class="product__quantity mt-auto mb-0">
+                                                             <button class="increment decrease"></button>
+                                                            <input type="number" value="0" />
+                                                             <button class="increment increase"></button>
                                                         </div>
+                                                        <div class="product__like liked" type="button"></div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="product__available-qty">76</div>
-                                            <div class="product__price">$14.27</div>
-                                            <div class="product__quantity">
-                                                <button class="increment decrease"></button>
-                                                    <input type="number" value="0" />
-                                                <button class="increment increase"></button>
-                                            </div>
-                                            <div class="product__retail">$1.49</div>
-                                            <div class="product__margin">51.90%</div>
-                                            <div class="product__pack">30</div>
-                                            <div class="product__gross-sales">$89.40</div>
-                                            <div class="product__like liked" type="button"></div>
-                                        </div>
-                                    </div>
-                                    <div class="product">
-                                        <div class="product__inner d-flex">
-                                            <div class="product__id">#06107</div>
-                                            <div class="product__quickview">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="product__image bg-image-wrapper before before--square me-3">
-                                                        <img src="./img/oranges.png" class="bg-image bg-image--contain" />
-                                                    </div>
-                                                    <div class="w-200px">
-                                                        <h6 class="text-color--gray5 font-weight--700">Choice Oranges 56 Ct.</h6>
-                                                        <div class="d-flex flex-wrap">
+                                                <div class="product product--liked col">
+                                                    <div class="product__inner d-flex flex-column h-100">
+                                                        <div class="product__image bg-image-wrapper before">
+                                                            <img src="./img/red_pepper.png" class="bg-image bg-image--contain" />
                                                         </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product__available-qty">76</div>
-                                            <div class="product__price">$14.27</div>
-                                            <div class="product__quantity">
-                                                <button class="increment decrease"></button>
-                                                    <input type="number" value="0" />
-                                                <button class="increment increase"></button>
-                                            </div>
-                                            <div class="product__retail">$1.49</div>
-                                            <div class="product__margin">51.90%</div>
-                                            <div class="product__pack">30</div>
-                                            <div class="product__gross-sales">$89.40</div>
-                                            <div class="product__like liked" type="button"></div>
-                                        </div>
-                                    </div>
-                                    <div class="product">
-                                        <div class="product__inner d-flex">
-                                            <div class="product__id">#06107</div>
-                                            <div class="product__quickview">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="product__image bg-image-wrapper before before--square me-3">
-                                                        <img src="./img/celery.png" class="bg-image bg-image--contain" />
-                                                    </div>
-                                                    <div class="w-200px">
-                                                        <h6 class="text-color--gray5 font-weight--700">Celery 36 Ct.</h6>
-                                                        <div class="d-flex flex-wrap">
-                                                            <div class="product__tag product__tag--local">Local</div>
+                                                        <div class="mb-3">
+                                                            <div class="text-color--gray5 font-weight--700 mt-4">Large Red Bell Peppers 25#</div>
+                                                            <div>Product: #06107</div>
+                                                            <div class="mt-1">$3.00</div>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product__available-qty">76</div>
-                                            <div class="product__price">$14.27</div>
-                                            <div class="product__quantity">
-                                                <button class="increment decrease"></button>
-                                                    <input type="number" value="0" />
-                                                <button class="increment increase"></button>
-                                            </div>
-                                            <div class="product__retail">$1.49</div>
-                                            <div class="product__margin">51.90%</div>
-                                            <div class="product__pack">30</div>
-                                            <div class="product__gross-sales">$89.40</div>
-                                            <div class="product__like liked" type="button"></div>
-                                        </div>
-                                    </div>
-                                    <div class="product">
-                                        <div class="product__inner d-flex">
-                                            <div class="product__id">#06107</div>
-                                            <div class="product__quickview">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="product__image bg-image-wrapper before before--square me-3">
-                                                        <img src="./img/arugula.png" class="bg-image bg-image--contain" />
-                                                    </div>
-                                                    <div class="w-200px">
-                                                        <h6 class="text-color--gray5 font-weight--700">Organic Arugula 24 Ct.</h6>
-                                                        <div class="d-flex flex-wrap">
-                                                            <div class="product__tag product__tag--limited">Limited</div>
-                                                            <div class="product__tag product__tag--special">Special Order</div>
-                                                            <div class="product__tag product__tag--organic">Organic</div>
+                                                        <div class="product__quantity mt-auto mb-0">
+                                                             <button class="increment decrease"></button>
+                                                            <input type="number" value="0" />
+                                                             <button class="increment increase"></button>
                                                         </div>
+                                                        <div class="product__like liked" type="button"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="product product--liked col">
+                                                    <div class="product__inner d-flex flex-column h-100">
+                                                        <div class="product__image bg-image-wrapper before">
+                                                            <img src="./img/bananas2.png" class="bg-image bg-image--contain" />
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <div class="text-color--gray5 font-weight--700 mt-4">Petite Ripe Bananas 40#</div>
+                                                            <div>Product: #06107</div>
+                                                            <div class="mt-1">$3.00</div>
+                                                            <div class="d-flex flex-wrap mt-3">
+                                                                <div class="product__tag product__tag--fresh">Fresh</div>
+                                                                <div class="product__tag product__tag--year-round">Year Round</div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="product__quantity mt-auto mb-0">
+                                                             <button class="increment decrease"></button>
+                                                            <input type="number" value="0" />
+                                                             <button class="increment increase"></button>
+                                                        </div>
+                                                        <div class="product__like liked" type="button"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="product product--liked col">
+                                                    <div class="product__inner d-flex flex-column h-100">
+                                                        <div class="product__image bg-image-wrapper before">
+                                                            <img src="./img/watermelon.png" class="bg-image bg-image--contain" />
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <div class="text-color--gray5 font-weight--700 mt-4">Seedless Watermelon</div>
+                                                            <div>Product: #06107</div>
+                                                            <div class="mt-1">$3.00</div>
+                                                        </div>
+                                                        <div class="product__quantity mt-auto mb-0">
+                                                             <button class="increment decrease"></button>
+                                                            <input type="number" value="0" />
+                                                             <button class="increment increase"></button>
+                                                        </div>
+                                                        <div class="product__like liked" type="button"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="product product--liked col">
+                                                    <div class="product__inner d-flex flex-column h-100">
+                                                        <div class="product__image bg-image-wrapper before">
+                                                            <img src="./img/lemons.png" class="bg-image bg-image--contain" />
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <div class="text-color--gray5 font-weight--700 mt-4">Choice Lemons 95 Ct.</div>
+                                                            <div>Product: #06107</div>
+                                                            <div class="d-flex flex-wrap mt-3">
+                                                                <div class="product__tag product__tag--limited">Limited</div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="product__quantity mt-auto mb-0">
+                                                             <button class="increment decrease"></button>
+                                                            <input type="number" value="0" />
+                                                             <button class="increment increase"></button>
+                                                        </div>
+                                                        <div class="product__like liked" type="button"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="product product--liked col">
+                                                    <div class="product__inner d-flex flex-column h-100">
+                                                        <div class="product__image bg-image-wrapper before">
+                                                            <img src="./img/oranges.png" class="bg-image bg-image--contain" />
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <div class="text-color--gray5 font-weight--700 mt-4">Choice Oranges 56 Ct.</div>
+                                                            <div>Product: #06107</div>
+                                                        </div>
+                                                        <div class="product__quantity mt-auto mb-0">
+                                                             <button class="increment decrease"></button>
+                                                            <input type="number" value="0" />
+                                                             <button class="increment increase"></button>
+                                                        </div>
+                                                        <div class="product__like liked" type="button"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="product product--liked col">
+                                                    <div class="product__inner d-flex flex-column h-100">
+                                                        <div class="product__image bg-image-wrapper before">
+                                                            <img src="./img/celery.png" class="bg-image bg-image--contain" />
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <div class="text-color--gray5 font-weight--700 mt-4">Celery 36 Ct.</div>
+                                                            <div>Product: #06107</div>
+                                                            <div class="d-flex flex-wrap mt-3">
+                                                                <div class="product__tag product__tag--local">Local</div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="product__quantity mt-auto mb-0">
+                                                             <button class="increment decrease"></button>
+                                                            <input type="number" value="0" />
+                                                             <button class="increment increase"></button>
+                                                        </div>
+                                                        <div class="product__like liked" type="button"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="product product--liked col">
+                                                    <div class="product__inner d-flex flex-column h-100">
+                                                        <div class="product__image bg-image-wrapper before">
+                                                            <img src="./img/arugula.png" class="bg-image bg-image--contain" />
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <div class="text-color--gray5 font-weight--700 mt-4">Organic Arugula 24 Ct.</div>
+                                                            <div>Product: #06107</div>
+                                                            <div class="d-flex flex-wrap mt-3">
+                                                                <div class="product__tag product__tag--limited">Limited</div>
+                                                                <div class="product__tag product__tag--special">Special Order</div>
+                                                                <div class="product__tag product__tag--organic">Organic</div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="product__quantity mt-auto mb-0">
+                                                             <button class="increment decrease"></button>
+                                                            <input type="number" value="0" />
+                                                             <button class="increment increase"></button>
+                                                        </div>
+                                                        <div class="product__like liked" type="button"></div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="product__available-qty">76</div>
-                                            <div class="product__price">$14.27</div>
-                                            <div class="product__quantity">
-                                                <button class="increment decrease"></button>
-                                                    <input type="number" value="0" />
-                                                <button class="increment increase"></button>
-                                            </div>
-                                            <div class="product__retail">$1.49</div>
-                                            <div class="product__margin">51.90%</div>
-                                            <div class="product__pack">30</div>
-                                            <div class="product__gross-sales">$89.40</div>
-                                            <div class="product__like liked" type="button"></div>                                                </div>
+                                        </div>
                                     </div>
                                     <div class="d-flex flex-wrap justify-content-end mt-md1">
                                         <a href="#" class="button button--outline mb-3">Back To Top</a>
@@ -1342,11 +1552,11 @@
                                         <a href="#" class="phone"><img src="./img/icons/phone_white.png" class="me-2" />(630) 395-9600</a>
                                     </div>
                                     <div class="d-flex justify-content-between align-items-center">
-                                        <a href="https://goo.gl/maps/GLEGdiv5ViA72" target="_blank" rel="noopener noreferrer" class="location">Chicago</a>
+                                        <a href="https://goo.gl/maps/GLEGtD5ViA72" target="_blank" rel="noopener noreferrer" class="location">Chicago</a>
                                         <span class="separator"></span>
                                         <a href="https://goo.gl/maps/1SkSY1MGRV12" target="_blank" rel="noopener noreferrer" class="location">Los Angeles</a>
                                         <span class="separator"></span>
-                                        <a href="https://goo.gl/maps/GLEGdiv5ViA72" target="_blank" rel="noopener noreferrer" class="location">Philadelphia</a>
+                                        <a href="https://goo.gl/maps/GLEGtD5ViA72" target="_blank" rel="noopener noreferrer" class="location">Philadelphia</a>
                                         <span class="separator"></span>
                                         <a href="https://goo.gl/maps/5JDTYm1pFPp" target="_blank" rel="noopener noreferrer" class="location">Austin</a>
                                     </div>

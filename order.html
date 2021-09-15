@@ -17,22 +17,33 @@
     </head>
 	<body>
         <script>
+        var viewTimeout;
+
         document.addEventListener("DOMContentLoaded", function() {            
             const viewTriggers = document.querySelectorAll(".order__view-trigger");
-            const orderListView = document.getElementById("order_view_list")
+            const orderContent = document.getElementById("order_content");
+            const orderView = document.getElementById("order_view");
             for(let i = 0; i < viewTriggers.length; i++) {
                 viewTriggers[i].addEventListener( "click", function(e) {
+                    e.preventDefault();
+                    if( this.classList.contains("active") ) return null;
                     const view = this.getAttribute("data-view");
-                    switch (view) {
-                        case "list":
-                            orderListView.classList.add("order__view--imagefree");
-                            break;
-                        case "list+":
-                            orderListView.classList.remove("order__view--imagefree");
-                            break;
-                        default:
-                            break;
+                    const mobile = this.getAttribute("data-mobile");
+                    const oldEls = document.querySelectorAll(".order__view-trigger.active");
+                    for (let j = 0; j < oldEls.length; j++) {
+                        oldEls[j].classList.remove('active');
                     }
+                    var altSelector = ".order__view-trigger[data-view='" + view + "']";
+                    altSelector += ( mobile === "0" ? "[data-mobile='1']" : "[data-mobile='0']" );
+                    const altEl = document.querySelector(altSelector);
+                    this.classList.add("active");
+                    altEl.classList.add("active");
+                    orderView.style.opacity = 0;
+                    clearTimeout(viewTimeout);
+                    viewTimout = setTimeout(function() {
+                        orderContent.setAttribute( "data-view", view );
+                        orderView.style.opacity = 1;
+                    }, 400);
                 });
             }
 
@@ -610,8 +621,8 @@
                                             <path class="fill-primary" d="M18.7,4.1c0-0.4-0.3-0.6-0.6-0.2l-1.7,1.6c-0.3,0.3-0.9,0.3-1.2,0l-1.7-1.6c-0.3-0.3-0.3-0.8,0-1.1l1.7-1.6 c0.3-0.3,0.2-0.6-0.3-0.6c0,0-2.5-0.1-3.8,1.1C9.8,2.8,9.5,4.5,10,6L7.8,8.1C7.1,8.7,6,9.7,5.3,10.4l-4.1,3.9 c-0.7,0.6-0.7,1.7,0,2.3L1.7,17c0.7,0.6,1.8,0.6,2.4,0l4.1-3.9C8.9,12.5,9.5,12,9.5,12c0,0,0.5-0.5,1.2-1.1l2.2-2.1 c1.6,0.5,3.4,0.1,4.6-1C18.8,6.5,18.7,4.1,18.7,4.1z M3.9,16.3c-0.5,0.5-1.4,0.5-1.9,0c-0.5-0.5-0.5-1.3,0-1.8 c0.5-0.5,1.4-0.5,1.9,0C4.5,14.9,4.5,15.8,3.9,16.3z"/>
                                         </svg>
                                     </a>
-                                    <div class="nav d-none d-md-block" role="tablist">
-                                        <a href="#order_view_grid" class="order__view-trigger" data-view="grid" data-bs-toggle="tab" role="tab" aria-controls="order_view_grid" aria-selected="false">
+                                    <div class="d-none d-md-block">
+                                        <a href="#order_view_grid" class="order__view-trigger" data-mobile="0" data-view="grid">
                                             <svg version="1.1" class="icon order-view grid" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 46.9 45.5" style="enable-background:new 0 0 46.9 45.5;" xml:space="preserve">
                                                 <rect width="19.5" height="19.5"/>
                                                 <rect x="27.3" width="19.5" height="19.5"/>
@@ -619,14 +630,14 @@
                                                 <rect x="27.3" y="26" width="19.5" height="19.5"/>
                                             </svg>
                                         </a>
-                                        <a href="#order_view_list" class="order__view-trigger ms-2" data-view="list" data-bs-toggle="tab" role="tab" aria-controls="order_view_list" aria-selected="false">
+                                        <a href="#order_view_list" class="order__view-trigger ms-2" data-mobile="0" data-view="list">
                                             <svg version="1.1" class="icon order-view list" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 46.9 45.5" style="enable-background:new 0 0 46.9 45.5;" xml:space="preserve">
                                                 <rect width="46.9" height="9.8"/>
                                                 <rect y="35.7" width="46.9" height="9.8"/>
                                                 <rect y="17.9" width="46.9" height="9.8"/>
                                             </svg>
                                         </a>
-                                        <a href="#order_view_list" class="order__view-trigger ms-2 active" data-view="list+" data-bs-toggle="tab" role="tab" aria-controls="order_view_list" aria-selected="true">
+                                        <a href="#order_view_list" class="order__view-trigger ms-2 active" data-mobile="0" data-view="list+">
                                             <svg version="1.1" class="icon order-view list2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 46.9 45.5" style="enable-background:new 0 0 46.9 45.5;" xml:space="preserve">
                                                 <rect x="15" width="31.9" height="9.8"/>
                                                 <rect x="15" y="35.7" width="31.9" height="9.8"/>
@@ -843,8 +854,8 @@
                                         </form>
                                     </div>
                                     <div class="d-flex justify-content-end d-md-none my-4">
-                                        <div class="nav" role="tablist">
-                                            <a href="#order_view_grid" class="order__view-trigger" data-view="grid" data-bs-toggle="tab" role="tab" aria-controls="order_view_grid" aria-selected="false">
+                                        <div>
+                                            <a href="#order_view_grid" class="order__view-trigger" data-view="grid" data-mobile="1">
                                                 <svg version="1.1" class="icon order-view grid" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 46.9 45.5" style="enable-background:new 0 0 46.9 45.5;" xml:space="preserve">
                                                     <rect width="19.5" height="19.5"/>
                                                     <rect x="27.3" width="19.5" height="19.5"/>
@@ -852,14 +863,14 @@
                                                     <rect x="27.3" y="26" width="19.5" height="19.5"/>
                                                 </svg>
                                             </a>
-                                            <a href="#order_view_list" class="order__view-trigger ms-3" data-view="list" data-bs-toggle="tab" role="tab" aria-controls="order_view_list" aria-selected="false">
+                                            <a href="#order_view_list" class="order__view-trigger ms-3" data-view="list" data-mobile="1">
                                                 <svg version="1.1" class="icon order-view list" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 46.9 45.5" style="enable-background:new 0 0 46.9 45.5;" xml:space="preserve">
                                                     <rect width="46.9" height="9.8"/>
                                                     <rect y="35.7" width="46.9" height="9.8"/>
                                                     <rect y="17.9" width="46.9" height="9.8"/>
                                                 </svg>
                                             </a>
-                                            <a href="#order_view_list" class="order__view-trigger ms-3 active" data-view="list+" data-bs-toggle="tab" role="tab" aria-controls="order_view_list" aria-selected="true">
+                                            <a href="#order_view_list" class="order__view-trigger ms-3 active" data-view="list+" data-mobile="1">
                                                 <svg version="1.1" class="icon order-view list2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 46.9 45.5" style="enable-background:new 0 0 46.9 45.5;" xml:space="preserve">
                                                     <rect x="15" width="31.9" height="9.8"/>
                                                     <rect x="15" y="35.7" width="31.9" height="9.8"/>
@@ -872,8 +883,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="order__content col-auto flex-grow-1 tab-content">
-                                    <div id="order_view_list" class="order__view order__list tab-pane fade show active table__wrapper overflow-auto" role="tabpanel">
+                                <div id="order_content" class="order__content col-auto flex-grow-1" data-view="list+">
+                                    <div id="order_view" class="order__view table__wrapper overflow-auto">
                                         <table class="table">
                                             <thead class="bg-color--light">
                                                 <tr>
@@ -890,16 +901,18 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>#06107</td>
-                                                    <td>
+                                                <tr class="product">
+                                                    <td class="product__id">#06107</td>
+                                                    <td class="product__quickview">
                                                         <div class="d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#example_profile_item">
                                                             <div class="product__image bg-image-wrapper before before--square me-3">
                                                                 <img src="./img/apple.png" class="bg-image bg-image--contain" />
                                                             </div>
                                                             <div class="w-200px">
-                                                                <h6 class="text-color--gray5 font-weight--700">Braeburn Apples XF 100 Ct.</h6>
-                                                                <div class="d-flex flex-wrap">
+                                                                <h6 class="product__name text-color--gray5 font-weight--700">Braeburn Apples XF 100 Ct.</h6>
+                                                                <div class="product__grid-data product__grid-data--id mb-1">#06107</div>
+                                                                <div class="product__grid-data">$14.27</div>
+                                                                <div class="product__tags d-flex flex-wrap">
                                                                     <div class="product__tag product__tag--fresh">Fresh</div>
                                                                     <div class="product__tag product__tag--local">Local</div>
                                                                     <div class="product__tag product__tag--year-round">Year Round</div>
@@ -1019,31 +1032,33 @@
                                                             </div>
                                                         </div>
                                                     </td>
-                                                    <td>76</td>
-                                                    <td>$14.27</td>
-                                                    <td>
+                                                    <td class="product__available-qty">76</td>
+                                                    <td class="product__price">$14.27</td>
+                                                    <td class="product__quantity-wrapper">
                                                         <div class="product__quantity">
                                                              <button class="increment decrease"></button>
                                                             <input type="number" value="0" />
                                                              <button class="increment increase"></button>
                                                         </div>
                                                     </td>
-                                                    <td>$1.49</td>
-                                                    <td>51.90%</td>
-                                                    <td>30</td>
-                                                    <td>$89.40</td>
-                                                    <td class="text-color--red font-size--m"><div class="product__like liked" type="button"></div></td>
+                                                    <td class="product__retail-price">$1.49</td>
+                                                    <td class="product__margin">51.90%</td>
+                                                    <td class="product__pack">30</td>
+                                                    <td class="product__gross-sales">$89.40</td>
+                                                    <td class="product__like-wrapper"><div class="product__like liked" type="button"></div></td>
                                                 </tr>
-                                                <tr>
-                                                    <td>#06107</td>
-                                                    <td>
+                                                <tr class="product">
+                                                    <td class="product__id">#06107</td>
+                                                    <td class="product__quickview">
                                                         <div class="d-flex align-items-center">
                                                             <div class="product__image bg-image-wrapper before before--square me-3">
                                                                 <img src="./img/garlic.png" class="bg-image bg-image--contain" />
                                                             </div>
                                                             <div class="w-200px">
-                                                                <h6 class="text-color--gray5 font-weight--700">Jumbo Garlic 30#</h6>
-                                                                <div class="d-flex flex-wrap">
+                                                                <h6 class="product__name text-color--gray5 font-weight--700">Jumbo Garlic 30#</h6>
+                                                                <div class="product__grid-data product__grid-data--id mb-1">#06107</div>
+                                                                <div class="product__grid-data">$14.27</div>
+                                                                <div class="product__tags d-flex flex-wrap">
                                                                     <div class="product__tag product__tag--fresh">Fresh</div>
                                                                     <div class="product__tag product__tag--local">Local</div>
                                                                     <div class="product__tag product__tag--year-round">Year Round</div>
@@ -1051,202 +1066,223 @@
                                                             </div>
                                                         </div>
                                                     </td>
-                                                    <td>76</td>
-                                                    <td>$14.27</td>
-                                                    <td>
+                                                    <td class="product__available-qty">76</td>
+                                                    <td class="product__price">$14.27</td>
+                                                    <td class="product__quantity-wrapper">
                                                         <div class="product__quantity">
                                                              <button class="increment decrease"></button>
                                                             <input type="number" value="0" />
                                                              <button class="increment increase"></button>
                                                         </div>
                                                     </td>
-                                                    <td>$1.49</td>
-                                                    <td>51.90%</td>
-                                                    <td>30</td>
-                                                    <td>$89.40</td>
-                                                    <td class="text-color--red font-size--m"><div class="product__like liked" type="button"></div></td>                                                </tr>
-                                                <tr>
-                                                    <td>#06107</td>
-                                                    <td>
+                                                    <td class="product__retail-price">$1.49</td>
+                                                    <td class="product__margin">51.90%</td>
+                                                    <td class="product__pack">30</td>
+                                                    <td class="product__gross-sales">$89.40</td>
+                                                    <td class="product__like-wrapper"><div class="product__like liked" type="button"></div></td>
+                                                </tr>
+                                                <tr class="product">
+                                                    <td class="product__id">#06107</td>
+                                                    <td class="product__quickview">
                                                         <div class="d-flex align-items-center">
                                                             <div class="product__image bg-image-wrapper before before--square me-3">
                                                                 <img src="./img/red_pepper.png" class="bg-image bg-image--contain" />
                                                             </div>
                                                             <div class="w-200px">
-                                                                <h6 class="text-color--gray5 font-weight--700">Large Red Bell Peppers 25#</h6>
+                                                                <h6 class="product__name text-color--gray5 font-weight--700">Large Red Bell Peppers 25#</h6>
+                                                                <div class="product__grid-data product__grid-data--id mb-1">#06107</div>
+                                                                <div class="product__grid-data">$14.27</div>
                                                                 <div class="d-flex flex-wrap">
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </td>
-                                                    <td>76</td>
-                                                    <td>$14.27</td>
-                                                    <td>
+                                                    <td class="product__available-qty">76</td>
+                                                    <td class="product__price">$14.27</td>
+                                                    <td class="product__quantity-wrapper">
                                                         <div class="product__quantity">
                                                              <button class="increment decrease"></button>
                                                             <input type="number" value="0" />
                                                              <button class="increment increase"></button>
                                                         </div>
                                                     </td>
-                                                    <td>$1.49</td>
-                                                    <td>51.90%</td>
-                                                    <td>30</td>
-                                                    <td>$89.40</td>
-                                                    <td class="text-color--red font-size--m"><div class="product__like liked" type="button"></div></td>                                                </tr>
-                                                <tr>
-                                                    <td>#06107</td>
-                                                    <td>
+                                                    <td class="product__retail-price">$1.49</td>
+                                                    <td class="product__margin">51.90%</td>
+                                                    <td class="product__pack">30</td>
+                                                    <td class="product__gross-sales">$89.40</td>
+                                                    <td class="product__like-wrapper"><div class="product__like liked" type="button"></div></td>
+                                                </tr>
+                                                <tr class="product">
+                                                    <td class="product__id">#06107</td>
+                                                    <td class="product__quickview">
                                                         <div class="d-flex align-items-center">
                                                             <div class="product__image bg-image-wrapper before before--square me-3">
                                                                 <img src="./img/bananas2.png" class="bg-image bg-image--contain" />
                                                             </div>
                                                             <div class="w-200px">
-                                                                <h6 class="text-color--gray5 font-weight--700">Petite Ripe Bananas 40#</h6>
-                                                                <div class="d-flex flex-wrap">
+                                                                <h6 class="product__name text-color--gray5 font-weight--700">Petite Ripe Bananas 40#</h6>
+                                                                <div class="product__grid-data product__grid-data--id mb-1">#06107</div>
+                                                                <div class="product__grid-data">$14.27</div>
+                                                                <div class="product__tags d-flex flex-wrap">
                                                                     <div class="product__tag product__tag--fresh">Fresh</div>
                                                                     <div class="product__tag product__tag--year-round">Year Round</div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </td>
-                                                    <td>76</td>
-                                                    <td>$14.27</td>
-                                                    <td>
+                                                    <td class="product__available-qty">76</td>
+                                                    <td class="product__price">$14.27</td>
+                                                    <td class="product__quantity-wrapper">
                                                         <div class="product__quantity">
                                                              <button class="increment decrease"></button>
                                                             <input type="number" value="0" />
                                                              <button class="increment increase"></button>
                                                         </div>
                                                     </td>
-                                                    <td>$1.49</td>
-                                                    <td>51.90%</td>
-                                                    <td>30</td>
-                                                    <td>$89.40</td>
-                                                    <td class="text-color--red font-size--m"><div class="product__like liked" type="button"></div></td>                                                </tr>
-                                                <tr>
-                                                    <td>#06107</td>
-                                                    <td>
+                                                    <td class="product__retail-price">$1.49</td>
+                                                    <td class="product__margin">51.90%</td>
+                                                    <td class="product__pack">30</td>
+                                                    <td class="product__gross-sales">$89.40</td>
+                                                    <td class="product__like-wrapper"><div class="product__like liked" type="button"></div></td>
+                                                </tr>
+                                                <tr class="product">
+                                                    <td class="product__id">#06107</td>
+                                                    <td class="product__quickview">
                                                         <div class="d-flex align-items-center">
                                                             <div class="product__image bg-image-wrapper before before--square me-3">
                                                                 <img src="./img/watermelon.png" class="bg-image bg-image--contain" />
                                                             </div>
                                                             <div class="w-200px">
-                                                                <h6 class="text-color--gray5 font-weight--700">Seedless Watermelon</h6>
+                                                                <h6 class="product__name text-color--gray5 font-weight--700">Seedless Watermelon</h6>
+                                                                <div class="product__grid-data product__grid-data--id mb-1">#06107</div>
+                                                                <div class="product__grid-data">$14.27</div>
                                                                 <div class="d-flex flex-wrap">
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </td>
-                                                    <td>76</td>
-                                                    <td>$14.27</td>
-                                                    <td>
+                                                    <td class="product__available-qty">76</td>
+                                                    <td class="product__price">$14.27</td>
+                                                    <td class="product__quantity-wrapper">
                                                         <div class="product__quantity">
                                                              <button class="increment decrease"></button>
                                                             <input type="number" value="0" />
                                                              <button class="increment increase"></button>
                                                         </div>
                                                     </td>
-                                                    <td>$1.49</td>
-                                                    <td>51.90%</td>
-                                                    <td>30</td>
-                                                    <td>$89.40</td>
-                                                    <td class="text-color--red font-size--m"><div class="product__like liked" type="button"></div></td>                                                </tr>
-                                                <tr>
-                                                    <td>#06107</td>
-                                                    <td>
+                                                    <td class="product__retail-price">$1.49</td>
+                                                    <td class="product__margin">51.90%</td>
+                                                    <td class="product__pack">30</td>
+                                                    <td class="product__gross-sales">$89.40</td>
+                                                    <td class="product__like-wrapper"><div class="product__like liked" type="button"></div></td>
+                                                </tr>
+                                                <tr class="product">
+                                                    <td class="product__id">#06107</td>
+                                                    <td class="product__quickview">
                                                         <div class="d-flex align-items-center">
                                                             <div class="product__image bg-image-wrapper before before--square me-3">
                                                                 <img src="./img/lemons.png" class="bg-image bg-image--contain" />
                                                             </div>
                                                             <div class="w-200px">
-                                                                <h6 class="text-color--gray5 font-weight--700">Choice Lemons 95 Ct.</h6>
-                                                                <div class="d-flex flex-wrap">
+                                                                <h6 class="product__name text-color--gray5 font-weight--700">Choice Lemons 95 Ct.</h6>
+                                                                <div class="product__grid-data product__grid-data--id mb-1">#06107</div>
+                                                                <div class="product__grid-data">$14.27</div>
+                                                                <div class="product__tags d-flex flex-wrap">
                                                                     <div class="product__tag product__tag--limited">Limited</div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </td>
-                                                    <td>76</td>
-                                                    <td>$14.27</td>
-                                                    <td>
+                                                    <td class="product__available-qty">76</td>
+                                                    <td class="product__price">$14.27</td>
+                                                    <td class="product__quantity-wrapper">
                                                         <div class="product__quantity">
                                                              <button class="increment decrease"></button>
                                                             <input type="number" value="0" />
                                                              <button class="increment increase"></button>
                                                         </div>
                                                     </td>
-                                                    <td>$1.49</td>
-                                                    <td>51.90%</td>
-                                                    <td>30</td>
-                                                    <td>$89.40</td>
-                                                    <td class="text-color--red font-size--m"><div class="product__like liked" type="button"></div></td>                                                </tr>
-                                                <tr>
-                                                    <td>#06107</td>
-                                                    <td>
+                                                    <td class="product__retail-price">$1.49</td>
+                                                    <td class="product__margin">51.90%</td>
+                                                    <td class="product__pack">30</td>
+                                                    <td class="product__gross-sales">$89.40</td>
+                                                    <td class="product__like-wrapper"><div class="product__like liked" type="button"></div></td>
+                                                </tr>
+                                                <tr class="product">
+                                                    <td class="product__id">#06107</td>
+                                                    <td class="product__quickview">
                                                         <div class="d-flex align-items-center">
                                                             <div class="product__image bg-image-wrapper before before--square me-3">
                                                                 <img src="./img/oranges.png" class="bg-image bg-image--contain" />
                                                             </div>
                                                             <div class="w-200px">
-                                                                <h6 class="text-color--gray5 font-weight--700">Choice Oranges 56 Ct.</h6>
+                                                                <h6 class="product__name text-color--gray5 font-weight--700">Choice Oranges 56 Ct.</h6>
+                                                                <div class="product__grid-data product__grid-data--id mb-1">#06107</div>
+                                                                <div class="product__grid-data">$14.27</div>
                                                                 <div class="d-flex flex-wrap">
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </td>
-                                                    <td>76</td>
-                                                    <td>$14.27</td>
-                                                    <td>
+                                                    <td class="product__available-qty">76</td>
+                                                    <td class="product__price">$14.27</td>
+                                                    <td class="product__quantity-wrapper">
                                                         <div class="product__quantity">
                                                              <button class="increment decrease"></button>
                                                             <input type="number" value="0" />
                                                              <button class="increment increase"></button>
                                                         </div>
                                                     </td>
-                                                    <td>$1.49</td>
-                                                    <td>51.90%</td>
-                                                    <td>30</td>
-                                                    <td>$89.40</td>
-                                                    <td class="text-color--red font-size--m"><div class="product__like liked" type="button"></div></td>                                                </tr>
-                                                <tr>
-                                                    <td>#06107</td>
-                                                    <td>
+                                                    <td class="product__retail-price">$1.49</td>
+                                                    <td class="product__margin">51.90%</td>
+                                                    <td class="product__pack">30</td>
+                                                    <td class="product__gross-sales">$89.40</td>
+                                                    <td class="product__like-wrapper"><div class="product__like liked" type="button"></div></td>
+                                                </tr>
+                                                <tr class="product">
+                                                    <td class="product__id">#06107</td>
+                                                    <td class="product__quickview">
                                                         <div class="d-flex align-items-center">
                                                             <div class="product__image bg-image-wrapper before before--square me-3">
                                                                 <img src="./img/celery.png" class="bg-image bg-image--contain" />
                                                             </div>
                                                             <div class="w-200px">
-                                                                <h6 class="text-color--gray5 font-weight--700">Celery 36 Ct.</h6>
-                                                                <div class="d-flex flex-wrap">
+                                                                <h6 class="product__name text-color--gray5 font-weight--700">Celery 36 Ct.</h6>
+                                                                <div class="product__grid-data product__grid-data--id mb-1">#06107</div>
+                                                                <div class="product__grid-data">$14.27</div>
+                                                                <div class="product__tags d-flex flex-wrap">
                                                                     <div class="product__tag product__tag--local">Local</div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </td>
-                                                    <td>76</td>
-                                                    <td>$14.27</td>
-                                                    <td>
+                                                    <td class="product__available-qty">76</td>
+                                                    <td class="product__price">$14.27</td>
+                                                    <td class="product__quantity-wrapper">
                                                         <div class="product__quantity">
                                                              <button class="increment decrease"></button>
                                                             <input type="number" value="0" />
                                                              <button class="increment increase"></button>
                                                         </div>
                                                     </td>
-                                                    <td>$1.49</td>
-                                                    <td>51.90%</td>
-                                                    <td>30</td>
-                                                    <td>$89.40</td>
-                                                    <td class="text-color--red font-size--m"><div class="product__like liked" type="button"></div></td>                                                </tr>
-                                                <tr>
-                                                    <td>#06107</td>
-                                                    <td>
+                                                    <td class="product__retail-price">$1.49</td>
+                                                    <td class="product__margin">51.90%</td>
+                                                    <td class="product__pack">30</td>
+                                                    <td class="product__gross-sales">$89.40</td>
+                                                    <td class="product__like-wrapper"><div class="product__like liked" type="button"></div></td>
+                                                </tr>
+                                                <tr class="product">
+                                                    <td class="product__id">#06107</td>
+                                                    <td class="product__quickview">
                                                         <div class="d-flex align-items-center">
                                                             <div class="product__image bg-image-wrapper before before--square me-3">
                                                                 <img src="./img/arugula.png" class="bg-image bg-image--contain" />
                                                             </div>
                                                             <div class="w-200px">
-                                                                <h6 class="text-color--gray5 font-weight--700">Organic Arugula 24 Ct.</h6>
-                                                                <div class="d-flex flex-wrap">
+                                                                <h6 class="product__name text-color--gray5 font-weight--700">Organic Arugula 24 Ct.</h6>
+                                                                <div class="product__grid-data product__grid-data--id mb-1">#06107</div>
+                                                                <div class="product__grid-data">$14.27</div>
+                                                                <div class="product__tags d-flex flex-wrap">
                                                                     <div class="product__tag product__tag--limited">Limited</div>
                                                                     <div class="product__tag product__tag--special">Special Order</div>
                                                                     <div class="product__tag product__tag--organic">Organic</div>
@@ -1254,234 +1290,23 @@
                                                             </div>
                                                         </div>
                                                     </td>
-                                                    <td>76</td>
-                                                    <td>$14.27</td>
-                                                    <td>
+                                                    <td class="product__available-qty">76</td>
+                                                    <td class="product__price">$14.27</td>
+                                                    <td class="product__quantity-wrapper">
                                                         <div class="product__quantity">
                                                              <button class="increment decrease"></button>
                                                             <input type="number" value="0" />
                                                              <button class="increment increase"></button>
                                                         </div>
                                                     </td>
-                                                    <td>$1.49</td>
-                                                    <td>51.90%</td>
-                                                    <td>30</td>
-                                                    <td>$89.40</td>
-                                                    <td class="text-color--red font-size--m"><div class="product__like liked" type="button"></div></td>                                                </tr>
+                                                    <td class="product__retail-price">$1.49</td>
+                                                    <td class="product__margin">51.90%</td>
+                                                    <td class="product__pack">30</td>
+                                                    <td class="product__gross-sales">$89.40</td>
+                                                    <td class="product__like-wrapper"><div class="product__like liked" type="button"></div></td>
+                                                </tr>
                                             </tbody>
                                         </table>
-                                    </div>
-                                    <div id="order_view_grid" class="order__view order__grid overflow-hidden py-4 tab-pane fade" role="tabpanel">
-                                        <div>
-                                            <div class="row row-cols-2 row-cols-sm-3 row-cols-lg-4 gy-5 gx-4 gx-lg-5">
-                                                <div class="product product--liked col">
-                                                    <div class="product__inner d-flex flex-column h-100">
-                                                        <div class="product__image bg-image-wrapper before">
-                                                            <img src="./img/apple.png" class="bg-image bg-image--contain" />
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <div class="text-color--gray5 font-weight--700 mt-4">Braeburn Apples XF 100 Ct.</div>
-                                                            <div>Product: #06107</div>
-                                                            <div class="mt-1">$3.00</div>
-                                                            <div class="d-flex flex-wrap mt-3">
-                                                                <div class="product__tag product__tag--fresh">Fresh</div>
-                                                                <div class="product__tag product__tag--local">Local</div>
-                                                                <div class="product__tag product__tag--year-round">Year Round</div>
-                                                                <div class="product__tag product__tag--organic">Organic</div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="product__quantity mt-auto mb-0">
-                                                             <button class="increment decrease"></button>
-                                                            <input type="number" value="0" />
-                                                             <button class="increment increase"></button>
-                                                        </div>
-                                                        <div class="product__like liked" type="button"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="product product--liked col">
-                                                    <div class="product__inner d-flex flex-column h-100">
-                                                        <div class="product__image bg-image-wrapper before">
-                                                            <img src="./img/garlic.png" class="bg-image bg-image--contain" />
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <div class="text-color--gray5 font-weight--700 mt-4">Jumbo Garlic 30#</div>
-                                                            <div>Product: #06107</div>
-                                                            <div class="mt-1">$3.00</div>
-                                                            <div class="d-flex flex-wrap mt-3">
-                                                                <div class="product__tag product__tag--fresh">Fresh</div>
-                                                                <div class="product__tag product__tag--local">Local</div>
-                                                                <div class="product__tag product__tag--year-round">Year Round</div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="product__quantity mt-auto mb-0">
-                                                             <button class="increment decrease"></button>
-                                                            <input type="number" value="0" />
-                                                             <button class="increment increase"></button>
-                                                        </div>
-                                                        <div class="product__like liked" type="button"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="product product--liked col">
-                                                    <div class="product__inner d-flex flex-column h-100">
-                                                        <div class="product__image bg-image-wrapper before">
-                                                            <img src="./img/mushrooms.png" class="bg-image bg-image--contain" />
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <div class="text-color--gray5 font-weight--700 mt-4">Chantrelle Mushroom Lb.</div>
-                                                            <div>Product: #06107</div>
-                                                            <div class="mt-1">$3.00</div>
-                                                            <div class="d-flex flex-wrap mt-3">
-                                                                <div class="product__tag product__tag--special">Special Order</div>
-                                                                <div class="product__tag product__tag--seasonal">Seasonal</div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="product__quantity mt-auto mb-0">
-                                                             <button class="increment decrease"></button>
-                                                            <input type="number" value="0" />
-                                                             <button class="increment increase"></button>
-                                                        </div>
-                                                        <div class="product__like liked" type="button"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="product product--liked col">
-                                                    <div class="product__inner d-flex flex-column h-100">
-                                                        <div class="product__image bg-image-wrapper before">
-                                                            <img src="./img/red_pepper.png" class="bg-image bg-image--contain" />
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <div class="text-color--gray5 font-weight--700 mt-4">Large Red Bell Peppers 25#</div>
-                                                            <div>Product: #06107</div>
-                                                            <div class="mt-1">$3.00</div>
-                                                        </div>
-                                                        <div class="product__quantity mt-auto mb-0">
-                                                             <button class="increment decrease"></button>
-                                                            <input type="number" value="0" />
-                                                             <button class="increment increase"></button>
-                                                        </div>
-                                                        <div class="product__like liked" type="button"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="product product--liked col">
-                                                    <div class="product__inner d-flex flex-column h-100">
-                                                        <div class="product__image bg-image-wrapper before">
-                                                            <img src="./img/bananas2.png" class="bg-image bg-image--contain" />
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <div class="text-color--gray5 font-weight--700 mt-4">Petite Ripe Bananas 40#</div>
-                                                            <div>Product: #06107</div>
-                                                            <div class="mt-1">$3.00</div>
-                                                            <div class="d-flex flex-wrap mt-3">
-                                                                <div class="product__tag product__tag--fresh">Fresh</div>
-                                                                <div class="product__tag product__tag--year-round">Year Round</div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="product__quantity mt-auto mb-0">
-                                                             <button class="increment decrease"></button>
-                                                            <input type="number" value="0" />
-                                                             <button class="increment increase"></button>
-                                                        </div>
-                                                        <div class="product__like liked" type="button"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="product product--liked col">
-                                                    <div class="product__inner d-flex flex-column h-100">
-                                                        <div class="product__image bg-image-wrapper before">
-                                                            <img src="./img/watermelon.png" class="bg-image bg-image--contain" />
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <div class="text-color--gray5 font-weight--700 mt-4">Seedless Watermelon</div>
-                                                            <div>Product: #06107</div>
-                                                            <div class="mt-1">$3.00</div>
-                                                        </div>
-                                                        <div class="product__quantity mt-auto mb-0">
-                                                             <button class="increment decrease"></button>
-                                                            <input type="number" value="0" />
-                                                             <button class="increment increase"></button>
-                                                        </div>
-                                                        <div class="product__like liked" type="button"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="product product--liked col">
-                                                    <div class="product__inner d-flex flex-column h-100">
-                                                        <div class="product__image bg-image-wrapper before">
-                                                            <img src="./img/lemons.png" class="bg-image bg-image--contain" />
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <div class="text-color--gray5 font-weight--700 mt-4">Choice Lemons 95 Ct.</div>
-                                                            <div>Product: #06107</div>
-                                                            <div class="d-flex flex-wrap mt-3">
-                                                                <div class="product__tag product__tag--limited">Limited</div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="product__quantity mt-auto mb-0">
-                                                             <button class="increment decrease"></button>
-                                                            <input type="number" value="0" />
-                                                             <button class="increment increase"></button>
-                                                        </div>
-                                                        <div class="product__like liked" type="button"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="product product--liked col">
-                                                    <div class="product__inner d-flex flex-column h-100">
-                                                        <div class="product__image bg-image-wrapper before">
-                                                            <img src="./img/oranges.png" class="bg-image bg-image--contain" />
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <div class="text-color--gray5 font-weight--700 mt-4">Choice Oranges 56 Ct.</div>
-                                                            <div>Product: #06107</div>
-                                                        </div>
-                                                        <div class="product__quantity mt-auto mb-0">
-                                                             <button class="increment decrease"></button>
-                                                            <input type="number" value="0" />
-                                                             <button class="increment increase"></button>
-                                                        </div>
-                                                        <div class="product__like liked" type="button"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="product product--liked col">
-                                                    <div class="product__inner d-flex flex-column h-100">
-                                                        <div class="product__image bg-image-wrapper before">
-                                                            <img src="./img/celery.png" class="bg-image bg-image--contain" />
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <div class="text-color--gray5 font-weight--700 mt-4">Celery 36 Ct.</div>
-                                                            <div>Product: #06107</div>
-                                                            <div class="d-flex flex-wrap mt-3">
-                                                                <div class="product__tag product__tag--local">Local</div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="product__quantity mt-auto mb-0">
-                                                             <button class="increment decrease"></button>
-                                                            <input type="number" value="0" />
-                                                             <button class="increment increase"></button>
-                                                        </div>
-                                                        <div class="product__like liked" type="button"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="product product--liked col">
-                                                    <div class="product__inner d-flex flex-column h-100">
-                                                        <div class="product__image bg-image-wrapper before">
-                                                            <img src="./img/arugula.png" class="bg-image bg-image--contain" />
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <div class="text-color--gray5 font-weight--700 mt-4">Organic Arugula 24 Ct.</div>
-                                                            <div>Product: #06107</div>
-                                                            <div class="d-flex flex-wrap mt-3">
-                                                                <div class="product__tag product__tag--limited">Limited</div>
-                                                                <div class="product__tag product__tag--special">Special Order</div>
-                                                                <div class="product__tag product__tag--organic">Organic</div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="product__quantity mt-auto mb-0">
-                                                             <button class="increment decrease"></button>
-                                                            <input type="number" value="0" />
-                                                             <button class="increment increase"></button>
-                                                        </div>
-                                                        <div class="product__like liked" type="button"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
                                     <div class="d-flex flex-wrap justify-content-end mt-md1">
                                         <a href="#" class="button button--outline mb-3">Back To Top</a>

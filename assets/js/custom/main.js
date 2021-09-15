@@ -39,7 +39,7 @@ $(function () {
 	});
 
 	$(".product__like").click(function(e) {
-		$(this).toggleClass("liked");		
+		$(this).toggleClass("liked");
 	});
 
 

@@ -5,14 +5,6 @@
         }
     }
 
-    &__view {
-        &--imagefree {
-            .product__image {
-                display: none;
-            }
-        }
-    }
-
     @media (min-width: $breakpoint-m) {
         &__filters {
             max-width: 264px;
@@ -22,87 +14,212 @@
         }
     }
 
-    &__list {
-        tr {
-            vertical-align: middle;
-            border-bottom: solid 1px $gray2;
+    &__content {
+        .product__grid-data {
+            display: none;
         }
 
-        thead {
-            tr {
-                border-top: solid 1px $gray2;
+        &[data-view="grid"] {
+            $gridpad: 24px;
+
+            #order_view {
+                overflow: hidden !important;
+                border-bottom: solid 1px $gray2;
             }
-        }
-
-        tbody {
-            th, td {
-                padding-top: 1rem;
-                padding-bottom: 1rem;
+            table {
+                margin-bottom: $gridpad;
             }
-        }
 
-        .product__image {
-            width: 80px;
-        }
-    }
-
-    &__grid {
-        overflow: hidden;
-        border-bottom: solid 1px $gray2;
-
-        .product {
-            border-right: solid 1px $gray2;
-            position: relative;
-            color: $gray4;
-
-            &--liked {
-                .product__inner {
+            thead {
+                display: none;
+            }
+            tbody {
+                display: flex;
+                flex-wrap: wrap;
+                margin-left: -$gridpad;
+                margin-right: -$gridpad;
+                margin-top: -$gridpad;
+    
+                tr {
+                    max-width: 50%;
+                    min-width: 50%;
+                    display: flex;
+                    flex-direction: column;
+                    padding-left: $gridpad;
+                    padding-right: $gridpad;
+                    border-right: solid 1px $gray2;
+                    border-bottom: none !important;
+                    margin-top: calc(#{$gridpad}*2);
                     position: relative;
+    
+                    @media (min-width: $breakpoint-s) {
+                        max-width: 33.33%;
+                        min-width: 33.33%;
+                    }
+    
+                    @media (min-width: $breakpoint-l) {
+                        max-width: 25%;
+                        min-width: 25%;
+                    }
 
-                    // &:before {
-                    //     content: "♥";
-                    //     color: $red;
-                    //     font-size: 24px;
-                    //     position: absolute;
-                    //     top: 0;
-                    //     right: 0;
-                    //     z-index: 3;
-                    // }
+                    &:before,
+                    &:after {
+                        content: "";
+                        display: block;
+                        width: 101%;
+                        height: 1px;
+                        background: $gray2;
+                        position: absolute;
+                        left: 0;
+                    }
+
+                    &:before {
+                        top: -24px; // this corresponds to the gutters being set to 48px
+                    }
+
+                    &:after {
+                        bottom: -25px; // this corresponds to the gutters being set to 48px. Positioning like this ensures the bottom and top faux borders are combined.
+                    }
+
+                    td {
+                        padding: 0 !important;
+                    }
+
+                    .product {
+                        &__quickview {
+                            margin-bottom: 1rem;
+
+                            & > .d-flex {
+                                flex-direction: column;
+                                align-items: flex-start !important;
+                            }
+                        }
+                        &__image {
+                            margin-right: 0 !important;
+                            width: 100px;
+                            align-self: center;
+                        }
+                        &__name {
+                            margin-top: 1.5rem;
+                            margin-bottom: 0;
+                        }
+                        &__like {
+                            position: absolute;
+                            top: 0;
+                            right: $gridpad;
+                            z-index: 3;
+    
+                            &-wrapper {
+                                padding: 0;
+                            }
+                        }
+                        &__quantity-wrapper {
+                            margin-top: auto;
+                            margin-bottom: 0;
+                        }
+                        &__grid-data {
+                            display: block;
+
+                            &--id {
+                                &:before {
+                                    content: "Product: ";
+                                }
+                            }
+                        }
+                        &__tags {
+                            margin-top: 1rem;
+                        }
+                        &__id,
+                        &__available-qty,
+                        &__price,
+                        &__retail-price,
+                        &__margin,
+                        &__pack,
+                        &__gross-sales {
+                            display: none;
+                        }
+                    }
                 }
             }
+        }
 
-            &:before,
-            &:after {
-                content: "";
-                display: block;
-                width: 101%;
-                height: 1px;
-                background: $gray2;
-                position: absolute;
-                left: 0;
+        &[data-view="list"],
+        &[data-view="list+"] {
+            tr {
+                vertical-align: middle;
+                border-bottom: solid 1px $gray2;
             }
-
-            &:before {
-                top: -24px; // this corresponds to the gutters being set to 48px
+        
+            thead {
+                tr {
+                    border-top: solid 1px $gray2;
+                }
             }
-
-            &:after {
-                bottom: -25px; // this corresponds to the gutters being set to 48px. Positioning like this ensures the bottom and top faux borders are combined.
+        
+            tbody {
+                th, td {
+                    padding-top: 1rem;
+                    padding-bottom: 1rem;
+                }
             }
-
-            &__like {
-                position: absolute;
-                top: 0;
-                right: 0;
-                z-index: 3;
+        
+            .product__image {
+                width: 80px;
             }
         }
-        .product__image {
-            &:before {
-                padding-bottom: 100px;
+
+        &[data-view="list"] {
+            .product__image {
+                display: none;
             }
         }
     }
+
+    &__view {
+        transition: opacity 0.4s;
+    }
+
+    // &__grid {
+    //     overflow: hidden;
+    //     border-bottom: solid 1px $gray2;
+
+    //     .product {
+    //         border-right: solid 1px $gray2;
+    //         position: relative;
+    //         color: $gray4;
+
+    //         &:before,
+    //         &:after {
+    //             content: "";
+    //             display: block;
+    //             width: 101%;
+    //             height: 1px;
+    //             background: $gray2;
+    //             position: absolute;
+    //             left: 0;
+    //         }
+
+    //         &:before {
+    //             top: -24px; // this corresponds to the gutters being set to 48px
+    //         }
+
+    //         &:after {
+    //             bottom: -25px; // this corresponds to the gutters being set to 48px. Positioning like this ensures the bottom and top faux borders are combined.
+    //         }
+
+    //         &__like {
+    //             position: absolute;
+    //             top: 0;
+    //             right: 0;
+    //             z-index: 3;
+    //         }
+    //     }
+    //     .product__image {
+    //         &:before {
+    //             padding-bottom: 100px;
+    //         }
+    //     }
+    // }
 }
 
 .filters {
