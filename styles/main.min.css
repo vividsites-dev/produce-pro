@@ -356,7 +356,7 @@ input[type="checkbox"]:checked+label:after{opacity:1}
 .calendar__grid{margin:-1.5px}
 .calendar__day{width:14.2857142857%;padding:1.5px}
 .calendar__day:before{display:block;text-align:center;margin-bottom:1rem}
-.calendar__day:nth-of-type(even) .calendar__date:before{background:#dfdfdf}
+.calendar__day:nth-of-type(even) .calendar__date:before{background-color:#dfdfdf}
 .calendar__day:nth-of-type(-n+7)[data-day_of_week="1"]:before{content:"Sun"}
 .calendar__day:nth-of-type(-n+7)[data-day_of_week="2"]:before{content:"Mon"}
 .calendar__day:nth-of-type(-n+7)[data-day_of_week="3"]:before{content:"Tue"}
@@ -381,6 +381,8 @@ input[type="checkbox"]:checked+label:after{opacity:1}
 .calendar__date--active:before{background-color:#83bf3e !important}
 .calendar__date--active:after{color:white}
 .calendar__date--active>div{color:#fff}
+.calendar__date--disabled{opacity:.2}
+.calendar__date--disabled:before{background-image:linear-gradient(45deg,transparent 0,transparent 49.5%,#666 49.5%,#666 50.5%,transparent 50.5%)}
 .icon a{display:inline-block}
 .icon a:hover{text-decoration:none}
 .icon--question{border:solid 2px #c30;border-radius:100px;position:relative}
@@ -421,6 +423,7 @@ svg .clip-rule-evenodd{clip-rule:evenodd}
 .order__content[data-view="grid"] tbody tr .product__id,.order__content[data-view="grid"] tbody tr .product__available-qty,.order__content[data-view="grid"] tbody tr .product__price,.order__content[data-view="grid"] tbody tr .product__retail-price,.order__content[data-view="grid"] tbody tr .product__margin,.order__content[data-view="grid"] tbody tr .product__pack,.order__content[data-view="grid"] tbody tr .product__gross-sales{display:none}
 .order__content[data-view="list"] tr,.order__content[data-view="list+"] tr{vertical-align:middle;border-bottom:solid 1px #dfdfdf}
 .order__content[data-view="list"] thead tr,.order__content[data-view="list+"] thead tr{border-top:solid 1px #dfdfdf}
+.order__content[data-view="list"] thead th,.order__content[data-view="list+"] thead th{text-align:center}
 .order__content[data-view="list"] tbody th,.order__content[data-view="list"] tbody td,.order__content[data-view="list+"] tbody th,.order__content[data-view="list+"] tbody td{padding-top:1rem;padding-bottom:1rem}
 .order__content[data-view="list"] .product__image,.order__content[data-view="list+"] .product__image{width:80px}
 .order__content[data-view="list"] .product__image{display:none}
