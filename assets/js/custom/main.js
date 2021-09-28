@@ -45,7 +45,7 @@ $(function () {
 	$(".offcanvas").on("show.bs.offcanvas", function() {
 		document.body.classList.add("offcanvas-shown");
 	});
-	$(".offcanvas").on("hide.bs.offcanvas", function() {
+	$(".offcanvas").on("hidden.bs.offcanvas", function() {
 		document.body.classList.remove("offcanvas-shown");
 	});
 

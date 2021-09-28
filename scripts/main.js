@@ -47,7 +47,7 @@ $(function () {
   $(".offcanvas").on("show.bs.offcanvas", function () {
     document.body.classList.add("offcanvas-shown");
   });
-  $(".offcanvas").on("hide.bs.offcanvas", function () {
+  $(".offcanvas").on("hidden.bs.offcanvas", function () {
     document.body.classList.remove("offcanvas-shown");
   }); // BELOW IS SOME CODE I WROTE TO ALLOW FOR PRESSING AND HOLDING INCREMENT BUTTONS
   // PRETTY GOOD BUT SLIGHTLY BUGGY PERFORMANCE
