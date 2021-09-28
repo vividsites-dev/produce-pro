@@ -107,8 +107,13 @@ body {
         border-radius: 100%;
     }
 
-    &.modal-open {
+    &.modal-open,
+    &.offcanvas-shown {
         padding-right: 0 !important;
+
+        header {
+            padding-right: 0 !important
+        }
     }
 
     .modal {

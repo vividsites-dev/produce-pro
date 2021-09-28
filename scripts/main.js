@@ -43,6 +43,12 @@ $(function () {
   });
   $(".product__like").click(function (e) {
     $(this).toggleClass("liked");
+  });
+  $(".offcanvas").on("show.bs.offcanvas", function () {
+    document.body.classList.add("offcanvas-shown");
+  });
+  $(".offcanvas").on("hide.bs.offcanvas", function () {
+    document.body.classList.remove("offcanvas-shown");
   }); // BELOW IS SOME CODE I WROTE TO ALLOW FOR PRESSING AND HOLDING INCREMENT BUTTONS
   // PRETTY GOOD BUT SLIGHTLY BUGGY PERFORMANCE
   // $(".product__quantity .increment").on( "mousedown", function() {
